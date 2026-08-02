@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>İletişim — Sprout Way</title>
+<meta name="description" content="Sprout Way ile iletişime geç: soruların, önerilerin ve geri bildirimlerin için e-posta ve sosyal medya kanallarımız.">
+<meta property="og:title" content="İletişim — Sprout Way">
+<meta property="og:description" content="Sorun, önerin ya da geri bildirimin mi var? Dinliyoruz.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sproutway.app/contact.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* ── Sprout Way tasarım token'ları (uygulamanın kilitli paletinden) ── */
+  :root{
+    --bg:#FFF7EF;          /* krem zemin */
+    --card:#FFFCF8;        /* kart zemini */
+    --ink:#3E2717;         /* ana metin */
+    --muted:#8D684E;       /* ikincil metin */
+    --line:rgba(62,39,23,.12);
+    --forest:#3D5A47;      /* CTA orman yeşili */
+    --forest-d:#31493A;
+    --tint:#E3EFE3;        /* yumuşak yeşil yastık */
+    --coral:#E8836B;       /* TEK accent — vurgu/kutlama anı */
+    --coral-soft:#FBEDE8;
+    --radius-m:12px; --radius-l:16px; --radius-xl:24px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);
+    font:17px/1.65 "Hanken Grotesk",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    -webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  img,svg{max-width:100%;vertical-align:middle}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+
+  /* ── Butonlar: uygulamadaki koyu yeşil pill CTA dili ── */
+  .btn{display:inline-flex;align-items:center;gap:9px;background:var(--forest);color:#fff;
+    font-weight:700;font-size:16px;padding:14px 26px;border-radius:999px;
+    transition:transform .15s,background .15s}
+  .btn:hover{background:var(--forest-d);transform:translateY(-1px)}
+  .btn.ghost{background:transparent;color:var(--forest);border:1.5px solid var(--line)}
+  .btn.ghost:hover{background:var(--tint);transform:translateY(-1px)}
+  .store{display:inline-flex;flex-direction:column;gap:1px;background:var(--ink);color:#fff;
+    padding:10px 20px;border-radius:14px;line-height:1.15;transition:transform .15s,opacity .15s}
+  .store:hover{transform:translateY(-1px);opacity:.92}
+  .store small{font-size:11px;opacity:.8;font-weight:400}
+  .store b{font-size:17px;font-weight:600}
+  .store.soon{opacity:.55;pointer-events:none}
+
+  /* ── Nav ── */
+  nav{position:sticky;top:0;z-index:20;background:rgba(255,247,239,.86);
+    backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--line)}
+  nav .row{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;letter-spacing:-.01em}
+  nav .links{display:flex;align-items:center;gap:24px;font-size:15px;color:var(--muted);font-weight:500}
+  nav .links a:hover{color:var(--ink)}
+  nav .links a.lang{border:1.5px solid var(--line);border-radius:999px;padding:5px 12px;font-size:13px;font-weight:700}
+  @media(max-width:720px){nav .links a:not(.btn):not(.lang){display:none}}
+
+  /* ── Bölüm iskeleti ── */
+  section{padding:72px 0}
+  .kicker{display:inline-block;font-size:13px;font-weight:800;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--forest);background:var(--tint);
+    padding:6px 14px;border-radius:999px;margin-bottom:16px}
+  h2{font-size:34px;line-height:1.15;letter-spacing:-.02em;margin-bottom:14px;text-wrap:balance}
+  .lead{font-size:18px;color:var(--muted);max-width:640px}
+
+  /* ── Kartlar ── */
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-l);
+    padding:26px;box-shadow:0 1px 2px rgba(62,39,23,.04)}
+  .grid{display:grid;gap:18px}
+  @media(min-width:760px){.grid.c2{grid-template-columns:1fr 1fr}.grid.c3{grid-template-columns:1fr 1fr 1fr}}
+
+  /* ── Footer ── */
+  footer{border-top:1px solid var(--line);padding:44px 0 56px;color:var(--muted);font-size:14px}
+  footer .cols{display:flex;flex-wrap:wrap;gap:32px;justify-content:space-between;align-items:flex-start}
+  footer .brand{max-width:280px}
+  footer h4{color:var(--ink);font-size:14px;margin-bottom:10px}
+  footer ul{list-style:none}
+  footer li{margin-bottom:8px}
+  footer a:hover{color:var(--ink)}
+  footer .fine{margin-top:34px;padding-top:18px;border-top:1px solid var(--line);
+    display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-size:13px}
+
+  /* PAGE — sayfa-özel stiller BURAYA */
+  .contact-section{padding:56px 0 40px}
+  .contact-section + .contact-section{border-top:1px solid var(--line)}
+  .contact-section .grid{margin-top:26px}
+  .card h3{font-size:19px;letter-spacing:-.01em;margin-bottom:8px;
+    display:flex;align-items:center;gap:9px}
+  .card p{color:var(--muted);font-size:15px;margin-bottom:12px}
+  .card p:last-child{margin-bottom:0}
+  .mail-link{display:inline-flex;align-items:center;gap:8px;font-weight:700;color:var(--forest);
+    border-bottom:1.5px solid var(--tint);padding-bottom:1px}
+  .mail-link:hover{color:var(--forest-d);border-color:var(--forest)}
+  .social-list{list-style:none;display:flex;flex-direction:column;gap:8px}
+  .social-list a{display:inline-flex;align-items:center;gap:8px;font-weight:600;color:var(--ink)}
+  .social-list a:hover{color:var(--forest)}
+  .social-list small{color:var(--muted);font-weight:400}
+  .note{margin-top:22px;font-size:13px;color:var(--muted);max-width:640px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap row">
+    <a class="logo" href="/">
+      <!-- Filiz — uygulamanın SproutFigure kimliğinden; emoji değil SVG -->
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 21 V11" stroke="#3D5A47" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M12 12 C12 8.5 9.5 6.5 6 6.5 C6 10 8.5 12 12 12 Z" fill="#3D5A47"/>
+        <path d="M12 10 C12 7 14.2 5 17.5 5 C17.5 8.2 15.2 10.2 12 10 Z" fill="#E8836B"/>
+      </svg>
+      Sprout Way
+    </a>
+    <div class="links">
+      <a href="/#ozellikler">Özellikler</a>
+      <a href="/#nasil">Nasıl çalışır</a>
+      <a href="/#sss">SSS</a>
+      <a href="/contact.html" style="color:var(--ink);font-weight:700">İletişim</a>
+      <a class="lang" href="#en">EN</a>
+      <a class="btn" href="/#indir">İndir</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+  <!-- ═══ TR ═══ -->
+  <section class="contact-section" id="tr">
+    <div class="wrap">
+      <span class="kicker">İletişim</span>
+      <h2>Sorun, önerin ya da geri bildirimin mi var? Dinliyoruz.</h2>
+      <p class="lead">Genellikle 1-2 iş günü içinde dönüş yaparız.</p>
+
+      <div class="grid c2">
+        <div class="card">
+          <h3>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 21 V11" stroke="#3D5A47" stroke-width="2.2" stroke-linecap="round"/>
+              <path d="M12 12 C12 8.5 9.5 6.5 6 6.5 C6 10 8.5 12 12 12 Z" fill="#3D5A47"/>
+              <path d="M12 10 C12 7 14.2 5 17.5 5 C17.5 8.2 15.2 10.2 12 10 Z" fill="#E8836B"/>
+            </svg>
+            E-posta
+          </h3>
+          <p>En hızlı yanıtı e-postayla veriyoruz. Soru, öneri ve destek talepleri için:</p>
+          <!-- SMTP kurulunca bu adres destek@sproutway.app olarak güncellenecek -->
+          <p><a class="mail-link" href="mailto:omerfarukballi@gmail.com">omerfarukballi@gmail.com</a></p>
+          <p>Destek talebi gönderirken uygulama sürümünü ve cihaz bilgini (model + işletim sistemi sürümü) eklersen sana çok daha hızlı yardımcı olabiliriz.</p>
+        </div>
+
+        <div class="card">
+          <h3>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 21 V11" stroke="#3D5A47" stroke-width="2.2" stroke-linecap="round"/>
+              <path d="M12 12 C12 8.5 9.5 6.5 6 6.5 C6 10 8.5 12 12 12 Z" fill="#3D5A47"/>
+              <path d="M12 10 C12 7 14.2 5 17.5 5 C17.5 8.2 15.2 10.2 12 10 Z" fill="#E8836B"/>
+            </svg>
+            Sosyal medya
+          </h3>
+          <p>Sprout Way'i takip et, güncellemeleri kaçırma:</p>
+          <ul class="social-list">
+            <li><a href="https://instagram.com/sproutway" rel="noopener">Instagram <small>@sproutway</small></a></li>
+            <li><a href="https://x.com/sproutwayapp" rel="noopener">X <small>@sproutwayapp</small></a></li>
+            <li><a href="https://www.tiktok.com/@sproutway" rel="noopener">TikTok <small>@sproutway</small></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="note">Sprout Way bir tıbbi cihaz değildir ve profesyonel görüşün yerini tutmaz.</p>
+    </div>
+  </section>
+
+  <!-- ═══ EN ═══ -->
+  <section class="contact-section" id="en" lang="en">
+    <div class="wrap">
+      <span class="kicker">Contact</span>
+      <h2>A question, suggestion, or some feedback? We're listening.</h2>
+      <p class="lead">We usually reply within 1-2 business days.</p>
+
+      <div class="grid c2">
+        <div class="card">
+          <h3>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 21 V11" stroke="#3D5A47" stroke-width="2.2" stroke-linecap="round"/>
+              <path d="M12 12 C12 8.5 9.5 6.5 6 6.5 C6 10 8.5 12 12 12 Z" fill="#3D5A47"/>
+              <path d="M12 10 C12 7 14.2 5 17.5 5 C17.5 8.2 15.2 10.2 12 10 Z" fill="#E8836B"/>
+            </svg>
+            Email
+          </h3>
+          <p>Email is the fastest way to reach us. For questions, suggestions, and support requests:</p>
+          <!-- Once SMTP is set up, this address will change to destek@sproutway.app -->
+          <p><a class="mail-link" href="mailto:omerfarukballi@gmail.com">omerfarukballi@gmail.com</a></p>
+          <p>For support requests, please include your app version and device details (model + OS version) so we can help you much faster.</p>
+        </div>
+
+        <div class="card">
+          <h3>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 21 V11" stroke="#3D5A47" stroke-width="2.2" stroke-linecap="round"/>
+              <path d="M12 12 C12 8.5 9.5 6.5 6 6.5 C6 10 8.5 12 12 12 Z" fill="#3D5A47"/>
+              <path d="M12 10 C12 7 14.2 5 17.5 5 C17.5 8.2 15.2 10.2 12 10 Z" fill="#E8836B"/>
+            </svg>
+            Social media
+          </h3>
+          <p>Follow Sprout Way and stay up to date:</p>
+          <ul class="social-list">
+            <li><a href="https://instagram.com/sproutway" rel="noopener">Instagram <small>@sproutway</small></a></li>
+            <li><a href="https://x.com/sproutwayapp" rel="noopener">X <small>@sproutwayapp</small></a></li>
+            <li><a href="https://www.tiktok.com/@sproutway" rel="noopener">TikTok <small>@sproutway</small></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="note">Sprout Way is not a medical device and does not replace professional advice.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div class="brand">
+        <div class="logo" style="margin-bottom:10px">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 21 V11" stroke="#3D5A47" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M12 12 C12 8.5 9.5 6.5 6 6.5 C6 10 8.5 12 12 12 Z" fill="#3D5A47"/>
+            <path d="M12 10 C12 7 14.2 5 17.5 5 C17.5 8.2 15.2 10.2 12 10 Z" fill="#E8836B"/>
+          </svg>
+          Sprout Way
+        </div>
+        <p>Her bebeğin kendi yolu. Karşılaştırma yok, kaygı yok — bilimsel gerekçeli gelişim rehberi.</p>
+      </div>
+      <div>
+        <h4>Uygulama</h4>
+        <ul>
+          <li><a href="/#ozellikler">Özellikler</a></li>
+          <li><a href="/#indir">İndir</a></li>
+          <li><a href="/#sss">SSS</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Bizi takip et</h4>
+        <ul>
+          <li><a href="https://instagram.com/sproutway" rel="noopener">Instagram</a></li>
+          <li><a href="https://x.com/sproutwayapp" rel="noopener">X</a></li>
+          <li><a href="https://www.tiktok.com/@sproutway" rel="noopener">TikTok</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Yasal</h4>
+        <ul>
+          <li><a href="/gizlilik-politikasi.html">Gizlilik Politikası</a></li>
+          <li><a href="/kullanim-kosullari.html">Kullanım Koşulları</a></li>
+          <li><a href="/contact.html">İletişim</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fine">
+      <span>© 2026 Sprout Way · sproutway.app</span>
+      <span>Türkçe · <a href="#en" style="text-decoration:underline">English</a></span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

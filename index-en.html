@@ -1,0 +1,541 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sprout Way — Baby Development | Every baby's own path</title>
+<meta name="description" content="Sprout Way: the comparison-free companion for baby development and child development. A living development map, reasoned daily suggestions, 800+ Montessori-inspired baby activities — on every baby's own path.">
+<meta property="og:title" content="Sprout Way — Baby Development | Every baby's own path">
+<meta property="og:description" content="No comparison, no anxiety. A living development map, reasoned suggestions, a celebration at every step — no AI, just developmental science.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sproutway.app/index-en.html">
+<link rel="canonical" href="https://sproutway.app/index-en.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* ── Sprout Way design tokens (from the app's locked palette) ── */
+  :root{
+    --bg:#FFF7EF;          /* cream background */
+    --card:#FFFCF8;        /* card background */
+    --ink:#3E2717;         /* primary text */
+    --muted:#8D684E;       /* secondary text */
+    --line:rgba(62,39,23,.12);
+    --forest:#3D5A47;      /* CTA forest green */
+    --forest-d:#31493A;
+    --tint:#E3EFE3;        /* soft green cushion */
+    --coral:#E8836B;       /* the ONE accent — highlight/celebration moment */
+    --coral-soft:#FBEDE8;
+    --radius-m:12px; --radius-l:16px; --radius-xl:24px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);
+    font:17px/1.65 "Hanken Grotesk",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    -webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  img,svg{max-width:100%;vertical-align:middle}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+
+  /* ── Buttons: the app's dark-green pill CTA language ── */
+  .btn{display:inline-flex;align-items:center;gap:9px;background:var(--forest);color:#fff;
+    font-weight:700;font-size:16px;padding:14px 26px;border-radius:999px;
+    transition:transform .15s,background .15s}
+  .btn:hover{background:var(--forest-d);transform:translateY(-1px)}
+  .btn.ghost{background:transparent;color:var(--forest);border:1.5px solid var(--line)}
+  .btn.ghost:hover{background:var(--tint);transform:translateY(-1px)}
+  .store{display:inline-flex;flex-direction:column;gap:1px;background:var(--ink);color:#fff;
+    padding:10px 20px;border-radius:14px;line-height:1.15;transition:transform .15s,opacity .15s}
+  .store:hover{transform:translateY(-1px);opacity:.92}
+  .store small{font-size:11px;opacity:.8;font-weight:400}
+  .store b{font-size:17px;font-weight:600}
+  .store.soon{opacity:.55;pointer-events:none}
+
+  /* ── Nav ── */
+  nav{position:sticky;top:0;z-index:20;background:rgba(255,247,239,.86);
+    backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--line)}
+  nav .row{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;letter-spacing:-.01em}
+  nav .links{display:flex;align-items:center;gap:24px;font-size:15px;color:var(--muted);font-weight:500}
+  nav .links a:hover{color:var(--ink)}
+  nav .links a.lang{border:1.5px solid var(--line);border-radius:999px;padding:5px 12px;font-size:13px;font-weight:700}
+  @media(max-width:720px){nav .links a:not(.btn):not(.lang){display:none}}
+
+  /* ── Section skeleton ── */
+  section{padding:72px 0}
+  .kicker{display:inline-block;font-size:13px;font-weight:800;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--forest);background:var(--tint);
+    padding:6px 14px;border-radius:999px;margin-bottom:16px}
+  h2{font-size:34px;line-height:1.15;letter-spacing:-.02em;margin-bottom:14px;text-wrap:balance}
+  .lead{font-size:18px;color:var(--muted);max-width:640px}
+
+  /* ── Cards ── */
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-l);
+    padding:26px;box-shadow:0 1px 2px rgba(62,39,23,.04)}
+  .grid{display:grid;gap:18px}
+  @media(min-width:760px){.grid.c2{grid-template-columns:1fr 1fr}.grid.c3{grid-template-columns:1fr 1fr 1fr}}
+
+  /* ── Footer ── */
+  footer{border-top:1px solid var(--line);padding:44px 0 56px;color:var(--muted);font-size:14px}
+  footer .cols{display:flex;flex-wrap:wrap;gap:32px;justify-content:space-between;align-items:flex-start}
+  footer .brand{max-width:280px}
+  footer h4{color:var(--ink);font-size:14px;margin-bottom:10px}
+  footer ul{list-style:none}
+  footer li{margin-bottom:8px}
+  footer a:hover{color:var(--ink)}
+  footer .fine{margin-top:34px;padding-top:18px;border-top:1px solid var(--line);
+    display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-size:13px}
+
+  /* PAGE — page-specific styles go HERE */
+
+  /* HERO */
+  .hero{padding:64px 0 28px;display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center}
+  .hero h1{font-size:46px;line-height:1.08;letter-spacing:-.02em;margin-bottom:18px;text-wrap:balance}
+  .hero h1 .hl{color:var(--forest)}
+  .hero .sub{font-size:19px;color:var(--muted);margin-bottom:26px;max-width:520px}
+  .cta-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+  .trust{margin-top:16px;font-size:14px;color:var(--muted)}
+  .trust b{color:var(--ink)}
+
+  /* Hero phone mock — no emoji, text + SVG */
+  .phone{justify-self:center;width:292px;padding:20px 15px 24px;border-radius:44px;
+    background:linear-gradient(165deg,var(--tint),#d7e7d7);border:9px solid var(--ink);
+    box-shadow:0 34px 64px -30px rgba(62,39,23,.5);display:flex;flex-direction:column;gap:12px}
+  .phone .notch{width:86px;height:5px;border-radius:3px;background:rgba(62,39,23,.22);margin:0 auto 4px}
+  .mini{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-m);
+    padding:13px 15px;text-align:left;box-shadow:0 1px 2px rgba(62,39,23,.05)}
+  .mini .k{display:flex;align-items:center;gap:6px;font-size:10px;font-weight:800;
+    letter-spacing:.11em;text-transform:uppercase;color:var(--forest);margin-bottom:6px}
+  .mini b{display:block;font-size:14.5px;line-height:1.35;letter-spacing:-.01em}
+  .mini span{display:block;font-size:12px;color:var(--muted);margin-top:3px}
+  .mini .dots{display:flex;gap:5px;margin-top:9px}
+  .mini .dots i{width:8px;height:8px;border-radius:50%;background:var(--line)}
+  .mini .dots i.on{background:var(--forest)}
+  .mini .dots i.now{background:var(--coral)}
+  .mini.cele{background:var(--coral-soft);border-color:rgba(232,131,107,.35)}
+  .mini.cele .k{color:var(--coral)}
+  @media(max-width:860px){.hero{grid-template-columns:1fr;text-align:center;padding-top:44px}
+    .hero .sub{margin-inline:auto}.cta-row,.trust{justify-content:center}
+    .hero h1{font-size:36px}.phone{margin-top:8px}}
+
+  /* WHY */
+  .center{text-align:center}
+  .center .lead{margin-inline:auto}
+  .why .card{text-align:left}
+  .why .ic{width:46px;height:46px;border-radius:12px;background:var(--tint);
+    display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+  .why h3{font-size:19px;margin-bottom:7px;letter-spacing:-.01em}
+  .why p{font-size:15px;color:var(--muted)}
+
+  /* FEATURES */
+  .feat{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center;margin-top:44px}
+  .feat.rev .txt{order:2}
+  .feat .txt h3{font-size:24px;letter-spacing:-.01em;margin-bottom:10px;text-wrap:balance}
+  .feat .txt p{color:var(--muted)}
+  .feat .art{background:var(--tint);border-radius:var(--radius-xl);min-height:230px;
+    display:flex;align-items:center;justify-content:center;padding:30px}
+  .feat .art.warm{background:var(--coral-soft)}
+  .featchips{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+  .featchips span{font-size:13px;font-weight:700;color:var(--forest);background:var(--card);
+    border:1px solid var(--line);border-radius:999px;padding:5px 12px}
+  @media(max-width:820px){.feat,.feat.rev{grid-template-columns:1fr}
+    .feat.rev .txt{order:0}.feat .art{min-height:170px}}
+
+  /* HOW */
+  .steps{counter-reset:s;margin-top:34px}
+  .step{position:relative;counter-increment:s}
+  .step::before{content:counter(s);display:flex;align-items:center;justify-content:center;
+    width:34px;height:34px;border-radius:50%;background:var(--forest);color:#fff;
+    font-weight:800;font-size:16px;margin-bottom:12px}
+  .step h3{font-size:18px;margin-bottom:6px}
+  .step p{font-size:15px;color:var(--muted)}
+
+  /* PRICING */
+  .price{max-width:800px;margin-inline:auto;margin-top:34px}
+  .plan h3{font-size:22px;margin-bottom:4px}
+  .plan .pz{font-size:15px;color:var(--muted);margin-bottom:18px}
+  .plan ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+  .plan li{font-size:15px;display:flex;gap:10px;align-items:flex-start}
+  .plan li::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;
+    background:var(--forest);margin-top:8px}
+  .plan.pro{border:2px solid var(--forest);position:relative}
+  .plan.pro .tag{position:absolute;top:-13px;right:22px;background:var(--forest);color:#fff;
+    font-size:12px;font-weight:800;padding:5px 13px;border-radius:999px;letter-spacing:.02em}
+  .plan.pro li::before{background:var(--coral)}
+  .chips{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:26px}
+  .chip{background:var(--card);border:1px solid var(--line);border-radius:999px;
+    padding:9px 18px;font-size:14px;font-weight:600;color:var(--muted)}
+  .chip b{color:var(--ink)}
+  .pricenote{text-align:center;font-size:14px;color:var(--muted);margin-top:14px}
+
+  /* FAQ */
+  .faq{max-width:760px;margin:34px auto 0}
+  .faq details{border-bottom:1px solid var(--line);padding:18px 4px}
+  .faq summary{font-weight:700;font-size:17px;cursor:pointer;list-style:none;
+    display:flex;justify-content:space-between;gap:14px}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";color:var(--forest);font-size:22px;line-height:1;flex:none}
+  .faq details[open] summary::after{content:"–"}
+  .faq details p{color:var(--muted);font-size:15px;margin-top:12px}
+
+  /* CTA BAND */
+  .band{background:linear-gradient(150deg,var(--forest),var(--forest-d));color:#fff;
+    border-radius:28px;padding:52px 30px;text-align:center;margin:16px 0 72px}
+  .band h2{color:#fff}
+  .band p{opacity:.92;margin:0 auto 24px;max-width:520px}
+  .band .store{background:var(--card);color:var(--ink)}
+  .band .store small{opacity:.65}
+  .band .store.soon{background:rgba(255,252,248,.35);color:#fff}
+
+  /* Footer medical disclaimer */
+  .meddisc{margin-top:26px;font-size:13px;color:var(--muted);max-width:680px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap row">
+    <a class="logo" href="/index-en.html">
+      <!-- Sprout — from the app's SproutFigure identity; SVG, not emoji -->
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 21 V11" stroke="#3D5A47" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M12 12 C12 8.5 9.5 6.5 6 6.5 C6 10 8.5 12 12 12 Z" fill="#3D5A47"/>
+        <path d="M12 10 C12 7 14.2 5 17.5 5 C17.5 8.2 15.2 10.2 12 10 Z" fill="#E8836B"/>
+      </svg>
+      Sprout Way
+    </a>
+    <div class="links">
+      <a href="/index-en.html#ozellikler">Features</a>
+      <a href="/index-en.html#nasil">How it works</a>
+      <a href="/index-en.html#sss">FAQ</a>
+      <a href="/contact.html#en">Contact</a>
+      <a class="lang" href="/index.html">TR</a>
+      <a class="btn" href="/index-en.html#indir">Download</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+  <!-- ═══ HERO ═══ -->
+  <header class="wrap hero">
+    <div>
+      <h1>No comparison, no anxiety.<br><span class="hl">Every baby's own path.</span></h1>
+      <p class="sub">Sprout Way supports your baby's development on their own journey — not with percentiles, not against other babies. Every suggestion comes with its reasoning, and the only comparison is with their own yesterday.</p>
+      <div class="cta-row" id="indir">
+        <a class="store" href="https://play.google.com/store/apps/details?id=com.omerfarukballi.sprout" rel="noopener"><small>Get it on</small><b>Google Play</b></a>
+        <span class="store soon" aria-disabled="true"><small>App Store —</small><b>Coming soon</b></span>
+      </div>
+      <div class="trust"><b>Live on Google Play</b> · App Store coming soon · No account required</div>
+    </div>
+    <div class="phone" aria-hidden="true">
+      <div class="notch"></div>
+      <div class="mini">
+        <div class="k">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" fill="#E8836B"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1" stroke="#3D5A47" stroke-width="1.8" stroke-linecap="round"/></svg>
+          Right Now
+        </div>
+        <b>Hold the spoon together</b>
+        <span>Today's single suggestion — the reasoning one tap away</span>
+      </div>
+      <div class="mini">
+        <div class="k">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M4 20 C9 17 7 12 12 10 C17 8 15 5 20 4" stroke="#3D5A47" stroke-width="1.8" stroke-linecap="round"/><circle cx="4" cy="20" r="2.4" fill="#3D5A47"/><circle cx="20" cy="4" r="2.4" fill="#E8836B"/></svg>
+          Map
+        </div>
+        <b>Fine motor · Step 9</b>
+        <span>Next sprout: stacking two blocks</span>
+        <div class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="now"></i><i></i><i></i></div>
+      </div>
+      <div class="mini cele">
+        <div class="k">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4" fill="#E8836B"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.5 5.5l2 2M16.5 16.5l2 2M18.5 5.5l-2 2M7.5 16.5l-2 2" stroke="#E8836B" stroke-width="1.8" stroke-linecap="round"/></svg>
+          Celebration
+        </div>
+        <b>A new step has sprouted</b>
+        <span>One more sprout than their own yesterday</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══ WHY ═══ -->
+  <section id="neden" class="wrap why">
+    <div class="center">
+      <span class="kicker">Why it's different</span>
+      <h2>Development is a journey, not a race</h2>
+      <p class="lead">Charts, rankings, comparisons with other babies… none of that exists in Sprout Way. Just your baby, at their own pace, on their own path.</p>
+    </div>
+    <div class="grid c3" style="margin-top:34px">
+      <div class="card">
+        <div class="ic">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 20.5 C7 16.5 3.5 13.5 3.5 9.8 C3.5 7 5.7 5 8.3 5 C10 5 11.3 5.9 12 7.2 C12.7 5.9 14 5 15.7 5 C18.3 5 20.5 7 20.5 9.8 C20.5 13.5 17 16.5 12 20.5 Z" stroke="#3D5A47" stroke-width="2" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>No comparison</h3>
+        <p>Your baby is never measured against a chart or another baby. The only comparison is with their own yesterday — you see how far they have sprouted, from where to where.</p>
+      </div>
+      <div class="card">
+        <div class="ic">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 21 V11" stroke="#3D5A47" stroke-width="2.2" stroke-linecap="round"/><path d="M12 12 C12 8.5 9.5 6.5 6 6.5 C6 10 8.5 12 12 12 Z" fill="#3D5A47"/><path d="M12 10 C12 7 14.2 5 17.5 5 C17.5 8.2 15.2 10.2 12 10 Z" fill="#E8836B"/></svg>
+        </div>
+        <h3>Ability first, not the calendar</h3>
+        <p>Your baby's own abilities lead the way, not a date on the calendar. The next small step is always exactly within their reach.</p>
+      </div>
+      <div class="card">
+        <div class="ic">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="6" stroke="#3D5A47" stroke-width="2"/><path d="M15 15 L20 20" stroke="#3D5A47" stroke-width="2" stroke-linecap="round"/><circle cx="10.5" cy="10.5" r="2" fill="#E8836B"/></svg>
+        </div>
+        <h3>Reasoned, no AI</h3>
+        <p>Every suggestion is deterministic and transparent: why this activity, why this step — the reasoning is grounded in developmental science and always visible.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FEATURES ═══ -->
+  <section id="ozellikler" class="wrap">
+    <div class="center">
+      <span class="kicker">Features</span>
+      <h2>Everything that walks alongside your baby's journey</h2>
+      <p class="lead">Deterministic, reasoned, grounded in developmental science — no AI. Content is crafted in the tradition of Piaget, Vygotsky, Ayres and Harvard Serve &amp; Return, and has passed review by a child development specialist.</p>
+    </div>
+
+    <div class="feat">
+      <div class="txt">
+        <span class="kicker">Living Development Map</span>
+        <h3>Not a static list — a map that grows</h3>
+        <p>A 24-step path in each of six developmental domains: where your baby is, what the next sprout is, and why that sprout matters. As you record, the map grows along with them.</p>
+        <div class="featchips"><span>6 domains × 24 steps</span><span>0–72 months</span><span>Expert-reviewed</span></div>
+      </div>
+      <div class="art">
+        <svg width="170" height="170" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+          <path d="M14 88 C36 80 22 62 42 54 C64 46 46 30 66 22 C76 18 84 13 90 8" stroke="rgba(61,90,71,.45)" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="14" cy="88" r="6" fill="#3D5A47"/>
+          <circle cx="42" cy="54" r="6" fill="#3D5A47"/>
+          <circle cx="66" cy="22" r="6.5" fill="#E8836B"/>
+          <circle cx="90" cy="8" r="5" stroke="#3D5A47" stroke-width="2.5"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="feat rev">
+      <div class="txt">
+        <span class="kicker">Life Questions</span>
+        <h3>"When will they hold the spoon on their own?"</h3>
+        <p>78 questions parents actually ask. The answer is not a generic chart; it is a personal response shaped by your baby's own journey, delivered together with its reasoning.</p>
+        <div class="featchips"><span>78 questions</span><span>Reasoned personal answers</span></div>
+      </div>
+      <div class="art">
+        <svg width="160" height="160" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+          <rect x="12" y="22" width="76" height="46" rx="15" fill="#FFFCF8" stroke="#3D5A47" stroke-width="2.5"/>
+          <path d="M30 68 L26 80 L42 68" fill="#FFFCF8" stroke="#3D5A47" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="M42 40 C42 34 46 31 50 31 C54.5 31 58 34 58 38 C58 43 50 43.5 50 49" stroke="#E8836B" stroke-width="3.5" stroke-linecap="round"/>
+          <circle cx="50" cy="57" r="2.6" fill="#E8836B"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="feat">
+      <div class="txt">
+        <span class="kicker">Right Now + Teachable Moments</span>
+        <h3>One suggestion a day — with its reasoning</h3>
+        <p>Instead of long lists, one clear suggestion that fits into your day. Alongside it, more than 300 teachable moments and more than 800 play-based activities: in the waiting room, in the kitchen, at the park — for whenever you are ready.</p>
+        <div class="featchips"><span>One suggestion a day</span><span>300+ teachable moments</span><span>800+ activities</span></div>
+      </div>
+      <div class="art warm">
+        <svg width="160" height="160" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+          <circle cx="50" cy="52" r="15" fill="#E8836B"/>
+          <path d="M50 20v9M50 75v9M18 52h9M73 52h9M27.4 29.4l6.4 6.4M66.2 68.2l6.4 6.4M72.6 29.4l-6.4 6.4M33.8 68.2l-6.4 6.4" stroke="#3D5A47" stroke-width="3.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="feat rev">
+      <div class="txt">
+        <span class="kicker">Nurture Network</span>
+        <h3>You did this — it nurtured that</h3>
+        <p>A small game you play today nurtures more than one sprout on the map. Sprout Way makes that link visible: you see clearly which moment touched which developmental step.</p>
+      </div>
+      <div class="art">
+        <svg width="160" height="160" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+          <path d="M28 74 L46 40 M28 74 L68 62 M46 40 L76 26 M68 62 L76 26" stroke="rgba(61,90,71,.45)" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="28" cy="74" r="8" fill="#E8836B"/>
+          <circle cx="46" cy="40" r="6" fill="#3D5A47"/>
+          <circle cx="68" cy="62" r="6" fill="#3D5A47"/>
+          <circle cx="76" cy="26" r="5" stroke="#3D5A47" stroke-width="2.5"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="feat">
+      <div class="txt">
+        <span class="kicker">Celebration</span>
+        <h3>Every new step is celebrated — always free</h3>
+        <p>Small or big, every gain is a moment of celebration. Celebrations are never locked in Sprout Way — and they never will be.</p>
+      </div>
+      <div class="art warm">
+        <svg width="160" height="160" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+          <circle cx="50" cy="50" r="11" fill="#E8836B"/>
+          <path d="M50 24v8M50 68v8M24 50h8M68 50h8M31.6 31.6l5.7 5.7M62.7 62.7l5.7 5.7M68.4 31.6l-5.7 5.7M37.3 62.7l-5.7 5.7" stroke="#E8836B" stroke-width="3.5" stroke-linecap="round"/>
+          <circle cx="20" cy="24" r="3" fill="#3D5A47"/>
+          <circle cx="82" cy="20" r="2.5" fill="#3D5A47"/>
+          <circle cx="84" cy="78" r="3" fill="#3D5A47"/>
+          <circle cx="16" cy="76" r="2.5" fill="#3D5A47"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ HOW ═══ -->
+  <section id="nasil" class="wrap">
+    <div class="center">
+      <span class="kicker">How it works</span>
+      <h2>Start in three steps</h2>
+    </div>
+    <div class="grid c3 steps">
+      <div class="card step">
+        <h3>Introduce your baby</h3>
+        <p>With a few gentle questions, Sprout Way gets to know your baby's own journey. No email required.</p>
+      </div>
+      <div class="card step">
+        <h3>Explore today</h3>
+        <p>Start with the day's single reasoned suggestion and teachable moments — play-based, sized to fit your day.</p>
+      </div>
+      <div class="card step">
+        <h3>Nurture the growth</h3>
+        <p>As you record, the map deepens and the nurture network shows the links; you celebrate every new step together.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PRICING ═══ -->
+  <section id="fiyat" class="wrap">
+    <div class="center">
+      <span class="kicker">Free &amp; Premium</span>
+      <h2>Free today. The full path is Premium.</h2>
+      <p class="lead">Everything you use today is open to everyone. Premium unlocks the depth and the road ahead of the same journey.</p>
+    </div>
+    <div class="grid c2 price">
+      <div class="card plan">
+        <h3>Free</h3>
+        <div class="pz">Every day, unlimited</div>
+        <ul>
+          <li>Everything you use today: the day's suggestion, teachable moments, activities</li>
+          <li>Celebrations — always</li>
+          <li>Unlimited records and archive</li>
+          <li>Backup and sync</li>
+        </ul>
+      </div>
+      <div class="card plan pro">
+        <span class="tag">The full path</span>
+        <h3>Premium</h3>
+        <div class="pz">The same journey, full depth</div>
+        <ul>
+          <li>Map depth: the details and the science of the steps ahead</li>
+          <li>Lenses: Attachment · Sensory (6 sensory channels) · Play Stage · Leap</li>
+          <li>Life Questions and Curiosity depth</li>
+          <li>Insights</li>
+          <li>Second child profile</li>
+          <li>Themes and watermark-free sharing</li>
+        </ul>
+      </div>
+    </div>
+    <div class="chips">
+      <span class="chip"><b>Monthly</b></span>
+      <span class="chip"><b>Yearly</b> — 7-day free trial</span>
+      <span class="chip"><b>Lifetime</b> — one-time payment</span>
+    </div>
+    <p class="pricenote">Current prices are shown in the app. Cancel anytime.</p>
+  </section>
+
+  <!-- ═══ FAQ ═══ -->
+  <section id="sss" class="wrap">
+    <div class="center">
+      <span class="kicker">Frequently asked</span>
+      <h2>On your mind</h2>
+    </div>
+    <div class="faq">
+      <details open>
+        <summary>Does Sprout Way compare my baby with other babies?</summary>
+        <p>No. There are no rankings, charts or comparisons with other babies in Sprout Way. The only comparison is with your baby's own yesterday: the map shows how far they have come on their very own journey.</p>
+      </details>
+      <details>
+        <summary>Is this a medical app?</summary>
+        <p>No. Sprout Way is not a medical device and is not a substitute for professional advice. The content is for information and support; for any questions about your child, please consult a qualified professional.</p>
+      </details>
+      <details>
+        <summary>Does it use artificial intelligence?</summary>
+        <p>No. Sprout Way does not use AI. Every suggestion is deterministic and reasoned: it is grounded in developmental science (Piaget, Vygotsky, Ayres, Harvard Serve &amp; Return) and runs on content that has passed review by a child development specialist. You can always see why something is suggested.</p>
+      </details>
+      <details>
+        <summary>Do I need to create an account?</summary>
+        <p>No. You can start using Sprout Way without an email or an account. And when you do want backup and sync, those are free as well.</p>
+      </details>
+      <details>
+        <summary>What is included in the free version?</summary>
+        <p>Everything you use today is free: the day's suggestion, teachable moments, activities, celebrations, unlimited records and archive, backup and sync. Premium unlocks the full path: map depth (the details and the science of the steps ahead), lenses, Life Questions and Curiosity depth, Insights, a second child profile, themes and watermark-free sharing.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ═══ CTA BAND ═══ -->
+  <div class="wrap">
+    <div class="band">
+      <h2>For every small step taken today</h2>
+      <p>Start discovering your baby's own path today. Comparison-free, anxiety-free, always with the reasoning.</p>
+      <div class="cta-row" style="justify-content:center">
+        <a class="store" href="https://play.google.com/store/apps/details?id=com.omerfarukballi.sprout" rel="noopener"><small>Get it on</small><b>Google Play</b></a>
+        <span class="store soon" aria-disabled="true"><small>App Store —</small><b>Coming soon</b></span>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div class="brand">
+        <div class="logo" style="margin-bottom:10px">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 21 V11" stroke="#3D5A47" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M12 12 C12 8.5 9.5 6.5 6 6.5 C6 10 8.5 12 12 12 Z" fill="#3D5A47"/>
+            <path d="M12 10 C12 7 14.2 5 17.5 5 C17.5 8.2 15.2 10.2 12 10 Z" fill="#E8836B"/>
+          </svg>
+          Sprout Way
+        </div>
+        <p>Every baby's own path. No comparison, no anxiety — development guidance with scientific reasoning.</p>
+      </div>
+      <div>
+        <h4>App</h4>
+        <ul>
+          <li><a href="/index-en.html#ozellikler">Features</a></li>
+          <li><a href="/index-en.html#indir">Download</a></li>
+          <li><a href="/index-en.html#sss">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Follow us</h4>
+        <ul>
+          <li><a href="https://instagram.com/sproutway" rel="noopener">Instagram</a></li>
+          <li><a href="https://x.com/sproutwayapp" rel="noopener">X</a></li>
+          <li><a href="https://www.tiktok.com/@sproutway" rel="noopener">TikTok</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="/terms-of-service.html">Terms of Service</a></li>
+          <li><a href="/contact.html#en">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="meddisc">Sprout Way is not a medical device and is not a substitute for professional advice. For any questions about your child, please consult a qualified professional.</p>
+    <div class="fine">
+      <span>© 2026 Sprout Way · sproutway.app</span>
+      <span>English · <a href="/index.html" style="text-decoration:underline">Türkçe</a></span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
