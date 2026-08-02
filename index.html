@@ -224,24 +224,24 @@
   @keyframes sw-leaf{to{opacity:1;transform:scale(1) rotate(0)}}
   @keyframes sw-rise{to{opacity:1;transform:none}}
 
-  /* 3 · Canlı harita demosu — uygulamanın gece gökyüzü pusula kimliği
-     (SkyMap.tsx dili: ufuk halkası, alan yayları, yıldız düğümler, merkez
-     başlangıç halesi; koyu zemin bu panelde bilinçli palet istisnasıdır) */
+  /* 3 · Canlı harita demosu — SkyMap pusula kimliği, sayfa paletinde
+     (Ömer kalibrasyonu: koyu panel krem sayfayla uyumsuzdu → yumuşak yeşil
+     yastık cilt; geometri/etkileşim/hikaye sistemleri aynen) */
   .art.demo{display:block;padding:20px 16px;text-align:left}
   .demonote{font-size:11.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--forest);opacity:.72;text-align:center;margin-bottom:10px}
-  .skypanel{background:#171E27;border-radius:var(--radius-l);padding:12px;max-width:454px;margin:0 auto;box-shadow:0 10px 30px -16px rgba(23,30,39,.7)}
+  .skypanel{background:linear-gradient(180deg,#EAF3E6,#DFEDE0);border:1px solid var(--line);border-radius:var(--radius-l);padding:12px;max-width:454px;margin:0 auto;box-shadow:0 1px 2px rgba(62,39,23,.04)}
   .skystage{position:relative;max-width:430px;margin:0 auto}
   .skystage::before{content:"";display:block;padding-top:90%}
   .skystage>svg{position:absolute;top:0;left:0;width:100%;height:100%}
-  .shorizon{fill:none;stroke:rgba(216,185,143,.32);stroke-width:1.1}
-  .bgs{fill:#FFF7EF}
-  .dtail{fill:none;stroke:rgba(255,247,239,.17);stroke-width:2;stroke-linecap:round}
-  #growTail{fill:none;stroke:var(--coral);stroke-width:2.6;stroke-linecap:round;opacity:.95}
-  .medge{fill:none;stroke:rgba(255,247,239,.15);stroke-width:1.6;stroke-linecap:round}
+  .shorizon{fill:none;stroke:rgba(61,90,71,.28);stroke-width:1.1}
+  .bgs{fill:#3D5A47}
+  .dtail{fill:none;stroke:rgba(61,90,71,.25);stroke-width:2;stroke-linecap:round}
+  #growTail{fill:none;stroke:var(--forest);stroke-width:2.6;stroke-linecap:round;opacity:.95}
+  .medge{fill:none;stroke:rgba(61,90,71,.22);stroke-width:1.6;stroke-linecap:round}
   .medge.on{stroke:var(--coral);stroke-width:2.2;stroke-dasharray:7 6}
-  .chalo1{fill:var(--coral);opacity:.12}
-  .chalo2{fill:var(--coral);opacity:.22;transform-box:fill-box;transform-origin:center}
-  .chalo3{fill:#FFF7EF}
+  .chalo1{fill:var(--forest);opacity:.1}
+  .chalo2{fill:var(--forest);opacity:.2;transform-box:fill-box;transform-origin:center}
+  .chalo3{fill:var(--coral)}
   @media(prefers-reduced-motion:no-preference){
     .medge.on{animation:sw-flow .9s linear infinite}
     #growTail{transition:stroke-dashoffset .55s ease .05s}
@@ -249,18 +249,18 @@
     .chalo2{animation:sw-breath 4s ease-in-out infinite}
   }
   @keyframes sw-flow{to{stroke-dashoffset:-13}}
-  @keyframes sw-twinkle{0%,100%{opacity:.07}50%{opacity:.4}}
-  @keyframes sw-breath{0%,100%{opacity:.16;transform:scale(1)}50%{opacity:.3;transform:scale(1.18)}}
+  @keyframes sw-twinkle{0%,100%{opacity:.05}50%{opacity:.16}}
+  @keyframes sw-breath{0%,100%{opacity:.14;transform:scale(1)}50%{opacity:.26;transform:scale(1.18)}}
   .mnode{position:absolute;transform:translate(-50%,-50%);width:34px;height:34px;background:none;border:0;padding:0;cursor:pointer;font:inherit}
-  .mnode i{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:11px;height:11px;border-radius:50%;background:#FFF7EF;box-shadow:0 0 10px 2px rgba(255,247,239,.3);transition:transform .25s,background .25s,box-shadow .25s}
-  .mnode span{position:absolute;top:100%;left:50%;transform:translateX(-50%);margin-top:1px;font-size:10px;font-weight:800;color:rgba(255,247,239,.88);white-space:nowrap;letter-spacing:.03em;line-height:1.35;text-shadow:0 1px 4px rgba(10,14,19,.9)}
+  .mnode i{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:12px;height:12px;border-radius:50%;background:var(--card);border:2.5px solid var(--forest);transition:transform .25s,background .25s,border-color .25s,box-shadow .25s}
+  .mnode span{position:absolute;top:100%;left:50%;transform:translateX(-50%);margin-top:1px;font-size:10px;font-weight:800;color:var(--ink);white-space:nowrap;letter-spacing:.03em;line-height:1.35}
   .mnode.lb-t span{top:auto;bottom:100%;margin:0 0 1px}
   .mnode.lb-l span{transform:translateX(-62%)}
   .mnode.lb-r span{transform:translateX(-38%)}
   .mnode[aria-pressed="false"]{opacity:.55}
   .mnode:hover,.mnode:focus-visible,.mnode.arrive{opacity:1}
-  .mnode:hover i{transform:translate(-50%,-50%) scale(1.5);box-shadow:0 0 14px 4px rgba(255,247,239,.45)}
-  .mnode[aria-pressed="true"] i{background:var(--coral);box-shadow:0 0 14px 3px rgba(232,131,107,.55);transform:translate(-50%,-50%) scale(1.6)}
+  .mnode:hover i{transform:translate(-50%,-50%) scale(1.5);box-shadow:0 0 0 5px rgba(61,90,71,.12)}
+  .mnode[aria-pressed="true"] i{background:var(--coral);border-color:var(--coral);box-shadow:0 0 0 6px rgba(232,131,107,.22);transform:translate(-50%,-50%) scale(1.6)}
   .mnode:focus-visible{outline:2.5px solid var(--coral);outline-offset:2px;border-radius:10px}
   @media(prefers-reduced-motion:no-preference){
     .mnode{transition:opacity .35s ease}
@@ -271,7 +271,7 @@
   .mapcard b{display:block;font-size:15px}
   .mapcard span{font-size:13px;color:var(--muted)}
   .mapcard .mstory{display:block;font-size:12.5px;color:var(--forest);margin-top:5px;font-weight:600}
-  .skylegend{margin:8px 4px 0;text-align:center;font-size:10.5px;letter-spacing:.02em;color:rgba(255,247,239,.55)}
+  .skylegend{margin:8px 4px 0;text-align:center;font-size:10.5px;letter-spacing:.02em;color:rgba(62,39,23,.62)}
   @media(prefers-reduced-motion:no-preference){.mapcard.pop{animation:sw-cardin .35s ease}}
   @keyframes sw-cardin{from{opacity:0;transform:translateY(8px)}}
 
@@ -1027,7 +1027,7 @@ if(stage){
       st.setAttribute("cx",(SC.x+rad*Math.cos(ang)).toFixed(1));
       st.setAttribute("cy",(SC.y+rad*Math.sin(ang)).toFixed(1));
       st.setAttribute("r",(0.7+1.1*fr(bi*0.7113)).toFixed(2));
-      st.setAttribute("opacity",(0.1+0.25*fr(bi*0.3779)).toFixed(2));
+      st.setAttribute("opacity",(0.08+0.07*fr(bi*0.3779)).toFixed(2));
       st.setAttribute("class","bgs"+(bi%4===0?" tw":""));
       if(bi%4===0){
         st.style.setProperty("--td",(2.4+2.4*fr(bi*0.51)).toFixed(1)+"s");
