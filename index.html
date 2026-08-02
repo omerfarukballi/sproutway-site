@@ -224,24 +224,54 @@
   @keyframes sw-leaf{to{opacity:1;transform:scale(1) rotate(0)}}
   @keyframes sw-rise{to{opacity:1;transform:none}}
 
-  /* 3 · Canlı harita demosu */
+  /* 3 · Canlı harita demosu — uygulamanın gece gökyüzü pusula kimliği
+     (SkyMap.tsx dili: ufuk halkası, alan yayları, yıldız düğümler, merkez
+     başlangıç halesi; koyu zemin bu panelde bilinçli palet istisnasıdır) */
   .art.demo{display:block;padding:20px 16px;text-align:left}
   .demonote{font-size:11.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--forest);opacity:.72;text-align:center;margin-bottom:10px}
-  .mapstage{position:relative;max-width:430px;margin:0 auto}
-  .mapstage::before{content:"";display:block;padding-top:70%}
-  .mapstage>svg{position:absolute;top:0;left:0;width:100%;height:100%}
-  .medge{stroke:rgba(61,90,71,.28);stroke-width:2;stroke-linecap:round}
-  .medge.on{stroke:var(--coral);stroke-width:2.5;stroke-dasharray:7 6}
-  @media(prefers-reduced-motion:no-preference){.medge.on{animation:sw-flow .9s linear infinite}}
+  .skypanel{background:#171E27;border-radius:var(--radius-l);padding:12px;max-width:454px;margin:0 auto;box-shadow:0 10px 30px -16px rgba(23,30,39,.7)}
+  .skystage{position:relative;max-width:430px;margin:0 auto}
+  .skystage::before{content:"";display:block;padding-top:90%}
+  .skystage>svg{position:absolute;top:0;left:0;width:100%;height:100%}
+  .shorizon{fill:none;stroke:rgba(216,185,143,.32);stroke-width:1.1}
+  .bgs{fill:#FFF7EF}
+  .dtail{fill:none;stroke:rgba(255,247,239,.17);stroke-width:2;stroke-linecap:round}
+  #growTail{fill:none;stroke:var(--coral);stroke-width:2.6;stroke-linecap:round;opacity:.95}
+  .medge{fill:none;stroke:rgba(255,247,239,.15);stroke-width:1.6;stroke-linecap:round}
+  .medge.on{stroke:var(--coral);stroke-width:2.2;stroke-dasharray:7 6}
+  .chalo1{fill:var(--coral);opacity:.12}
+  .chalo2{fill:var(--coral);opacity:.22;transform-box:fill-box;transform-origin:center}
+  .chalo3{fill:#FFF7EF}
+  @media(prefers-reduced-motion:no-preference){
+    .medge.on{animation:sw-flow .9s linear infinite}
+    #growTail{transition:stroke-dashoffset .55s ease .05s}
+    .bgs.tw{animation:sw-twinkle var(--td,3s) ease-in-out var(--tl,0s) infinite}
+    .chalo2{animation:sw-breath 4s ease-in-out infinite}
+  }
   @keyframes sw-flow{to{stroke-dashoffset:-13}}
-  .mnode{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:3px;background:none;border:0;padding:4px;cursor:pointer;font:inherit}
-  .mnode i{width:15px;height:15px;border-radius:50%;background:var(--card);border:2.5px solid var(--forest);transition:transform .25s,background .25s,border-color .25s}
-  .mnode span{font-size:10.5px;font-weight:800;color:var(--ink);white-space:nowrap;background:rgba(255,252,248,.9);border-radius:6px;padding:1px 6px;line-height:1.4}
-  .mnode[aria-pressed="true"] i{background:var(--coral);border-color:var(--coral);transform:scale(1.28)}
-  .mnode:focus-visible{outline:2.5px solid var(--forest);outline-offset:2px;border-radius:10px}
-  .mapcard{max-width:430px;margin:12px auto 0;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-m);padding:12px 16px}
+  @keyframes sw-twinkle{0%,100%{opacity:.07}50%{opacity:.4}}
+  @keyframes sw-breath{0%,100%{opacity:.16;transform:scale(1)}50%{opacity:.3;transform:scale(1.18)}}
+  .mnode{position:absolute;transform:translate(-50%,-50%);width:34px;height:34px;background:none;border:0;padding:0;cursor:pointer;font:inherit}
+  .mnode i{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:11px;height:11px;border-radius:50%;background:#FFF7EF;box-shadow:0 0 10px 2px rgba(255,247,239,.3);transition:transform .25s,background .25s,box-shadow .25s}
+  .mnode span{position:absolute;top:100%;left:50%;transform:translateX(-50%);margin-top:1px;font-size:10px;font-weight:800;color:rgba(255,247,239,.88);white-space:nowrap;letter-spacing:.03em;line-height:1.35;text-shadow:0 1px 4px rgba(10,14,19,.9)}
+  .mnode.lb-t span{top:auto;bottom:100%;margin:0 0 1px}
+  .mnode.lb-l span{transform:translateX(-62%)}
+  .mnode.lb-r span{transform:translateX(-38%)}
+  .mnode[aria-pressed="false"]{opacity:.55}
+  .mnode:hover,.mnode:focus-visible,.mnode.arrive{opacity:1}
+  .mnode:hover i{transform:translate(-50%,-50%) scale(1.5);box-shadow:0 0 14px 4px rgba(255,247,239,.45)}
+  .mnode[aria-pressed="true"] i{background:var(--coral);box-shadow:0 0 14px 3px rgba(232,131,107,.55);transform:translate(-50%,-50%) scale(1.6)}
+  .mnode:focus-visible{outline:2.5px solid var(--coral);outline-offset:2px;border-radius:10px}
+  @media(prefers-reduced-motion:no-preference){
+    .mnode{transition:opacity .35s ease}
+    .mnode.arrive i{animation:sw-arrive .5s ease-out}
+  }
+  @keyframes sw-arrive{0%{transform:translate(-50%,-50%) scale(1)}45%{transform:translate(-50%,-50%) scale(2.1)}100%{transform:translate(-50%,-50%) scale(1)}}
+  .mapcard{max-width:430px;margin:10px auto 0;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-m);padding:12px 16px}
   .mapcard b{display:block;font-size:15px}
   .mapcard span{font-size:13px;color:var(--muted)}
+  .mapcard .mstory{display:block;font-size:12.5px;color:var(--forest);margin-top:5px;font-weight:600}
+  .skylegend{margin:8px 4px 0;text-align:center;font-size:10.5px;letter-spacing:.02em;color:rgba(255,247,239,.55)}
   @media(prefers-reduced-motion:no-preference){.mapcard.pop{animation:sw-cardin .35s ease}}
   @keyframes sw-cardin{from{opacity:0;transform:translateY(8px)}}
 
@@ -293,6 +323,41 @@
   .fleaf{position:absolute;top:-30px;pointer-events:none;opacity:0}
   @media(prefers-reduced-motion:no-preference){.fleaf{animation:sw-fall var(--d,2s) ease-in var(--dl,0s) forwards}}
   @keyframes sw-fall{0%{transform:translate(0,0) rotate(-12deg);opacity:0}12%{opacity:.95}75%{opacity:.8}100%{transform:translate(var(--dx,18px),400px) rotate(135deg);opacity:0}}
+
+  /* 8 · Dal-temas: düğümden bölüm içeriğine filiz dalı + hover tepkisi */
+  #spine .bpath{fill:none;stroke:rgba(61,90,71,.3);stroke-width:2;stroke-linecap:round}
+  #spine .bleaf{transform-box:fill-box;transform-origin:0% 100%;opacity:0;transform:scale(0) rotate(-30deg)}
+  #spine .bleaf.open{opacity:1;transform:scale(1) rotate(0)}
+  #spine .nglow{transform-box:fill-box;transform-origin:center;opacity:0}
+  @media(prefers-reduced-motion:no-preference){
+    #spine .bpath{transition:stroke-dashoffset .6s ease .25s}
+    #spine .bleaf{transition:transform .45s cubic-bezier(.34,1.56,.64,1) .6s,opacity .3s ease .6s}
+    #spine .leaf.sway{animation:sw-sway .65s ease-in-out}
+    #spine .nglow.on{animation:sw-nglow .7s ease-out}
+  }
+  @keyframes sw-sway{0%{transform:scale(1) rotate(0)}30%{transform:scale(1.14) rotate(9deg)}60%{transform:scale(1.06) rotate(-7deg)}85%{transform:scale(1.02) rotate(3deg)}100%{transform:scale(1) rotate(0)}}
+  @keyframes sw-nglow{0%{opacity:0;transform:scale(.6)}35%{opacity:.16;transform:scale(1.1)}100%{opacity:0;transform:scale(1.35)}}
+
+  /* 8c · Sayaç hover mini yaprak pop */
+  .num{position:relative}
+  .numleaf{position:absolute;left:50%;top:-4px;pointer-events:none;opacity:0;transform:translate(-50%,0) scale(0)}
+  @media(prefers-reduced-motion:no-preference){.numleaf{animation:sw-pop .65s ease-out forwards}}
+  @keyframes sw-pop{0%{opacity:0;transform:translate(-50%,0) scale(0)}40%{opacity:1;transform:translate(-50%,-12px) scale(1.22)}70%{opacity:1;transform:translate(-50%,-10px) scale(.96)}100%{opacity:0;transform:translate(-50%,-18px) scale(1.05)}}
+
+  /* 9 · Yüzer logo butonu (FAB) — cihaz algılı mağaza yönlendirme */
+  #fab{position:fixed;right:18px;bottom:18px;width:56px;height:56px;border-radius:50%;
+    background:var(--forest);border:0;cursor:pointer;z-index:40;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 12px 28px -10px rgba(49,73,58,.6);
+    opacity:0;transform:scale(.4);pointer-events:none}
+  #fab.on{opacity:1;transform:scale(1);pointer-events:auto}
+  #fab:hover{background:var(--forest-d)}
+  #fab:focus-visible{outline:2.5px solid var(--coral);outline-offset:3px}
+  @media(prefers-reduced-motion:no-preference){
+    #fab{transition:opacity .3s ease,transform .35s cubic-bezier(.34,1.56,.64,1)}
+    #fab.on svg{animation:sw-fabidle 6s ease-in-out infinite}
+  }
+  @keyframes sw-fabidle{0%,90%,100%{transform:rotate(0)}93%{transform:rotate(-7deg)}96%{transform:rotate(5deg)}}
 </style>
 </head>
 <body>
@@ -421,23 +486,42 @@
       </div>
       <div class="art demo">
         <p class="demonote">Dokun — gerçek haritadan bir kesit</p>
-        <div class="mapstage">
-          <svg viewBox="0 0 300 210" fill="none" aria-hidden="true" focusable="false">
-            <line class="medge on" data-e="0-5" x1="36" y1="158" x2="258" y2="40"/>
-            <line class="medge on" data-e="0-3" x1="36" y1="158" x2="196" y2="56"/>
-            <line class="medge" data-e="1-3" x1="92" y1="70" x2="196" y2="56"/>
-            <line class="medge" data-e="1-5" x1="92" y1="70" x2="258" y2="40"/>
-            <line class="medge" data-e="2-3" x1="150" y1="150" x2="196" y2="56"/>
-            <line class="medge" data-e="2-4" x1="150" y1="150" x2="246" y2="146"/>
-          </svg>
-          <button class="mnode" type="button" aria-pressed="true" data-out="0-5 0-3" data-ex="Merdiven çıkma" style="left:12%;top:75.2%"><i aria-hidden="true"></i><span>Kaba Motor</span></button>
-          <button class="mnode" type="button" aria-pressed="false" data-out="1-3" data-ex="İki küpü üst üste koyma" style="left:30.7%;top:33.3%"><i aria-hidden="true"></i><span>İnce Hareket</span></button>
-          <button class="mnode" type="button" aria-pressed="false" data-out="2-4 2-3" data-ex="İlk kelimeler" style="left:50%;top:71.4%"><i aria-hidden="true"></i><span>Dil</span></button>
-          <button class="mnode" type="button" aria-pressed="false" data-out="2-3" data-ex="Neden-sonuç oyunları" style="left:65.3%;top:26.7%"><i aria-hidden="true"></i><span>Bilişsel</span></button>
-          <button class="mnode" type="button" aria-pressed="false" data-out="2-4" data-ex="Ortak dikkat" style="left:82%;top:69.5%"><i aria-hidden="true"></i><span>Sosyal-Duygusal</span></button>
-          <button class="mnode" type="button" aria-pressed="false" data-out="0-5 1-5" data-ex="Doku keşfi" style="left:86%;top:19%"><i aria-hidden="true"></i><span>Duyusal</span></button>
+        <div class="skypanel">
+          <div class="skystage">
+            <!-- Gece gökyüzü pusulası: SkyMap dili — ufuk halkası, merkez başlangıç
+                 halesi, alan yayları, yıldız düğümler, besleme bağları.
+                 Çizgi geometrisi JS'te yıldız koordinatlarından türetilir;
+                 buradaki d değerleri JS'siz görünüm için aynı matematiğin çıktısıdır. -->
+            <svg viewBox="0 0 300 270" fill="none" aria-hidden="true" focusable="false">
+              <circle class="shorizon" cx="150" cy="138" r="80"/>
+              <g class="bgstars"></g>
+              <path class="dtail" data-i="0" d="M150.0 128.0 Q156.4 92.4 150.0 58.0"/>
+              <path class="dtail" data-i="1" d="M158.7 133.0 Q192.7 120.8 219.3 98.0"/>
+              <path class="dtail" data-i="2" d="M158.7 143.0 Q186.2 166.3 219.3 178.0"/>
+              <path class="dtail" data-i="3" d="M150.0 148.0 Q143.6 183.6 150.0 218.0"/>
+              <path class="dtail" data-i="4" d="M141.3 143.0 Q107.4 155.2 80.7 178.0"/>
+              <path class="dtail" data-i="5" d="M141.3 133.0 Q113.8 109.7 80.7 98.0"/>
+              <path class="medge on" data-e="0-5" d="M150.0 58.0 Q137.5 116.4 80.7 98.0"/>
+              <path class="medge on" data-e="0-3" d="M150.0 58.0 Q132.0 138.0 150.0 218.0"/>
+              <path class="medge" data-e="1-3" d="M219.3 98.0 Q162.5 145.2 150.0 218.0"/>
+              <path class="medge" data-e="1-5" d="M219.3 98.0 Q150.0 123.6 80.7 98.0"/>
+              <path class="medge" data-e="2-3" d="M219.3 178.0 Q162.5 159.6 150.0 218.0"/>
+              <path class="medge" data-e="2-4" d="M219.3 178.0 Q150.0 152.4 80.7 178.0"/>
+              <path id="growTail" d="M150.0 128.0 Q156.4 92.4 150.0 58.0"/>
+              <circle class="chalo1" cx="150" cy="138" r="14"/>
+              <circle class="chalo2" cx="150" cy="138" r="8"/>
+              <circle class="chalo3" cx="150" cy="138" r="3.5"/>
+            </svg>
+            <button class="mnode lb-t" type="button" aria-pressed="true" data-i="0" data-out="0-5 0-3" data-ex="Merdiven çıkma" style="left:50%;top:21.5%"><i aria-hidden="true"></i><span>Kaba Motor</span></button>
+            <button class="mnode lb-r" type="button" aria-pressed="false" data-i="1" data-out="1-3" data-ex="İki küpü üst üste koyma" style="left:73.1%;top:36.3%"><i aria-hidden="true"></i><span>İnce Hareket</span></button>
+            <button class="mnode lb-r" type="button" aria-pressed="false" data-i="2" data-out="2-4 2-3" data-ex="İlk kelimeler" style="left:73.1%;top:65.9%"><i aria-hidden="true"></i><span>Dil</span></button>
+            <button class="mnode" type="button" aria-pressed="false" data-i="3" data-out="2-3" data-ex="Neden-sonuç oyunları" style="left:50%;top:80.7%"><i aria-hidden="true"></i><span>Bilişsel</span></button>
+            <button class="mnode lb-l" type="button" aria-pressed="false" data-i="4" data-out="2-4" data-ex="Ortak dikkat" style="left:26.9%;top:65.9%"><i aria-hidden="true"></i><span>Sosyal-Duygusal</span></button>
+            <button class="mnode lb-l" type="button" aria-pressed="false" data-i="5" data-out="0-5 1-5" data-ex="Doku keşfi" style="left:26.9%;top:36.3%"><i aria-hidden="true"></i><span>Duyusal</span></button>
+          </div>
+          <div class="mapcard" aria-live="polite"><b>Kaba Motor</b><span class="mex">Örnek adım: Merdiven çıkma</span><span class="mstory">Merdiven çıkma; Duyusal ve Bilişsel'i besler.</span></div>
+          <p class="skylegend">İnce çizgi = komşuluk · Kesikli mercan = besleme bağı · Yay = alanın yolu</p>
         </div>
-        <div class="mapcard" aria-live="polite"><b>Kaba Motor</b><span>Örnek adım: Merdiven çıkma</span></div>
       </div>
     </div>
 
@@ -683,14 +767,19 @@ function CE(t){return document.createElementNS(NS,t)}
 /* 1 yol omurgası */
 var spine=null,trail=null,leaves=[],trailLen=0,docH=1,opened={},leafIO=null;
 function keyOf(el){return el.id||"band"}
-function syncLeaves(){leaves.forEach(function(l){if(opened[keyOf(l.sec)])l.el.setAttribute("class","leaf open")})}
+function openMark(l){
+  l.el.setAttribute("class","leaf open");
+  if(l.br)l.br.style.strokeDashoffset="0";
+  if(l.tip)l.tip.setAttribute("class","bleaf open");
+}
+function syncLeaves(){leaves.forEach(function(l){if(opened[keyOf(l.sec)])openMark(l)})}
 function watchLeaves(){
-  if(!IO){leaves.forEach(function(l){l.el.setAttribute("class","leaf open")});return}
+  if(!IO){leaves.forEach(openMark);return}
   if(!leafIO)leafIO=new IntersectionObserver(function(es){
     es.forEach(function(e){if(e.isIntersecting){opened[keyOf(e.target)]=1;leafIO.unobserve(e.target);syncLeaves()}})
   },{threshold:.15});
   leaves.forEach(function(l){
-    if(opened[keyOf(l.sec)])l.el.setAttribute("class","leaf open");
+    if(opened[keyOf(l.sec)])openMark(l);
     else leafIO.observe(l.sec);
   });
 }
@@ -731,16 +820,36 @@ function buildSpine(){
   try{trailLen=trail.getTotalLength()}catch(e){trailLen=docH}
   trail.style.strokeDasharray=trailLen+" "+trailLen;
   marks.forEach(function(t){
+    var isOpen=RM||opened[keyOf(t.sec)];
     var g=CE("g");
     g.setAttribute("transform","translate("+t.x.toFixed(1)+" "+t.y.toFixed(1)+")"+(mob?" scale(.78)":""));
-    var inner=CE("g");
-    inner.setAttribute("class","leaf"+((RM||opened[keyOf(t.sec)])?" open":""));
     var c1=t.alt?"#E8836B":"#3D5A47",c2=t.alt?"#3D5A47":"#E8836B";
+    /* hover pulse halesi */
+    var glow=CE("circle");
+    glow.setAttribute("r","26");glow.setAttribute("fill","#3D5A47");
+    glow.setAttribute("class","nglow");
+    g.appendChild(glow);
+    /* içeriğe uzanan dal + uç yaprağı */
+    var br=CE("path");
+    br.setAttribute("class","bpath");
+    br.setAttribute("d","M0 0C26 4 46 14 62 30");
+    g.appendChild(br);
+    var tipWrap=CE("g");
+    tipWrap.setAttribute("transform","translate(62 30)");
+    var tip=CE("g");
+    tip.setAttribute("class","bleaf"+(isOpen?" open":""));
+    tip.innerHTML='<path d="M0 0C0 -5.4 3.2 -8.6 8 -8.6C8 -3.8 4.6 0 0 0Z" fill="'+c2+'"/>';
+    tipWrap.appendChild(tip);g.appendChild(tipWrap);
+    var inner=CE("g");
+    inner.setAttribute("class","leaf"+(isOpen?" open":""));
     inner.innerHTML='<path d="M0 -2C0 -8.6 -4.4 -12 -10 -12C-10 -6.4 -5.6 -2 0 -2Z" fill="'+c1+'"/>'+
       '<path d="M0 -4.5C0 -10 3.6 -13 8.6 -13C8.6 -8 5 -4.2 0 -4.5Z" fill="'+c2+'"/>'+
       '<circle r="3.4" fill="'+c1+'"/>';
     g.appendChild(inner);spine.appendChild(g);
-    leaves.push({sec:t.sec,el:inner});
+    var bl=70;try{bl=br.getTotalLength()}catch(e){}
+    br.style.strokeDasharray=bl+" "+bl;
+    br.style.strokeDashoffset=isOpen?"0":String(bl);
+    leaves.push({sec:t.sec,el:inner,br:br,tip:tip,glow:glow});
   });
   drawTrail();
   if(!RM)watchLeaves();
@@ -816,26 +925,159 @@ if(numBox&&!RM&&IO){
   cIO.observe(numBox);
 }
 
-/* 3 harita demosu */
-var stage=$(".mapstage");
+/* 8b hover/touch → en yakın yol düğümü tepki verir (throttle'lı) */
+var swayLast={};
+function swaySec(sec){
+  if(RM||!sec)return;
+  var k=keyOf(sec),n=Date.now();
+  if(swayLast[k]&&n-swayLast[k]<700)return;
+  swayLast[k]=n;
+  leaves.forEach(function(l){
+    if(l.sec!==sec)return;
+    l.el.classList.add("sway");
+    if(l.glow)l.glow.classList.add("on");
+    setTimeout(function(){l.el.classList.remove("sway");if(l.glow)l.glow.classList.remove("on")},760);
+  });
+}
+$$("#neden .card,#ozellikler .feat,#nasil .step,#fiyat .plan").forEach(function(el){
+  var sec=el.closest("section");
+  if(!sec)return;
+  el.addEventListener("mouseenter",function(){swaySec(sec)});
+  el.addEventListener("touchstart",function(){swaySec(sec)},{passive:true});
+});
+
+/* 8c sayaç hover → mini yaprak pop */
+$$(".numgrid .num").forEach(function(nm){
+  function pop(){
+    if(RM||$(".numleaf",nm))return;
+    var s=document.createElement("span");
+    s.className="numleaf";
+    s.innerHTML='<svg width="16" height="16" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 18C10 10 6 5 1 4C2 11 5 16 10 18Z" fill="#3D5A47"/><path d="M10 18C10 11 13 6 19 5C18 12 15 16 10 18Z" fill="#E8836B"/></svg>';
+    nm.appendChild(s);
+    setTimeout(function(){if(s.parentNode)s.parentNode.removeChild(s)},700);
+  }
+  nm.addEventListener("mouseenter",pop);
+  nm.addEventListener("touchstart",pop,{passive:true});
+});
+
+/* 3 harita demosu — gece gökyüzü pusulası.
+   Tek doğruluk kaynağı yıldız koordinatları: tüm yay/bağ path'leri buradan
+   türetilir, buton konumları da — boşlukta biten çizgi matematiksel olarak
+   imkansız. */
+var stage=$(".skystage");
 if(stage){
-  var mbtns=$$(".mnode",stage.parentNode),medges=$$(".medge",stage),
-      mcard=$(".mapcard"),mname=mcard?$("b",mcard):null,mex=mcard?$("span",mcard):null;
+  var mbtns=$$(".mnode",stage),medges=$$(".medge",stage),
+      gtail=$("#growTail",stage),dtails=$$(".dtail",stage),
+      mcard=$(".mapcard"),mname=mcard?$("b",mcard):null,
+      mex=mcard?$(".mex",mcard):null,mstory=mcard?$(".mstory",mcard):null;
+  var SC={x:150,y:138},SR=80;
+  var SANG=[-90,-30,30,90,150,210].map(function(d){return d*Math.PI/180});
+  var STARS=SANG.map(function(a){return{x:SC.x+SR*Math.cos(a),y:SC.y+SR*Math.sin(a)}});
+  var MNAME=["Kaba Motor","İnce Hareket","Dil","Bilişsel","Sosyal-Duygusal","Duyusal"];
+  var MACC=["Kaba Motor'u","İnce Hareket'i","Dil'i","Bilişsel'i","Sosyal-Duygusal'ı","Duyusal'ı"];
+  var q1=function(n){return n.toFixed(1)};
+  /* alan yayı: merkez "başlangıç" işaretinden yıldıza */
+  var tailD=function(i){
+    var a=SANG[i],s=STARS[i];
+    return "M"+q1(SC.x+10*Math.cos(a))+" "+q1(SC.y+10*Math.sin(a))+
+      " Q"+q1(SC.x+46*Math.cos(a+.14))+" "+q1(SC.y+46*Math.sin(a+.14))+
+      " "+q1(s.x)+" "+q1(s.y);
+  };
+  /* besleme bağı: yıldızdan yıldıza, merkeze doğru kavisli (SkyMap formülü);
+     çapraz çiftlerde merkez işaretini ezmesin diye dik ofset */
+  var bondD=function(i,j){
+    var a=STARS[i],b=STARS[j];
+    var cxq=SC.x+(a.x+b.x-2*SC.x)*.18,cyq=SC.y+(a.y+b.y-2*SC.y)*.18;
+    if(Math.hypot(cxq-SC.x,cyq-SC.y)<14){
+      var dx=b.x-a.x,dy=b.y-a.y,L=Math.hypot(dx,dy)||1;
+      cxq-=dy/L*18;cyq+=dx/L*18;
+    }
+    return "M"+q1(a.x)+" "+q1(a.y)+" Q"+q1(cxq)+" "+q1(cyq)+" "+q1(b.x)+" "+q1(b.y);
+  };
+  dtails.forEach(function(t){t.setAttribute("d",tailD(+t.getAttribute("data-i")||0))});
+  medges.forEach(function(l){
+    var p=(l.getAttribute("data-e")||"0-0").split("-");
+    l.setAttribute("d",bondD(+p[0]||0,+p[1]||0));
+  });
+  var btnByIdx={};
+  mbtns.forEach(function(b){
+    var bi2=+b.getAttribute("data-i")||0,sp=STARS[bi2];
+    b.style.left=q1(sp.x/3)+"%";b.style.top=q1(sp.y/2.7)+"%";
+    btnByIdx[bi2]=b;
+  });
+  /* aktif alanın yayı seçilince kendini çizerek uzar */
+  var growTo=function(i,inst){
+    if(!gtail)return;
+    gtail.setAttribute("d",tailD(i));
+    var L=80;try{L=gtail.getTotalLength()}catch(e){}
+    gtail.style.transition="none";
+    gtail.style.strokeDasharray=L+" "+L;
+    gtail.style.strokeDashoffset=(RM||inst)?"0":String(L);
+    void gtail.getBoundingClientRect();
+    gtail.style.transition="";
+    gtail.style.strokeDashoffset="0";
+  };
+  /* deterministik arka plan yıldız alanı (SkyMap altın-açı serpmesi) */
+  var bgg=$(".bgstars",stage);
+  if(bgg&&!bgg.childNodes.length){
+    var fr=function(n){return n-Math.floor(n)};
+    for(var bi=0;bi<30;bi++){
+      var ang=bi*2.399963,rad=100*(0.18+0.94*fr(bi*0.6180339));
+      var st=CE("circle");
+      st.setAttribute("cx",(SC.x+rad*Math.cos(ang)).toFixed(1));
+      st.setAttribute("cy",(SC.y+rad*Math.sin(ang)).toFixed(1));
+      st.setAttribute("r",(0.7+1.1*fr(bi*0.7113)).toFixed(2));
+      st.setAttribute("opacity",(0.1+0.25*fr(bi*0.3779)).toFixed(2));
+      st.setAttribute("class","bgs"+(bi%4===0?" tw":""));
+      if(bi%4===0){
+        st.style.setProperty("--td",(2.4+2.4*fr(bi*0.51)).toFixed(1)+"s");
+        st.style.setProperty("--tl",(3*fr(bi*0.77)).toFixed(1)+"s");
+      }
+      bgg.appendChild(st);
+    }
+  }
+  /* hikaye akışı: seç → yay çizilir → bağ akar → hedef parlar → kart anlatır */
+  var arrT=[];
   var actMap=function(btn){
-    mbtns.forEach(function(b){b.setAttribute("aria-pressed",b===btn?"true":"false")});
-    var out=(btn.getAttribute("data-out")||"").split(" ");
+    var ai=+btn.getAttribute("data-i")||0;
+    arrT.forEach(clearTimeout);arrT=[];
+    mbtns.forEach(function(b){
+      b.setAttribute("aria-pressed",b===btn?"true":"false");
+      b.classList.remove("arrive");
+    });
+    var out=(btn.getAttribute("data-out")||"").split(" ").filter(Boolean);
+    var targets=[];
+    out.forEach(function(pr){
+      var p=pr.split("-"),t=(+p[0]===ai)?+p[1]:+p[0];
+      if(targets.indexOf(t)<0)targets.push(t);
+    });
     medges.forEach(function(l){
       l.setAttribute("class",out.indexOf(l.getAttribute("data-e"))>-1?"medge on":"medge");
     });
-    var lbl=$("span",btn);
-    if(mname&&lbl)mname.textContent=lbl.textContent;
-    if(mex)mex.textContent="Örnek adım: "+(btn.getAttribute("data-ex")||"");
+    growTo(ai);
+    var ex=btn.getAttribute("data-ex")||"";
+    if(mname)mname.textContent=MNAME[ai]||"";
+    if(mex)mex.textContent="Örnek adım: "+ex;
+    if(mstory&&targets.length){
+      var last=targets[targets.length-1];
+      var head=targets.slice(0,-1).map(function(t){return MNAME[t]}).join(", ");
+      mstory.textContent=ex+"; "+(head?head+" ve ":"")+MACC[last]+" besler.";
+    }
     if(mcard&&!RM){mcard.classList.remove("pop");void mcard.offsetWidth;mcard.classList.add("pop")}
+    if(!RM){
+      arrT.push(setTimeout(function(){
+        targets.forEach(function(t){if(btnByIdx[t])btnByIdx[t].classList.add("arrive")});
+        arrT.push(setTimeout(function(){
+          mbtns.forEach(function(b){b.classList.remove("arrive")});
+        },560));
+      },620));
+    }
   };
   mbtns.forEach(function(b){
     b.addEventListener("click",function(){actMap(b)});
     b.addEventListener("pointerenter",function(){actMap(b)});
   });
+  growTo(0,true);
 }
 
 /* 4 soru demosu */
@@ -878,6 +1120,41 @@ if(band&&IO&&!RM){
   },{threshold:.3});
   bIO.observe(band);
 }
+
+/* 9 yüzer logo butonu — cihaz algılı mağaza yönlendirme */
+/* App Store canlıya çıkınca doldurulacak (ör. "https://apps.apple.com/app/idXXXXXXXXXX");
+   boş kaldığı sürece iOS kullanıcısı #indir bölümüne yumuşak kaydırılır. */
+var APP_STORE_URL="";
+var PLAY_URL="https://play.google.com/store/apps/details?id=com.omerfarukballi.sprout";
+(function(){
+  var hero=$(".hero"),foot=$("footer");
+  if(!hero||!foot)return;
+  var fab=document.createElement("button");
+  fab.id="fab";fab.type="button";
+  fab.setAttribute("aria-label","Uygulamayı indir");
+  fab.innerHTML='<svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">'+
+    '<path d="M12 21 V11" stroke="#FFF7EF" stroke-width="2.2" stroke-linecap="round"/>'+
+    '<path d="M12 12 C12 8.5 9.5 6.5 6 6.5 C6 10 8.5 12 12 12 Z" fill="#FFF7EF"/>'+
+    '<path d="M12 10 C12 7 14.2 5 17.5 5 C17.5 8.2 15.2 10.2 12 10 Z" fill="#E8836B"/></svg>';
+  document.body.appendChild(fab);
+  fab.addEventListener("click",function(){
+    var ua=navigator.userAgent||"";
+    if(/android/i.test(ua)){location.href=PLAY_URL;return}
+    if(/iPhone|iPad|iPod/i.test(ua)&&APP_STORE_URL){location.href=APP_STORE_URL;return}
+    var t=document.getElementById("indir");
+    if(t)t.scrollIntoView({behavior:RM?"auto":"smooth",block:"center"});
+  });
+  if(!IO){fab.classList.add("on");return}
+  var vis={h:true,f:false,b:false};
+  var fio=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      vis[e.target===hero?"h":e.target===foot?"f":"b"]=e.isIntersecting;
+    });
+    fab.classList.toggle("on",!vis.h&&!vis.f&&!vis.b);
+  },{threshold:0});
+  fio.observe(hero);fio.observe(foot);
+  if(band)fio.observe(band);
+})();
 
 buildSpine();
 parallax();
