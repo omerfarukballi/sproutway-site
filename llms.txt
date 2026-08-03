@@ -1,0 +1,27 @@
+# Sprout Way
+
+> Sprout Way, karşılaştırmasız ve kaygısız bir bebek/çocuk gelişim uygulamasıdır. Yapay zekâ kullanmaz — her öneri deterministik ve gerekçelidir. Yaşayan bir gelişim haritası, "ne zaman X olur?" sorularına nazik, uzman-temelli yanıtlar ve 800+ Montessori'den ilham alan aktivite sunar. iOS ve Android'de mevcuttur, Türkçe ve İngilizce.
+
+Sprout Way is a comparison-free, anxiety-free baby and child development app. It does not use AI — every suggestion is deterministic and reasoned, never a black-box prediction. It offers a living development map, gentle expert-grounded answers to "when will X happen?" questions, and 800+ Montessori-inspired activities. Available on iOS and Android, in Turkish and English.
+
+## Ne değildir / What it is not
+- Bir bakım takip uygulaması değildir (uyku/beslenme/bez günlüğü yok) — saf gelişim odaklıdır.
+- Not a care-tracking app (no sleep/feeding/diaper log) — pure development focus.
+- Karşılaştırmalı yüzdelik dilim veya "geride kalma" dili kullanmaz.
+- Does not use comparative percentiles or "falling behind" language.
+- Ürün içinde üretken yapay zekâ (LLM) kullanmaz; öneriler deterministik bir motordan gelir.
+- Does not use generative AI inside the product; recommendations come from a deterministic engine.
+
+## Ürün / Product
+- [Website (TR)](https://sproutway.app/)
+- [Website (EN)](https://sproutway.app/index-en.html)
+- App Store ve Google Play'de "Sprout Way — Bebek Gelişimi" adıyla listelenir.
+- Listed on the App Store and Google Play as "Sprout Way — Bebek Gelişimi".
+
+## Yasal / Legal
+- [Gizlilik Politikası](https://sproutway.app/gizlilik-politikasi.html) · [Privacy Policy](https://sproutway.app/privacy-policy.html)
+- [Kullanım Koşulları](https://sproutway.app/kullanim-kosullari.html) · [Terms of Service](https://sproutway.app/terms-of-service.html)
+
+## İletişim / Contact
+- [İletişim / Contact](https://sproutway.app/contact.html)
+- E-posta / Email: hello@sproutway.app
