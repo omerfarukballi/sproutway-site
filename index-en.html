@@ -343,6 +343,48 @@
   @keyframes sw-dotin{from{opacity:0;transform:scale(0)}}
   @keyframes sw-win{from{transform:scaleX(0)}}
 
+  /* 4b · Yolculuk (yatay, sayfaya-sabit kayan zaman çizelgesi) */
+  .journey{max-width:900px;margin:0 auto}
+  .jchips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:16px}
+  .jchip{font:inherit;font-size:13px;font-weight:700;color:var(--forest);background:var(--card);border:1.5px solid var(--line);border-radius:999px;padding:7px 13px;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+  .jchip[aria-pressed="true"]{background:var(--forest);border-color:var(--forest);color:#fff}
+  .jchip:focus-visible{outline:2.5px solid var(--coral);outline-offset:2px}
+  .jscroller{position:relative}
+  .jsticky{display:flex;flex-direction:column;justify-content:center}
+  .jscroller.pin .jsticky{position:sticky;top:64px}
+  .jpanel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-l);padding:26px 0 22px;overflow-x:auto;overflow-y:hidden;box-shadow:0 1px 2px rgba(62,39,23,.04)}
+  .jscroller.pin .jpanel{overflow:hidden}
+  .jrail{position:relative;display:flex;align-items:flex-start;width:max-content;padding:0 40px}
+  @media(prefers-reduced-motion:no-preference){.jscroller.pin .jrail{transition:transform .05s linear}}
+  .jline,.jfill{position:absolute;top:22px;height:2px;left:40px}
+  .jline{right:40px;background:var(--line)}
+  .jfill{width:0;background:var(--forest)}
+  @media(prefers-reduced-motion:no-preference){.jfill{transition:width .35s ease}.jsprout{transition:left .35s ease}}
+  .jsprout{position:absolute;top:22px;left:40px;transform:translate(-50%,-50%);filter:drop-shadow(0 2px 4px rgba(62,39,23,.18))}
+  .jsprout svg{display:block}
+  @media(prefers-reduced-motion:no-preference){.jsprout.pop svg{animation:sw-fabpop .5s cubic-bezier(.34,1.56,.64,1)}}
+  .jnode{flex:0 0 130px;width:130px;min-height:176px;padding:0 10px;display:flex;flex-direction:column;align-items:center;text-align:center}
+  .jdot{width:12px;height:12px;border-radius:50%;background:var(--jc,var(--line));border:3px solid var(--card);margin-bottom:14px;flex-shrink:0}
+  .jnode .jtxt{display:flex;flex-direction:column;align-items:center;flex:1;width:100%}
+  .jnow{display:none;font-style:normal;font-size:9.5px;font-weight:800;letter-spacing:.05em;color:#fff;background:var(--coral);border-radius:5px;padding:2px 7px;margin:0 auto 6px;width:fit-content}
+  .jnode .jtxt b{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:13.5px;font-weight:700;color:var(--ink);line-height:1.28}
+  .jnode .jtxt>span:not(.jbar){display:block;margin-top:5px;font-size:11px;color:var(--muted)}
+  .jbar{margin-top:auto;width:34px;height:3px;border-radius:2px;background:var(--jc,var(--line));opacity:.32}
+  .jnode.grown .jdot{background:var(--forest)}
+  .jnode.grown .jtxt b{color:var(--forest)}
+  .jnode.upcoming{opacity:.45}
+  .jnode.current .jdot{background:var(--coral);box-shadow:0 0 0 5px rgba(232,131,107,.22)}
+  .jnode.current .jnow{display:block}
+  .jcap{background:var(--tint);border-radius:var(--radius-m);padding-top:12px;margin:0 6px}
+  .jcap .jtxt b{color:var(--forest);-webkit-line-clamp:3}
+  .jcap .jdot{background:var(--forest)}
+  .jhint{text-align:center;font-size:12px;color:var(--muted);margin-top:10px;transition:opacity .3s ease}
+  .journey .numgrid{margin-top:12px;padding:16px 14px}
+  @media(prefers-reduced-motion:no-preference){#fab.grow .fabc{animation:sw-fabpop .55s cubic-bezier(.34,1.56,.64,1)}}
+  @keyframes sw-fabpop{0%{transform:scale(1)}35%{transform:scale(1.22) translateY(-7px)}65%{transform:scale(.94) translateY(2px)}100%{transform:scale(1)}}
+  .jmerak{margin-top:auto;width:100%;background:var(--coral-soft);border-radius:10px;padding:7px 8px;font-size:10.5px;line-height:1.32;color:var(--ink)}
+  .jmerak b{display:block;font-size:8.5px;font-weight:800;letter-spacing:.06em;color:var(--coral);text-transform:uppercase;margin-bottom:2px}
+
   /* 5 · Sayılar bandı */
   .nums{padding:6px 0 26px}
   .numgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-l);padding:24px 18px;text-align:center;box-shadow:0 1px 2px rgba(62,39,23,.04)}
@@ -509,14 +551,75 @@
     </div>
   </section>
 
-  <!-- ═══ SAYILAR BANDI ═══ -->
-  <section class="wrap nums" aria-label="Sprout Way in numbers">
-    <div class="numgrid">
-      <div class="num"><b data-n="144">144</b><span>steps</span></div>
-      <div class="num"><b data-n="78">78</b><span>Life Questions</span></div>
-      <div class="num"><b data-n="800" data-suf="+">800+</b><span>activities</span></div>
-      <div class="num"><b data-n="300" data-suf="+">300+</b><span>teachable moments</span></div>
+  <!-- ═══ YOLCULUK ═══ -->
+  <section id="yolculuk">
+   <div class="jscroller" id="jscroller">
+   <div class="jsticky" id="jsticky">
+   <div class="wrap">
+    <div class="center">
+      <span class="kicker">The journey</span>
+      <h2>See your baby's journey</h2>
+      <p class="lead">Pick what your baby is doing right now and watch the sprout grow from there — a real journey, all the way to preschool.</p>
     </div>
+    <div class="journey">
+      <div class="jchips" role="group" aria-label="What is your baby doing right now?">
+        <button class="jchip" type="button" aria-pressed="true" data-idx="0">Just born</button>
+        <button class="jchip" type="button" aria-pressed="false" data-idx="5">Sitting</button>
+        <button class="jchip" type="button" aria-pressed="false" data-idx="10">Walking</button>
+        <button class="jchip" type="button" aria-pressed="false" data-idx="11">First words</button>
+        <button class="jchip" type="button" aria-pressed="false" data-idx="15">Word burst</button>
+        <button class="jchip" type="button" aria-pressed="false" data-idx="19">Balancing</button>
+        <button class="jchip" type="button" aria-pressed="false" data-idx="25">Telling stories</button>
+        <button class="jchip" type="button" aria-pressed="false" data-idx="28">Getting ready for preschool</button>
+      </div>
+      <div class="jpanel" id="jpanel">
+        <div class="jrail" id="jrail">
+          <div class="jline" aria-hidden="true"></div>
+          <div class="jfill" id="jfill" aria-hidden="true"></div>
+          <div class="jsprout" id="jsprout" aria-hidden="true"><svg width="23" height="23" viewBox="0 0 24 24" fill="none"><path d="M12 21 V11" stroke="#3D5A47" stroke-width="2.2" stroke-linecap="round"/><path d="M12 12 C12 8.5 9.5 6.5 6 6.5 C6 10 8.5 12 12 12 Z" fill="#3D5A47"/><path d="M12 10 C12 7 14.2 5 17.5 5 C17.5 8.2 15.2 10.2 12 10 Z" fill="#E8836B"/></svg></div>
+              <div class="jnode" data-idx="0" style="--jc:#F97316"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Head Control</b><span>Gross Motor · 1/24</span><span class="jbar"></span></div></div>
+              <div class="jnode" data-idx="1" style="--jc:#EC4899"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Social Smile</b><span>Social-Emotional · 1/24</span><span class="jbar"></span></div></div>
+              <div class="jnode" data-idx="2" style="--jc:#0EA5E9"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Cooing Conversations</b><span>Language · 2/24</span><div class="jmerak"><b>Curious</b>When do real 'conversations' start?</div></div></div>
+              <div class="jnode" data-idx="3" style="--jc:#F97316"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Rolling</b><span>Gross Motor · 2/24</span><span class="jbar"></span></div></div>
+              <div class="jnode" data-idx="4" style="--jc:#F59E0B"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Vestibular Enjoyment</b><span>Sensory · 4/24</span><span class="jbar"></span></div></div>
+              <div class="jnode" data-idx="5" style="--jc:#F97316"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Sitting Independently</b><span>Gross Motor · 3/24</span><div class="jmerak"><b>Curious</b>When will they sit on their own?</div></div></div>
+              <div class="jnode" data-idx="6" style="--jc:#EC4899"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Stranger Anxiety</b><span>Social-Emotional · 3/24</span><span class="jbar"></span></div></div>
+              <div class="jnode" data-idx="7" style="--jc:#F97316"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Crawling</b><span>Gross Motor · 4/24</span><span class="jbar"></span></div></div>
+              <div class="jnode" data-idx="8" style="--jc:#8B5CF6"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Pincer Grasp</b><span>Fine Motor · 4/24</span><div class="jmerak"><b>Curious</b>When do they pick up tiny things?</div></div></div>
+              <div class="jnode" data-idx="9" style="--jc:#8B5CF6"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Pointing</b><span>Fine Motor · 5/24</span><span class="jbar"></span></div></div>
+              <div class="jnode" data-idx="10" style="--jc:#F97316"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Independent Walking</b><span>Gross Motor · 7/24</span><span class="jbar"></span></div></div>
+              <div class="jnode" data-idx="11" style="--jc:#0EA5E9"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>First Words</b><span>Language · 6/24</span><div class="jmerak"><b>Curious</b>When will they say their first word?</div></div></div>
+              <div class="jnode" data-idx="12" style="--jc:#16A34A"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Emerging Symbolic Play</b><span>Cognitive · 6/24</span><span class="jbar"></span></div></div>
+              <div class="jnode" data-idx="13" style="--jc:#F97316"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Climbing Stairs</b><span>Gross Motor · 8/24</span><span class="jbar"></span></div></div>
+              <div class="jnode" data-idx="14" style="--jc:#8B5CF6"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Stacking Blocks</b><span>Fine Motor · 8/24</span><div class="jmerak"><b>Curious</b>How many blocks can they stack?</div></div></div>
+              <div class="jnode" data-idx="15" style="--jc:#0EA5E9"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Vocabulary Explosion</b><span>Language · 8/24</span><span class="jbar"></span></div></div>
+              <div class="jnode" data-idx="16" style="--jc:#8B5CF6"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Spoon Use</b><span>Fine Motor · 10/24</span><span class="jbar"></span></div></div>
+              <div class="jnode" data-idx="17" style="--jc:#0EA5E9"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Three-Four Word Sentences</b><span>Language · 10/24</span><div class="jmerak"><b>Curious</b>When do sentences begin?</div></div></div>
+              <div class="jnode" data-idx="18" style="--jc:#EC4899"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Pretend Play</b><span>Social-Emotional · 15/24</span><span class="jbar"></span></div></div>
+              <div class="jnode" data-idx="19" style="--jc:#F97316"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Standing on One Foot</b><span>Gross Motor · 17/24</span><span class="jbar"></span></div></div>
+              <div class="jnode" data-idx="20" style="--jc:#F59E0B"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Calming Strategies</b><span>Sensory · 16/24</span><div class="jmerak"><b>Curious</b>How do they calm themselves?</div></div></div>
+              <div class="jnode" data-idx="21" style="--jc:#0EA5E9"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Asks Questions</b><span>Language · 15/24</span><span class="jbar"></span></div></div>
+              <div class="jnode" data-idx="22" style="--jc:#F97316"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Pedaling a Tricycle</b><span>Gross Motor · 18/24</span><span class="jbar"></span></div></div>
+              <div class="jnode" data-idx="23" style="--jc:#EC4899"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Naming Emotions</b><span>Social-Emotional · 17/24</span><span class="jbar"></span></div></div>
+              <div class="jnode" data-idx="24" style="--jc:#8B5CF6"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Tripod Grasp</b><span>Fine Motor · 18/24</span><div class="jmerak"><b>Curious</b>How do they hold a pencil right?</div></div></div>
+              <div class="jnode" data-idx="25" style="--jc:#0EA5E9"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Tells a Story</b><span>Language · 20/24</span><span class="jbar"></span></div></div>
+              <div class="jnode" data-idx="26" style="--jc:#EC4899"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Self-Regulation Strategies</b><span>Social-Emotional · 19/24</span><span class="jbar"></span></div></div>
+              <div class="jnode" data-idx="27" style="--jc:#8B5CF6"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Writing Their Name</b><span>Fine Motor · 21/24</span><div class="jmerak"><b>Curious</b>When will they write their name?</div></div></div>
+              <div class="jnode" data-idx="28" style="--jc:#EC4899"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Coping with Brief Separations</b><span>Social-Emotional · 24/24</span><span class="jbar"></span></div></div>
+              <div class="jnode jcap" data-idx="29"><span class="jdot"></span><div class="jtxt"><b>Ready for Preschool</b><span>You've come this far together</span></div></div>
+        </div>
+      </div>
+      <p class="jhint" id="jhint">The sprout grows as you scroll</p>
+      <div class="numgrid" aria-label="Sprout Way in numbers">
+        <div class="num"><b data-n="144">144</b><span>steps</span></div>
+        <div class="num"><b data-n="78">78</b><span>Life Questions</span></div>
+        <div class="num"><b data-n="800" data-suf="+">800+</b><span>activities</span></div>
+        <div class="num"><b data-n="300" data-suf="+">300+</b><span>teachable moments</span></div>
+      </div>
+    </div>
+   </div>
+   </div>
+   </div>
   </section>
 
   <!-- ═══ ÖZELLİKLER ═══ -->
@@ -850,7 +953,7 @@ function buildSpine(){
   spine.setAttribute("width",W);spine.setAttribute("height",docH);
   spine.setAttribute("viewBox","0 0 "+W+" "+docH);
   var mob=W<=720,secs=[],el;
-  ["neden","ozellikler","nasil","fiyat","sss"].forEach(function(id){
+  ["neden","yolculuk","ozellikler","nasil","fiyat","sss"].forEach(function(id){
     var s=document.getElementById(id);if(s)secs.push(s);
   });
   el=$(".band");if(el)secs.push(el);
@@ -928,10 +1031,10 @@ function parallax(){
 /* scroll: passive+rAF */
 var tick=false;
 window.addEventListener("scroll",function(){
-  if(!tick){tick=true;requestAnimationFrame(function(){tick=false;drawTrail();parallax()})}
+  if(!tick){tick=true;requestAnimationFrame(function(){tick=false;drawTrail();parallax();journeyOnScroll();fabGrow()})}
 },{passive:true});
 var rT=null;
-function queueBuild(){if(rT)clearTimeout(rT);rT=setTimeout(buildSpine,160)}
+function queueBuild(){if(rT)clearTimeout(rT);rT=setTimeout(function(){buildSpine();journeyLayout();journeyOnScroll()},160)}
 window.addEventListener("resize",queueBuild,{passive:true});
 window.addEventListener("load",queueBuild);
 document.addEventListener("toggle",queueBuild,true);
@@ -941,7 +1044,7 @@ if(!RM&&IO){
   var rvIO=new IntersectionObserver(function(es){
     es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");rvIO.unobserve(e.target)}})
   },{threshold:.12,rootMargin:"0px 0px -36px 0px"});
-  [["#neden .grid>.card",80],[".numgrid .num",70],["#ozellikler .feat",0],
+  [["#neden .grid>.card",80],[".numgrid .num",70],[".journey",0],["#ozellikler .feat",0],
    ["#nasil .steps>.card",80],["#fiyat .price>.card",90],["#sss .faq details",60],[".band",0]
   ].forEach(function(gr){
     $$(gr[0]).forEach(function(el,i){
@@ -1141,6 +1244,91 @@ qchips.forEach(function(c){
   });
 });
 
+/* 4b yolculuk demosu (yatay, sayfaya-sabit kaydırma — RM'de düz yatay scroller'a düşer) */
+var jchips=$$(".jchip"),jscroller=$("#jscroller"),jsticky=$("#jsticky"),jpanel=$("#jpanel"),
+    jrail=$("#jrail"),jfill=$("#jfill"),jsprout=$("#jsprout"),jhint=$("#jhint");
+var jnodes=jrail?$$(".jnode",jrail):[];
+var jTravel=0,jPinned=false,jPinTop=64;
+/* ray filizi: yolculuk ilerledikçe filiz→fidan→ağaç→geniş taçlı ağaç */
+var JSPROUT_STAGES=[
+  {size:23,svg:'<path d="M12 21 V11" stroke="#3D5A47" stroke-width="2.2" stroke-linecap="round"/><path d="M12 12 C12 8.5 9.5 6.5 6 6.5 C6 10 8.5 12 12 12 Z" fill="#3D5A47"/><path d="M12 10 C12 7 14.2 5 17.5 5 C17.5 8.2 15.2 10.2 12 10 Z" fill="#E8836B"/>'},
+  {size:27,svg:'<path d="M12 22 V8" stroke="#3D5A47" stroke-width="2.2" stroke-linecap="round"/><path d="M12 16.5 C12 13.7 10 12 7 12 C7 14.8 9.2 16.5 12 16.5 Z" fill="#3D5A47"/><path d="M12 16.5 C12 13.7 14 12 17 12 C17 14.8 14.8 16.5 12 16.5 Z" fill="#3D5A47"/><path d="M12 9.5 C12 6.7 10 5 7 5 C7 7.8 9.2 9.5 12 9.5 Z" fill="#3D5A47"/><path d="M12 8.5 C12 5.9 14 4.4 16.8 4.4 C16.8 7.2 14.6 8.8 12 8.5 Z" fill="#E8836B"/>'},
+  {size:31,svg:'<path d="M12 22 V12" stroke="#3D5A47" stroke-width="2.4" stroke-linecap="round"/><circle cx="12" cy="8" r="5" fill="#3D5A47"/><circle cx="7.6" cy="10.6" r="3" fill="#3D5A47"/><circle cx="16.4" cy="10.6" r="3" fill="#3D5A47"/><circle cx="14.2" cy="6.4" r="1.4" fill="#E8836B"/>'},
+  {size:37,svg:'<path d="M12 22 V13" stroke="#3D5A47" stroke-width="2.6" stroke-linecap="round"/><circle cx="12" cy="7.6" r="5.6" fill="#3D5A47"/><circle cx="5.6" cy="10.6" r="3.6" fill="#3D5A47"/><circle cx="18.4" cy="10.6" r="3.6" fill="#3D5A47"/><circle cx="8.6" cy="6.4" r="2.6" fill="#3D5A47"/><circle cx="15.4" cy="6.4" r="2.6" fill="#3D5A47"/><circle cx="14.8" cy="5.2" r="1.5" fill="#E8836B"/>'}
+];
+var jSproutStageIdx=-1;
+function jsproutGrow(p){
+  if(!jsprout)return;
+  var s=p<0.3?0:(p<0.6?1:(p<0.92?2:3));
+  if(s===jSproutStageIdx)return;
+  var first=jSproutStageIdx<0;
+  jSproutStageIdx=s;
+  var st=JSPROUT_STAGES[s];
+  jsprout.innerHTML='<svg width="'+st.size+'" height="'+st.size+'" viewBox="0 0 24 24" fill="none">'+st.svg+'</svg>';
+  if(!first&&!RM){
+    jsprout.classList.remove("pop");void jsprout.offsetWidth;jsprout.classList.add("pop");
+    setTimeout(function(){jsprout.classList.remove("pop")},550);
+  }
+}
+function journeyPaint(idx){
+  if(!jnodes.length)return null;
+  idx=idx<0?0:(idx>jnodes.length-1?jnodes.length-1:idx);
+  jnodes.forEach(function(n){
+    var i=parseInt(n.getAttribute("data-idx"),10);
+    n.classList.remove("grown","current","upcoming");
+    n.classList.add(i<idx?"grown":(i===idx?"current":"upcoming"));
+  });
+  var cur=jnodes[idx];
+  var cx=cur.offsetLeft+cur.offsetWidth/2;
+  if(jfill)jfill.style.width=Math.max(0,cx-40)+"px";
+  if(jsprout)jsprout.style.left=cx+"px";
+  jsproutGrow(idx/Math.max(1,jnodes.length-1));
+  return cur;
+}
+function journeyLayout(){
+  if(!jpanel||!jrail)return;
+  jTravel=Math.max(0,jrail.scrollWidth-jpanel.clientWidth);
+  if(jPinned&&jscroller&&jsticky){
+    var h=jsticky.getBoundingClientRect().height;
+    /* pin sırasında bölümü viewport'ta dikey ortala — üst/alt ölü alan yok */
+    jPinTop=Math.max(64,Math.round(64+(window.innerHeight-64-h)/2));
+    jsticky.style.top=jPinTop+"px";
+    jscroller.style.height=(h+jTravel)+"px";
+  }
+}
+function journeyOnScroll(){
+  if(!jPinned||!jscroller||!jrail||jTravel<=0)return;
+  var rect=jscroller.getBoundingClientRect();
+  var p=(jPinTop-rect.top)/jTravel;
+  p=p<0?0:(p>1?1:p);
+  jrail.style.transform="translateX("+(-p*jTravel).toFixed(1)+"px)";
+  journeyPaint(Math.round(p*(jnodes.length-1)));
+  if(jhint)jhint.style.opacity=(p>0.02&&p<0.98)?"0":"";
+}
+function journeyGoTo(idx){
+  journeyPaint(idx);
+  if(jPinned&&jscroller){
+    var rect=jscroller.getBoundingClientRect();
+    var targetP=idx/(jnodes.length-1);
+    var top=window.pageYOffset+rect.top-jPinTop+targetP*jTravel;
+    window.scrollTo({top:top,behavior:RM?"auto":"smooth"});
+  } else {
+    var cur=jnodes[idx];
+    if(cur)cur.scrollIntoView({inline:"center",block:"nearest",behavior:RM?"auto":"smooth"});
+  }
+}
+jchips.forEach(function(c){
+  c.addEventListener("click",function(){
+    jchips.forEach(function(o){o.setAttribute("aria-pressed",o===c?"true":"false")});
+    journeyGoTo(parseInt(c.getAttribute("data-idx"),10));
+  });
+});
+if(jnodes.length&&jscroller&&jpanel&&jrail){
+  if(!RM){jPinned=true;jscroller.classList.add("pin")}
+  journeyLayout();
+  journeyPaint(0);
+}
+
 /* 7 yaprak kutlaması */
 var band=$(".band"),fell=false;
 function celebrate(){
@@ -1202,18 +1390,40 @@ function goStore(){
 $$('a[href$="#indir"]').forEach(function(a){
   a.addEventListener("click",function(e){e.preventDefault();goStore()});
 });
+/* 9b FAB filiz→ağaç: sayfa ilerledikçe evre atlar, evre değişince zıplar */
+var FAB_STAGES=[
+  '<path d="M12 21 V11" stroke="#FFF7EF" stroke-width="2.2" stroke-linecap="round"/><path d="M12 12 C12 8.5 9.5 6.5 6 6.5 C6 10 8.5 12 12 12 Z" fill="#FFF7EF"/><path d="M12 10 C12 7 14.2 5 17.5 5 C17.5 8.2 15.2 10.2 12 10 Z" fill="#E8836B"/>',
+  '<path d="M12 22 V8" stroke="#FFF7EF" stroke-width="2.2" stroke-linecap="round"/><path d="M12 16.5 C12 13.7 10 12 7 12 C7 14.8 9.2 16.5 12 16.5 Z" fill="#FFF7EF"/><path d="M12 16.5 C12 13.7 14 12 17 12 C17 14.8 14.8 16.5 12 16.5 Z" fill="#FFF7EF"/><path d="M12 9.5 C12 6.7 10 5 7 5 C7 7.8 9.2 9.5 12 9.5 Z" fill="#FFF7EF"/><path d="M12 8.5 C12 5.9 14 4.4 16.8 4.4 C16.8 7.2 14.6 8.8 12 8.5 Z" fill="#E8836B"/>',
+  '<path d="M12 22 V12" stroke="#FFF7EF" stroke-width="2.4" stroke-linecap="round"/><circle cx="12" cy="8" r="5.2" fill="#FFF7EF"/><circle cx="7.2" cy="10.8" r="3.2" fill="#FFF7EF"/><circle cx="16.8" cy="10.8" r="3.2" fill="#FFF7EF"/><circle cx="14.4" cy="6.2" r="1.5" fill="#E8836B"/>'
+];
+var fabBtn=null,fabIcon=null,fabStageIdx=-1;
+function fabSetStage(s){
+  if(!fabIcon||s===fabStageIdx)return;
+  var first=fabStageIdx<0;
+  fabStageIdx=s;
+  fabIcon.innerHTML='<svg width="26" height="26" viewBox="0 0 24 24" fill="none">'+FAB_STAGES[s]+'</svg>';
+  if(!first&&!RM&&fabBtn){
+    fabBtn.classList.remove("grow");void fabBtn.offsetWidth;fabBtn.classList.add("grow");
+    setTimeout(function(){if(fabBtn)fabBtn.classList.remove("grow")},600);
+  }
+}
+function fabGrow(){
+  if(!fabIcon)return;
+  var max=Math.max(1,document.body.scrollHeight-window.innerHeight);
+  var p=window.pageYOffset/max;
+  fabSetStage(p<0.35?0:(p<0.75?1:2));
+}
 (function(){
   var hero=$(".hero"),foot=$("footer");
   if(!hero||!foot)return;
   var fab=document.createElement("button");
   fab.id="fab";fab.type="button";
   fab.setAttribute("aria-label","Get Sprout Way");
-  fab.innerHTML='<span class="fabc" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none">'+
-    '<path d="M12 21 V11" stroke="#FFF7EF" stroke-width="2.2" stroke-linecap="round"/>'+
-    '<path d="M12 12 C12 8.5 9.5 6.5 6 6.5 C6 10 8.5 12 12 12 Z" fill="#FFF7EF"/>'+
-    '<path d="M12 10 C12 7 14.2 5 17.5 5 C17.5 8.2 15.2 10.2 12 10 Z" fill="#E8836B"/></svg></span>'+
+  fab.innerHTML='<span class="fabc" aria-hidden="true"></span>'+
     '<span class="fabl" aria-hidden="true">GO SPROUT WAY</span>';
   document.body.appendChild(fab);
+  fabBtn=fab;fabIcon=$(".fabc",fab);
+  fabSetStage(0);
   fab.addEventListener("click",goStore);
   if(!IO){fab.classList.add("on");return}
   var vis={h:true,f:false,b:false};
