@@ -351,6 +351,7 @@
   .jchip:focus-visible{outline:2.5px solid var(--coral);outline-offset:2px}
   .jscroller{position:relative}
   .jsticky{display:flex;flex-direction:column;justify-content:center}
+  .jsticky>.wrap{width:100%;min-width:0}
   .jscroller.pin .jsticky{position:sticky;top:64px}
   .jpanel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-l);padding:26px 0 22px;overflow-x:auto;overflow-y:hidden;box-shadow:0 1px 2px rgba(62,39,23,.04)}
   .jscroller.pin .jpanel{overflow:hidden}
@@ -390,6 +391,13 @@
     .jline,.jfill{left:24px}
     .jline{right:24px}
     .jsprout{left:24px}
+    .jsticky .kicker{margin-bottom:4px}
+    .jsticky h2{font-size:26px;line-height:1.2;margin:4px 0 8px}
+    .jsticky .lead{display:none}
+    .jhint{display:none}
+    .jchips{margin-bottom:10px}
+    .journey .numgrid{margin-top:10px;padding:12px 10px}
+    .journey .numgrid b{font-size:22px}
   }
   @media(prefers-reduced-motion:no-preference){#fab.grow .fabc{animation:sw-fabpop .55s cubic-bezier(.34,1.56,.64,1)}}
   @keyframes sw-fabpop{0%{transform:scale(1)}35%{transform:scale(1.22) translateY(-7px)}65%{transform:scale(.94) translateY(2px)}100%{transform:scale(1)}}
@@ -1298,7 +1306,11 @@ function journeyPaint(idx){
 }
 function journeyLayout(){
   if(!jpanel||!jrail)return;
-  jTravel=Math.max(0,jrail.scrollWidth-jpanel.clientWidth);
+  /* yolculuk TAM son kartın sağ kenarı panele oturunca biter —
+     ray'in kuyruk boşluğu kadar ölü kaydırma kalmaz */
+  var last=jnodes.length?jnodes[jnodes.length-1]:null;
+  var end=last?(last.offsetLeft+last.offsetWidth+16):jrail.scrollWidth;
+  jTravel=Math.max(0,Math.min(end,jrail.scrollWidth)-jpanel.clientWidth);
   if(jPinned&&jscroller&&jsticky){
     var h=jsticky.getBoundingClientRect().height;
     /* pin sırasında bölümü viewport'ta dikey ortala — üst/alt ölü alan yok */
@@ -1336,7 +1348,7 @@ jchips.forEach(function(c){
 });
 function journeyMode(){
   if(!jscroller)return;
-  var want=!RM&&window.innerWidth>720;
+  var want=!RM;
   if(want===jPinned)return;
   jPinned=want;
   jscroller.classList.toggle("pin",want);
@@ -1409,11 +1421,10 @@ function ctaPulse(){
 }
 function goStore(){
   var ua=navigator.userAgent||"";
-  if(/android/i.test(ua)){location.href=PLAY_URL;return}
+  /* herkes kendi mağazasına: iOS App Store'a (canlıysa), diğer herkes Play'e.
+     Hiçbir durumda sayfa başına kaydırma yok. */
   if(/iPhone|iPad|iPod/i.test(ua)&&APP_STORE_URL){location.href=APP_STORE_URL;return}
-  var t=document.getElementById("indir");
-  if(t)t.scrollIntoView({behavior:RM?"auto":"smooth",block:"center"});
-  ctaPulse();
+  location.href=PLAY_URL;
 }
 /* nav + footer İndir linkleri: href fallback kalır, davranış üstlenilir */
 $$('a[href$="#indir"]').forEach(function(a){
