@@ -380,6 +380,17 @@
   .jcap .jdot{background:var(--forest)}
   .jhint{text-align:center;font-size:12px;color:var(--muted);margin-top:10px;transition:opacity .3s ease}
   .journey .numgrid{margin-top:12px;padding:16px 14px}
+  @media(max-width:720px){
+    .jchips{gap:6px}
+    .jchip{font-size:12px;padding:6px 10px}
+    .jnode{flex:0 0 118px;width:118px;min-height:172px;padding:0 8px}
+    .jnode .jtxt b{font-size:12.5px}
+    .jpanel{padding:22px 0 18px}
+    .jrail{padding:0 24px}
+    .jline,.jfill{left:24px}
+    .jline{right:24px}
+    .jsprout{left:24px}
+  }
   @media(prefers-reduced-motion:no-preference){#fab.grow .fabc{animation:sw-fabpop .55s cubic-bezier(.34,1.56,.64,1)}}
   @keyframes sw-fabpop{0%{transform:scale(1)}35%{transform:scale(1.22) translateY(-7px)}65%{transform:scale(.94) translateY(2px)}100%{transform:scale(1)}}
   .jmerak{margin-top:auto;width:100%;background:var(--coral-soft);border-radius:10px;padding:7px 8px;font-size:10.5px;line-height:1.32;color:var(--ink)}
@@ -1034,7 +1045,7 @@ window.addEventListener("scroll",function(){
   if(!tick){tick=true;requestAnimationFrame(function(){tick=false;drawTrail();parallax();journeyOnScroll();fabGrow()})}
 },{passive:true});
 var rT=null;
-function queueBuild(){if(rT)clearTimeout(rT);rT=setTimeout(function(){buildSpine();journeyLayout();journeyOnScroll()},160)}
+function queueBuild(){if(rT)clearTimeout(rT);rT=setTimeout(function(){buildSpine();journeyMode();journeyLayout();journeyOnScroll()},160)}
 window.addEventListener("resize",queueBuild,{passive:true});
 window.addEventListener("load",queueBuild);
 document.addEventListener("toggle",queueBuild,true);
@@ -1323,10 +1334,28 @@ jchips.forEach(function(c){
     journeyGoTo(parseInt(c.getAttribute("data-idx"),10));
   });
 });
+function journeyMode(){
+  if(!jscroller)return;
+  var want=!RM&&window.innerWidth>720;
+  if(want===jPinned)return;
+  jPinned=want;
+  jscroller.classList.toggle("pin",want);
+  if(!want){
+    jscroller.style.height="";
+    if(jsticky)jsticky.style.top="";
+    if(jrail)jrail.style.transform="";
+  }
+}
 if(jnodes.length&&jscroller&&jpanel&&jrail){
-  if(!RM){jPinned=true;jscroller.classList.add("pin")}
+  journeyMode();
   journeyLayout();
   journeyPaint(0);
+  /* mobil: panel swipe'ı filizi büyütür */
+  jpanel.addEventListener("scroll",function(){
+    if(jPinned)return;
+    var m=jpanel.scrollWidth-jpanel.clientWidth;
+    if(m>0)journeyPaint(Math.round(jpanel.scrollLeft/m*(jnodes.length-1)));
+  },{passive:true});
 }
 
 /* 7 yaprak kutlaması */
