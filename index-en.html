@@ -329,6 +329,12 @@
   .qbars i{width:34px;height:9px;border-radius:5px;background:var(--tint);border:1px solid var(--line)}
   .qwin{position:relative;width:110px;height:9px;border-radius:5px;background:var(--tint);overflow:hidden}
   .qwin i{position:absolute;left:52%;top:0;width:34%;height:100%;background:var(--coral);border-radius:5px}
+  .qask{margin-top:12px;background:var(--tint);border:1px solid rgba(61,90,71,.18);border-radius:var(--radius-m);padding:13px 15px}
+  .qask b{display:block;font-size:13.5px;color:var(--forest);margin-bottom:4px}
+  .qask p{font-size:12.5px;color:var(--muted);line-height:1.45;margin:0}
+  .qask .qaskbar{display:flex;align-items:center;gap:8px;margin-top:10px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:8px 12px}
+  .qask .qaskbar span{font-size:12.5px;color:rgba(62,39,23,.45);flex:1;text-align:left}
+  .qask .qaskbar .qasksend{flex:0 0 26px;width:26px;height:26px;border-radius:50%;background:var(--forest);display:grid;place-items:center}
   .qnote{display:block;margin-top:10px;font-size:12px;color:var(--muted);font-style:italic}
   @media(prefers-reduced-motion:no-preference){
     .qcard.play{animation:sw-cardin .4s ease}
@@ -364,7 +370,7 @@
   .jsprout{position:absolute;top:22px;left:40px;transform:translate(-50%,-50%);filter:drop-shadow(0 2px 4px rgba(62,39,23,.18))}
   .jsprout svg{display:block}
   @media(prefers-reduced-motion:no-preference){.jsprout.pop svg{animation:sw-fabpop .5s cubic-bezier(.34,1.56,.64,1)}}
-  .jnode{flex:0 0 130px;width:130px;min-height:206px;padding:0 10px;display:flex;flex-direction:column;align-items:center;text-align:center}
+  .jnode{flex:0 0 152px;width:152px;min-height:238px;padding:0 10px;display:flex;flex-direction:column;align-items:center;text-align:center}
   .jdot{width:12px;height:12px;border-radius:50%;background:var(--jc,var(--line));border:3px solid var(--card);margin-bottom:14px;flex-shrink:0}
   .jnode .jtxt{display:flex;flex-direction:column;align-items:center;flex:1;width:100%}
   .jnow{display:none;font-style:normal;font-size:9.5px;font-weight:800;letter-spacing:.05em;color:#fff;background:var(--coral);border-radius:5px;padding:2px 7px;margin:0 auto 6px;width:fit-content}
@@ -384,7 +390,7 @@
   @media(max-width:720px){
     .jchips{gap:6px}
     .jchip{font-size:12px;padding:6px 10px}
-    .jnode{flex:0 0 118px;width:118px;min-height:200px;padding:0 8px}
+    .jnode{flex:0 0 140px;width:140px;min-height:232px;padding:0 8px}
     .jnode .jtxt b{font-size:12.5px}
     .jpanel{padding:22px 0 18px}
     .jrail{padding:0 24px}
@@ -401,7 +407,7 @@
   }
   @media(prefers-reduced-motion:no-preference){#fab.grow .fabc{animation:sw-fabpop .55s cubic-bezier(.34,1.56,.64,1)}}
   @keyframes sw-fabpop{0%{transform:scale(1)}35%{transform:scale(1.22) translateY(-7px)}65%{transform:scale(.94) translateY(2px)}100%{transform:scale(1)}}
-  .jmerak{margin-top:auto;width:100%;background:var(--coral-soft);border-radius:10px;padding:7px 8px;font-size:10.5px;line-height:1.32;color:var(--ink)}
+  .jmerak{margin-top:auto;width:100%;background:var(--coral-soft);border-radius:10px;padding:7px 8px;font-size:10.5px;line-height:1.32;color:var(--ink);display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
   .jmerak b{display:block;font-size:8.5px;font-weight:800;letter-spacing:.06em;color:var(--coral);text-transform:uppercase;margin-bottom:2px}
 
   /* 5 · Sayılar bandı */
@@ -583,69 +589,90 @@
     <div class="journey">
       <div class="jchips" role="group" aria-label="What is your baby doing right now?">
         <button class="jchip" type="button" aria-pressed="true" data-idx="0">Newborn</button>
-        <button class="jchip" type="button" aria-pressed="false" data-idx="11">Crawling</button>
-        <button class="jchip" type="button" aria-pressed="false" data-idx="15">First words</button>
-        <button class="jchip" type="button" aria-pressed="false" data-idx="21">Stacking blocks</button>
-        <button class="jchip" type="button" aria-pressed="false" data-idx="23">Words exploding</button>
-        <button class="jchip" type="button" aria-pressed="false" data-idx="28">Pretend play</button>
-        <button class="jchip" type="button" aria-pressed="false" data-idx="37">Telling stories</button>
-        <button class="jchip" type="button" aria-pressed="false" data-idx="47">Ready for school</button>
+        <button class="jchip" type="button" aria-pressed="false" data-idx="19">Walking</button>
+        <button class="jchip" type="button" aria-pressed="false" data-idx="21">First words</button>
+        <button class="jchip" type="button" aria-pressed="false" data-idx="46">Pretend play</button>
+        <button class="jchip" type="button" aria-pressed="false" data-idx="69">Telling stories</button>
+        <button class="jchip" type="button" aria-pressed="false" data-idx="71">Ready for school</button>
       </div>
       <div class="jpanel" id="jpanel">
         <div class="jrail" id="jrail">
           <div class="jline" aria-hidden="true"></div>
           <div class="jfill" id="jfill" aria-hidden="true"></div>
           <div class="jsprout" id="jsprout" aria-hidden="true"><svg width="23" height="23" viewBox="0 0 24 24" fill="none"><path d="M12 21 V11" stroke="#3D5A47" stroke-width="2.2" stroke-linecap="round"/><path d="M12 12 C12 8.5 9.5 6.5 6 6.5 C6 10 8.5 12 12 12 Z" fill="#3D5A47"/><path d="M12 10 C12 7 14.2 5 17.5 5 C17.5 8.2 15.2 10.2 12 10 Z" fill="#E8836B"/></svg></div>
-              <div class="jnode" data-idx="0" style="--jc:#F97316"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Head Control</b><span>Gross Motor · 1/24</span><div class="jmerak"><b>Curiosity</b>When will they hold their head up?</div></div></div>
-              <div class="jnode" data-idx="1" style="--jc:#8B5CF6"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Grasp Reflex</b><span>Fine Motor · 1/24</span><div class="jmerak"><b>Curiosity</b>Why is their grip so strong?</div></div></div>
-              <div class="jnode" data-idx="2" style="--jc:#0EA5E9"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>First Sounds</b><span>Language · 1/24</span><div class="jmerak"><b>Curiosity</b>What do these first sounds mean?</div></div></div>
-              <div class="jnode" data-idx="3" style="--jc:#16A34A"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Face Recognition</b><span>Cognitive · 1/24</span><div class="jmerak"><b>Curiosity</b>When will they know my face?</div></div></div>
-              <div class="jnode" data-idx="4" style="--jc:#F59E0B"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Sensory Responses</b><span>Sensory · 1/24</span><div class="jmerak"><b>Curiosity</b>Why do sounds startle them?</div></div></div>
-              <div class="jnode" data-idx="5" style="--jc:#EC4899"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Social Smile</b><span>Social-Emotional · 1/24</span><div class="jmerak"><b>Curiosity</b>When comes the first real smile?</div></div></div>
-              <div class="jnode" data-idx="6" style="--jc:#F59E0B"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Tactile Discovery</b><span>Sensory · 11/24</span><div class="jmerak"><b>Curiosity</b>Why do they touch everything?</div></div></div>
-              <div class="jnode" data-idx="7" style="--jc:#EC4899"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Interactive Games</b><span>Social-Emotional · 11/24</span><div class="jmerak"><b>Curiosity</b>When will they play back with me?</div></div></div>
-              <div class="jnode" data-idx="8" style="--jc:#F59E0B"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Vestibular Enjoyment</b><span>Sensory · 4/24</span><div class="jmerak"><b>Curiosity</b>Why do they love being rocked?</div></div></div>
-              <div class="jnode" data-idx="9" style="--jc:#0EA5E9"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Canonical Babbling</b><span>Language · 4/24</span><div class="jmerak"><b>Curiosity</b>When does 'ba-ba' mean something?</div></div></div>
-              <div class="jnode" data-idx="10" style="--jc:#8B5CF6"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Raking Grasp</b><span>Fine Motor · 11/24</span><div class="jmerak"><b>Curiosity</b>When will they grab a toy alone?</div></div></div>
-              <div class="jnode" data-idx="11" style="--jc:#F97316"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Crawling</b><span>Gross Motor · 4/24</span><div class="jmerak"><b>Curiosity</b>When will they start crawling?</div></div></div>
-              <div class="jnode" data-idx="12" style="--jc:#8B5CF6"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Pincer Grasp</b><span>Fine Motor · 4/24</span><div class="jmerak"><b>Curiosity</b>When can they pick up tiny things?</div></div></div>
-              <div class="jnode" data-idx="13" style="--jc:#16A34A"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Object Permanence</b><span>Cognitive · 4/24</span><div class="jmerak"><b>Curiosity</b>Will they look for a hidden toy?</div></div></div>
-              <div class="jnode" data-idx="14" style="--jc:#EC4899"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Social Referencing</b><span>Social-Emotional · 4/24</span><div class="jmerak"><b>Curiosity</b>Why do they check my face first?</div></div></div>
-              <div class="jnode" data-idx="15" style="--jc:#0EA5E9"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>First Words</b><span>Language · 6/24</span><div class="jmerak"><b>Curiosity</b>When comes the first word?</div></div></div>
-              <div class="jnode" data-idx="16" style="--jc:#F97316"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Walking Backward</b><span>Gross Motor · 11/24</span><div class="jmerak"><b>Curiosity</b>Is walking backward normal?</div></div></div>
-              <div class="jnode" data-idx="17" style="--jc:#F59E0B"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Sensory Self-Regulation</b><span>Sensory · 8/24</span><div class="jmerak"><b>Curiosity</b>How do they calm themselves?</div></div></div>
-              <div class="jnode" data-idx="18" style="--jc:#F97316"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Climbing Stairs</b><span>Gross Motor · 8/24</span><div class="jmerak"><b>Curiosity</b>When can they climb the stairs?</div></div></div>
-              <div class="jnode" data-idx="19" style="--jc:#F59E0B"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Messy Hands Eating</b><span>Sensory · 14/24</span><div class="jmerak"><b>Curiosity</b>Is playing with food a problem?</div></div></div>
-              <div class="jnode" data-idx="20" style="--jc:#16A34A"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Category Understanding</b><span>Cognitive · 7/24</span><div class="jmerak"><b>Curiosity</b>When do they start grouping things?</div></div></div>
-              <div class="jnode" data-idx="21" style="--jc:#8B5CF6"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Stacking Blocks</b><span>Fine Motor · 8/24</span><div class="jmerak"><b>Curiosity</b>How many blocks can they stack?</div></div></div>
-              <div class="jnode" data-idx="22" style="--jc:#EC4899"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Parallel Play</b><span>Social-Emotional · 7/24</span><div class="jmerak"><b>Curiosity</b>Why play beside, not together?</div></div></div>
-              <div class="jnode" data-idx="23" style="--jc:#0EA5E9"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Vocabulary Explosion</b><span>Language · 8/24</span><div class="jmerak"><b>Curiosity</b>When does vocabulary explode?</div></div></div>
-              <div class="jnode" data-idx="24" style="--jc:#8B5CF6"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Shape Sorting</b><span>Fine Motor · 14/24</span><div class="jmerak"><b>Curiosity</b>When can they fit the shapes?</div></div></div>
-              <div class="jnode" data-idx="25" style="--jc:#16A34A"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>First Puzzles</b><span>Cognitive · 14/24</span><div class="jmerak"><b>Curiosity</b>When can they do a puzzle alone?</div></div></div>
-              <div class="jnode" data-idx="26" style="--jc:#F97316"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Walking a Line</b><span>Gross Motor · 14/24</span><div class="jmerak"><b>Curiosity</b>When will their balance settle?</div></div></div>
-              <div class="jnode" data-idx="27" style="--jc:#0EA5E9"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Names by Name</b><span>Language · 11/24</span><div class="jmerak"><b>Curiosity</b>When will they call my name?</div></div></div>
-              <div class="jnode" data-idx="28" style="--jc:#EC4899"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Pretend Play</b><span>Social-Emotional · 15/24</span><div class="jmerak"><b>Curiosity</b>When does pretend play begin?</div></div></div>
-              <div class="jnode" data-idx="29" style="--jc:#16A34A"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Sorting & Grouping</b><span>Cognitive · 10/24</span><div class="jmerak"><b>Curiosity</b>When can they sort by color?</div></div></div>
-              <div class="jnode" data-idx="30" style="--jc:#F97316"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Standing on One Foot</b><span>Gross Motor · 17/24</span><div class="jmerak"><b>Curiosity</b>When can they stand on one foot?</div></div></div>
-              <div class="jnode" data-idx="31" style="--jc:#8B5CF6"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Snipping with Scissors</b><span>Fine Motor · 17/24</span><div class="jmerak"><b>Curiosity</b>When are scissors safe for them?</div></div></div>
-              <div class="jnode" data-idx="32" style="--jc:#0EA5E9"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Plurals</b><span>Language · 14/24</span><div class="jmerak"><b>Curiosity</b>When does grammar start clicking?</div></div></div>
-              <div class="jnode" data-idx="33" style="--jc:#F59E0B"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Fine Motor-Sensory Coordination</b><span>Sensory · 17/24</span><div class="jmerak"><b>Curiosity</b>How does hand-eye sharpen?</div></div></div>
-              <div class="jnode" data-idx="34" style="--jc:#0EA5E9"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Past Tense</b><span>Language · 17/24</span><div class="jmerak"><b>Curiosity</b>When can they tell about yesterday?</div></div></div>
-              <div class="jnode" data-idx="35" style="--jc:#16A34A"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Counting to Ten</b><span>Cognitive · 18/24</span><div class="jmerak"><b>Curiosity</b>When is counting truly counting?</div></div></div>
-              <div class="jnode" data-idx="36" style="--jc:#EC4899"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Making Friends</b><span>Social-Emotional · 18/24</span><div class="jmerak"><b>Curiosity</b>When will they make a real friend?</div></div></div>
-              <div class="jnode" data-idx="37" style="--jc:#0EA5E9"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Fluent Narrator</b><span>Language · 21/24</span><div class="jmerak"><b>Curiosity</b>Can they tell a whole story?</div></div></div>
-              <div class="jnode" data-idx="38" style="--jc:#F97316"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Skipping & Galloping</b><span>Gross Motor · 21/24</span><div class="jmerak"><b>Curiosity</b>When will they learn to skip?</div></div></div>
-              <div class="jnode" data-idx="39" style="--jc:#8B5CF6"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Writing Their Name</b><span>Fine Motor · 21/24</span><div class="jmerak"><b>Curiosity</b>When will they write their name?</div></div></div>
-              <div class="jnode" data-idx="40" style="--jc:#16A34A"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Counting Past Ten</b><span>Cognitive · 21/24</span><div class="jmerak"><b>Curiosity</b>Ready with numbers for school?</div></div></div>
-              <div class="jnode" data-idx="41" style="--jc:#EC4899"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Fair Play and Rules</b><span>Social-Emotional · 21/24</span><div class="jmerak"><b>Curiosity</b>When can they handle losing?</div></div></div>
-              <div class="jnode" data-idx="42" style="--jc:#F59E0B"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Refined Balance & Body Control</b><span>Sensory · 21/24</span><div class="jmerak"><b>Curiosity</b>When does body control mature?</div></div></div>
-              <div class="jnode" data-idx="43" style="--jc:#0EA5E9"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Introduces Themselves</b><span>Language · 24/24</span><div class="jmerak"><b>Curiosity</b>Can they introduce themselves?</div></div></div>
-              <div class="jnode" data-idx="44" style="--jc:#F97316"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Two-Wheel Bike & Agility</b><span>Gross Motor · 24/24</span><div class="jmerak"><b>Curiosity</b>When can they ride a bike?</div></div></div>
-              <div class="jnode" data-idx="45" style="--jc:#8B5CF6"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Mature Pencil & Writing</b><span>Fine Motor · 24/24</span><div class="jmerak"><b>Curiosity</b>How do they hold a pencil right?</div></div></div>
-              <div class="jnode" data-idx="46" style="--jc:#16A34A"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Rules & Reasoning</b><span>Cognitive · 24/24</span><div class="jmerak"><b>Curiosity</b>When do game rules make sense?</div></div></div>
-              <div class="jnode" data-idx="47" style="--jc:#EC4899"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Coping with Brief Separations</b><span>Social-Emotional · 24/24</span><div class="jmerak"><b>Curiosity</b>Ready for goodbyes at school?</div></div></div>
-              <div class="jnode" data-idx="48" style="--jc:#F59E0B"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Sensory Tuning for Focus</b><span>Sensory · 24/24</span><div class="jmerak"><b>Curiosity</b>How do they gather their focus?</div></div></div>
-              <div class="jnode jcap" data-idx="49"><span class="jdot"></span><div class="jtxt"><b>Ready for Preschool</b><span>You've come this far together</span></div></div>
+              <div class="jnode" data-idx="0" style="--jc:#0EA5E9"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Cooing Conversations</b><span>Language · 2/24</span><div class="jmerak"><b>Curiosity</b>When will my baby say their first word?</div></div></div>
+              <div class="jnode" data-idx="1" style="--jc:#16A34A"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Visual Tracking</b><span>Cognitive · 2/24</span><div class="jmerak"><b>Curiosity</b>When will my baby look for and find a hidden toy?</div></div></div>
+              <div class="jnode" data-idx="2" style="--jc:#EC4899"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Social Reciprocity</b><span>Social-Emotional · 2/24</span><div class="jmerak"><b>Curiosity</b>When will my child learn to wait their turn?</div></div></div>
+              <div class="jnode" data-idx="3" style="--jc:#8B5CF6"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Voluntary Reaching</b><span>Fine Motor · 2/24</span><div class="jmerak"><b>Curiosity</b>When will my child throw and catch a ball?</div></div></div>
+              <div class="jnode" data-idx="4" style="--jc:#F59E0B"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Oral Sensory Exploration</b><span>Sensory · 3/24</span><div class="jmerak"><b>Curiosity</b>When will my child move on from the bottle?</div></div></div>
+              <div class="jnode" data-idx="5" style="--jc:#EC4899"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Interactive Games</b><span>Social-Emotional · 11/24</span><div class="jmerak"><b>Curiosity</b>When will my child learn to wait their turn?</div></div></div>
+              <div class="jnode" data-idx="6" style="--jc:#16A34A"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Cause &amp; Effect</b><span>Cognitive · 3/24</span><div class="jmerak"><b>Curiosity</b>Why does my child throw everything on the floor?</div></div></div>
+              <div class="jnode" data-idx="7" style="--jc:#F97316"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Sitting Independently</b><span>Gross Motor · 3/24</span><div class="jmerak"><b>Curiosity</b>When will my baby walk?</div></div></div>
+              <div class="jnode" data-idx="8" style="--jc:#8B5CF6"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Hand Transfer</b><span>Fine Motor · 3/24</span><div class="jmerak"><b>Curiosity</b>When will my baby feed themselves with their fingers?</div></div></div>
+              <div class="jnode" data-idx="9" style="--jc:#F59E0B"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Hand-to-Mouth Exploration</b><span>Sensory · 12/24</span><div class="jmerak"><b>Curiosity</b>Why does my baby put everything in their mouth?</div></div></div>
+              <div class="jnode" data-idx="10" style="--jc:#0EA5E9"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Canonical Babbling</b><span>Language · 4/24</span><div class="jmerak"><b>Curiosity</b>When will my baby say their first word?</div></div></div>
+              <div class="jnode" data-idx="11" style="--jc:#F59E0B"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Proprioceptive Exploration</b><span>Sensory · 5/24</span><div class="jmerak"><b>Curiosity</b>When will my child run and jump?</div></div></div>
+              <div class="jnode" data-idx="12" style="--jc:#F97316"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Pulling to Stand</b><span>Gross Motor · 5/24</span><div class="jmerak"><b>Curiosity</b>When will my baby walk?</div></div></div>
+              <div class="jnode" data-idx="13" style="--jc:#EC4899"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Social Referencing</b><span>Social-Emotional · 4/24</span><div class="jmerak"><b>Curiosity</b>When will we go on outings without the stroller?</div></div></div>
+              <div class="jnode" data-idx="14" style="--jc:#EC4899"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Attachment Behaviors</b><span>Social-Emotional · 5/24</span><div class="jmerak"><b>Curiosity</b>Why does my baby cry when I leave the room?</div></div></div>
+              <div class="jnode" data-idx="15" style="--jc:#F59E0B"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Texture Tolerance</b><span>Sensory · 6/24</span><div class="jmerak"><b>Curiosity</b>When will my child let me brush their teeth?</div></div></div>
+              <div class="jnode" data-idx="16" style="--jc:#8B5CF6"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Pointing</b><span>Fine Motor · 5/24</span><div class="jmerak"><b>Curiosity</b>When will my child tell me what they want in words?</div></div></div>
+              <div class="jnode" data-idx="17" style="--jc:#EC4899"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Joint Attention</b><span>Social-Emotional · 12/24</span><div class="jmerak"><b>Curiosity</b>Why does my baby point and then look at you?</div></div></div>
+              <div class="jnode" data-idx="18" style="--jc:#16A34A"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Means-End Understanding</b><span>Cognitive · 5/24</span><div class="jmerak"><b>Curiosity</b>When will my child figure out a solution to a problem on their own?</div></div></div>
+              <div class="jnode" data-idx="19" style="--jc:#F97316"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Independent Walking</b><span>Gross Motor · 7/24</span><div class="jmerak"><b>Curiosity</b>When will my child tell me they need the toilet?</div></div></div>
+              <div class="jnode" data-idx="20" style="--jc:#F59E0B"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Water &amp; Bubble Play</b><span>Sensory · 13/24</span><div class="jmerak"><b>Curiosity</b>When will my child wash their own hands by themselves?</div></div></div>
+              <div class="jnode" data-idx="21" style="--jc:#0EA5E9"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>First Words</b><span>Language · 6/24</span><div class="jmerak"><b>Curiosity</b>When will my child say their own name?</div></div></div>
+              <div class="jnode" data-idx="22" style="--jc:#8B5CF6"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Finger Feeding</b><span>Fine Motor · 13/24</span><div class="jmerak"><b>Curiosity</b>When will my baby use a spoon on their own?</div></div></div>
+              <div class="jnode" data-idx="23" style="--jc:#8B5CF6"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Container Play</b><span>Fine Motor · 6/24</span><div class="jmerak"><b>Curiosity</b>When will my child get dressed by themselves?</div></div></div>
+              <div class="jnode" data-idx="24" style="--jc:#16A34A"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Emerging Symbolic Play</b><span>Cognitive · 6/24</span><div class="jmerak"><b>Curiosity</b>Why does my child imitate everything I do?</div></div></div>
+              <div class="jnode" data-idx="25" style="--jc:#F59E0B"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Sensory Self-Regulation</b><span>Sensory · 8/24</span><div class="jmerak"><b>Curiosity</b>When will my baby sleep through the night?</div></div></div>
+              <div class="jnode" data-idx="26" style="--jc:#0EA5E9"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Vocabulary Growth</b><span>Language · 7/24</span><div class="jmerak"><b>Curiosity</b>When will my child start putting two words together? (like "mommy water")</div></div></div>
+              <div class="jnode" data-idx="27" style="--jc:#F97316"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Climbing Stairs</b><span>Gross Motor · 8/24</span><div class="jmerak"><b>Curiosity</b>When will my child climb stairs on their own?</div></div></div>
+              <div class="jnode" data-idx="28" style="--jc:#F59E0B"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Messy Hands Eating</b><span>Sensory · 14/24</span><div class="jmerak"><b>Curiosity</b>When will my child eat a whole meal by themselves?</div></div></div>
+              <div class="jnode" data-idx="29" style="--jc:#8B5CF6"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Scribbling</b><span>Fine Motor · 7/24</span><div class="jmerak"><b>Curiosity</b>When will my child hold a pencil properly and use scissors?</div></div></div>
+              <div class="jnode" data-idx="30" style="--jc:#16A34A"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Category Understanding</b><span>Cognitive · 7/24</span><div class="jmerak"><b>Curiosity</b>When will my child count from 1 to 10?</div></div></div>
+              <div class="jnode" data-idx="31" style="--jc:#F97316"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Running</b><span>Gross Motor · 9/24</span><div class="jmerak"><b>Curiosity</b>When will my child ride a bike (balance bike or tricycle)?</div></div></div>
+              <div class="jnode" data-idx="32" style="--jc:#EC4899"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Showing Feelings</b><span>Social-Emotional · 14/24</span><div class="jmerak"><b>Curiosity</b>When will my child tell me in words that they're sleepy?</div></div></div>
+              <div class="jnode" data-idx="33" style="--jc:#EC4899"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Parallel Play</b><span>Social-Emotional · 7/24</span><div class="jmerak"><b>Curiosity</b>When will my child play together with friends?</div></div></div>
+              <div class="jnode" data-idx="34" style="--jc:#0EA5E9"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Two-Word Combinations</b><span>Language · 9/24</span><div class="jmerak"><b>Curiosity</b>When will my child speak in full sentences?</div></div></div>
+              <div class="jnode" data-idx="35" style="--jc:#8B5CF6"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Spoon Use</b><span>Fine Motor · 10/24</span><div class="jmerak"><b>Curiosity</b>When will my child start using a fork?</div></div></div>
+              <div class="jnode" data-idx="36" style="--jc:#8B5CF6"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Shape Sorting</b><span>Fine Motor · 14/24</span><div class="jmerak"><b>Curiosity</b>When will my child put on their own shoes?</div></div></div>
+              <div class="jnode" data-idx="37" style="--jc:#F97316"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Kicking a Ball</b><span>Gross Motor · 13/24</span><div class="jmerak"><b>Curiosity</b>When will my child throw and catch a ball?</div></div></div>
+              <div class="jnode" data-idx="38" style="--jc:#F59E0B"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Sensory Preference Awareness</b><span>Sensory · 9/24</span><div class="jmerak"><b>Curiosity</b>When will my child be dry at night?</div></div></div>
+              <div class="jnode" data-idx="39" style="--jc:#F97316"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Jumping</b><span>Gross Motor · 10/24</span><div class="jmerak"><b>Curiosity</b>When will my child be able to stand on one foot?</div></div></div>
+              <div class="jnode" data-idx="40" style="--jc:#F59E0B"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Movement Planning</b><span>Sensory · 15/24</span><div class="jmerak"><b>Curiosity</b>When will my child help set the table?</div></div></div>
+              <div class="jnode" data-idx="41" style="--jc:#16A34A"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>First Puzzles</b><span>Cognitive · 14/24</span><div class="jmerak"><b>Curiosity</b>When will my baby start doing puzzles?</div></div></div>
+              <div class="jnode" data-idx="42" style="--jc:#F97316"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Walking a Line</b><span>Gross Motor · 14/24</span><div class="jmerak"><b>Curiosity</b>When will my child be able to stand on one foot?</div></div></div>
+              <div class="jnode" data-idx="43" style="--jc:#EC4899"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Cooperative Play Attempts</b><span>Social-Emotional · 8/24</span><div class="jmerak"><b>Curiosity</b>Why does my child keep saying "no"?</div></div></div>
+              <div class="jnode" data-idx="44" style="--jc:#0EA5E9"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Three-Four Word Sentences</b><span>Language · 10/24</span><div class="jmerak"><b>Curiosity</b>When will my child tell me about their day?</div></div></div>
+              <div class="jnode" data-idx="45" style="--jc:#8B5CF6"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Imitating Strokes</b><span>Fine Motor · 15/24</span><div class="jmerak"><b>Curiosity</b>When will my child hold a pencil properly and use scissors?</div></div></div>
+              <div class="jnode" data-idx="46" style="--jc:#EC4899"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Pretend Play</b><span>Social-Emotional · 15/24</span><div class="jmerak"><b>Curiosity</b>When will my child play pretend and role-play games with other children (playing house, doctor)?</div></div></div>
+              <div class="jnode" data-idx="47" style="--jc:#F97316"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Jumping Forward</b><span>Gross Motor · 15/24</span><div class="jmerak"><b>Curiosity</b>When will my child run and jump?</div></div></div>
+              <div class="jnode" data-idx="48" style="--jc:#F59E0B"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Multi-Sensory Integration</b><span>Sensory · 10/24</span><div class="jmerak"><b>Curiosity</b>When will my child wash their own hands by themselves?</div></div></div>
+              <div class="jnode" data-idx="49" style="--jc:#0EA5E9"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Body Parts</b><span>Language · 12/24</span><div class="jmerak"><b>Curiosity</b>When will my child be dry at night?</div></div></div>
+              <div class="jnode" data-idx="50" style="--jc:#16A34A"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Seeking Solutions</b><span>Cognitive · 9/24</span><div class="jmerak"><b>Curiosity</b>When will my child start asking "why?" questions?</div></div></div>
+              <div class="jnode" data-idx="51" style="--jc:#8B5CF6"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Threading Beads</b><span>Fine Motor · 16/24</span><div class="jmerak"><b>Curiosity</b>When will my child thread beads onto a string?</div></div></div>
+              <div class="jnode" data-idx="52" style="--jc:#16A34A"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Sorting &amp; Grouping</b><span>Cognitive · 10/24</span><div class="jmerak"><b>Curiosity</b>Why does my child line up their toys?</div></div></div>
+              <div class="jnode" data-idx="53" style="--jc:#0EA5E9"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Possessives</b><span>Language · 13/24</span><div class="jmerak"><b>Curiosity</b>When will my child speak in full sentences?</div></div></div>
+              <div class="jnode" data-idx="54" style="--jc:#F97316"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Alternating Stairs</b><span>Gross Motor · 16/24</span><div class="jmerak"><b>Curiosity</b>When will my child climb stairs on their own?</div></div></div>
+              <div class="jnode" data-idx="55" style="--jc:#F59E0B"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Calming Strategies</b><span>Sensory · 16/24</span><div class="jmerak"><b>Curiosity</b>When will my child fall asleep on their own?</div></div></div>
+              <div class="jnode" data-idx="56" style="--jc:#F59E0B"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Fine Motor-Sensory Coordination</b><span>Sensory · 17/24</span><div class="jmerak"><b>Curiosity</b>When will my child do up their own buttons and zippers?</div></div></div>
+              <div class="jnode" data-idx="57" style="--jc:#16A34A"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Matching Games</b><span>Cognitive · 16/24</span><div class="jmerak"><b>Curiosity</b>When will my child recognize and name colors correctly?</div></div></div>
+              <div class="jnode" data-idx="58" style="--jc:#0EA5E9"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Asks Questions</b><span>Language · 15/24</span><div class="jmerak"><b>Curiosity</b>When will my child have a real conversation with me?</div></div></div>
+              <div class="jnode" data-idx="59" style="--jc:#0EA5E9"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Colors &amp; Numbers</b><span>Language · 16/24</span><div class="jmerak"><b>Curiosity</b>When will my child count from 1 to 10?</div></div></div>
+              <div class="jnode" data-idx="60" style="--jc:#EC4899"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Naming Emotions</b><span>Social-Emotional · 17/24</span><div class="jmerak"><b>Curiosity</b>When will my child tell me about their dreams?</div></div></div>
+              <div class="jnode" data-idx="61" style="--jc:#F97316"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Pedaling a Tricycle</b><span>Gross Motor · 18/24</span><div class="jmerak"><b>Curiosity</b>When will my child ride a bike (balance bike or tricycle)?</div></div></div>
+              <div class="jnode" data-idx="62" style="--jc:#8B5CF6"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Tripod Grasp</b><span>Fine Motor · 18/24</span><div class="jmerak"><b>Curiosity</b>When will my child start using a fork?</div></div></div>
+              <div class="jnode" data-idx="63" style="--jc:#16A34A"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Size Ordering</b><span>Cognitive · 17/24</span><div class="jmerak"><b>Curiosity</b>When will my child sort objects by color, type, or size?</div></div></div>
+              <div class="jnode" data-idx="64" style="--jc:#0EA5E9"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Because Sentences</b><span>Language · 18/24</span><div class="jmerak"><b>Curiosity</b>When will my child start asking "why?" questions?</div></div></div>
+              <div class="jnode" data-idx="65" style="--jc:#EC4899"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Making Friends</b><span>Social-Emotional · 18/24</span><div class="jmerak"><b>Curiosity</b>When will my child comfortably join a group (playgroup, daycare) and follow shared instructions?</div></div></div>
+              <div class="jnode" data-idx="66" style="--jc:#8B5CF6"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Cutting &amp; Buttoning</b><span>Fine Motor · 19/24</span><div class="jmerak"><b>Curiosity</b>When will my child get dressed by themselves?</div></div></div>
+              <div class="jnode" data-idx="67" style="--jc:#16A34A"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Colors &amp; Shapes</b><span>Cognitive · 19/24</span><div class="jmerak"><b>Curiosity</b>When will my child recognize and name colors correctly?</div></div></div>
+              <div class="jnode" data-idx="68" style="--jc:#F97316"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Catching a Ball</b><span>Gross Motor · 20/24</span><div class="jmerak"><b>Curiosity</b>When will my child throw and catch a ball?</div></div></div>
+              <div class="jnode" data-idx="69" style="--jc:#0EA5E9"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Tells a Story</b><span>Language · 20/24</span><div class="jmerak"><b>Curiosity</b>When will my child tell me about their day?</div></div></div>
+              <div class="jnode" data-idx="70" style="--jc:#16A34A"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Sequencing Events</b><span>Cognitive · 20/24</span><div class="jmerak"><b>Curiosity</b>When will my child tell daily events in the right order (before and after)?</div></div></div>
+              <div class="jnode" data-idx="71" style="--jc:#EC4899"><span class="jdot"></span><div class="jtxt"><i class="jnow">NOW</i><b>Cooperative Role Play</b><span>Social-Emotional · 20/24</span><div class="jmerak"><b>Curiosity</b>When will my child work together with another child toward a shared goal (building a tower, a game)?</div></div></div>
+              <div class="jnode jcap" data-idx="72"><span class="jdot"></span><div class="jtxt"><b>Ready for Preschool</b><span>You've come this far together</span></div></div>
         </div>
       </div>
       <p class="jhint" id="jhint">The sprout grows as you scroll</p>
@@ -722,7 +749,7 @@
         <span class="kicker">Life Questions</span>
         <h3>"When will they hold the spoon on their own?"</h3>
         <p>You've wondered this too, haven't you? 78 questions parents actually ask, right here — and every answer comes not from a generic chart, but straight from your baby's own journey.</p>
-        <div class="featchips"><span>78 questions</span><span>Reasoned personal answers</span></div>
+        <div class="featchips"><span>78 questions</span><span>Send your own</span><span>Reasoned personal answers</span></div>
       </div>
       <div class="art demo">
         <div class="qdemo">
@@ -738,6 +765,14 @@
             <div class="qrow"><span class="ql">Upcoming window</span><span class="qwin" aria-hidden="true"><i></i></span></div>
             <span class="qnote">The real answer is computed from your baby's own map.</span>
           </div>
+            <div class="qask">
+              <b>Can't find your question?</b>
+              <p>Send your own curiosity from the app. Our child development specialist reviews every question; when yours is added we'll let you know — and it opens up on everyone's map.</p>
+              <div class="qaskbar" aria-hidden="true">
+                <span>Write what you're wondering…</span>
+                <span class="qasksend"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M4 12h14M12 5l7 7-7 7" stroke="#FFF7EF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              </div>
+            </div>
         </div>
       </div>
     </div>
@@ -1287,7 +1322,7 @@ qchips.forEach(function(c){
 var jchips=$$(".jchip"),jscroller=$("#jscroller"),jsticky=$("#jsticky"),jpanel=$("#jpanel"),
     jrail=$("#jrail"),jfill=$("#jfill"),jsprout=$("#jsprout"),jhint=$("#jhint");
 var jnodes=jrail?$$(".jnode",jrail):[];
-var jTravel=0,jPinned=false,jPinTop=64;
+var jTravel=0,jSpan=0,jPinned=false,jPinTop=64,JSPD=0.55;
 /* ray filizi: yolculuk ilerledikçe filiz→fidan→ağaç→geniş taçlı ağaç */
 var JSPROUT_STAGES=[
   {size:23,svg:'<path d="M12 21 V11" stroke="#3D5A47" stroke-width="2.2" stroke-linecap="round"/><path d="M12 12 C12 8.5 9.5 6.5 6 6.5 C6 10 8.5 12 12 12 Z" fill="#3D5A47"/><path d="M12 10 C12 7 14.2 5 17.5 5 C17.5 8.2 15.2 10.2 12 10 Z" fill="#E8836B"/>'},
@@ -1331,18 +1366,19 @@ function journeyLayout(){
   var last=jnodes.length?jnodes[jnodes.length-1]:null;
   var end=last?(last.offsetLeft+last.offsetWidth+16):jrail.scrollWidth;
   jTravel=Math.max(0,Math.min(end,jrail.scrollWidth)-jpanel.clientWidth);
+  jSpan=jTravel*JSPD;
   if(jPinned&&jscroller&&jsticky){
     var h=jsticky.getBoundingClientRect().height;
     /* pin sırasında bölümü viewport'ta dikey ortala — üst/alt ölü alan yok */
     jPinTop=Math.max(64,Math.round(64+(window.innerHeight-64-h)/2));
     jsticky.style.top=jPinTop+"px";
-    jscroller.style.height=(h+jTravel)+"px";
+    jscroller.style.height=(h+jSpan)+"px";
   }
 }
 function journeyOnScroll(){
-  if(!jPinned||!jscroller||!jrail||jTravel<=0)return;
+  if(!jPinned||!jscroller||!jrail||jSpan<=0)return;
   var rect=jscroller.getBoundingClientRect();
-  var p=(jPinTop-rect.top)/jTravel;
+  var p=(jPinTop-rect.top)/jSpan;
   p=p<0?0:(p>1?1:p);
   jrail.style.transform="translateX("+(-p*jTravel).toFixed(1)+"px)";
   journeyPaint(Math.round(p*(jnodes.length-1)));
@@ -1353,7 +1389,7 @@ function journeyGoTo(idx){
   if(jPinned&&jscroller){
     var rect=jscroller.getBoundingClientRect();
     var targetP=idx/(jnodes.length-1);
-    var top=window.pageYOffset+rect.top-jPinTop+targetP*jTravel;
+    var top=window.pageYOffset+rect.top-jPinTop+targetP*jSpan;
     window.scrollTo({top:top,behavior:RM?"auto":"smooth"});
   } else {
     var cur=jnodes[idx];

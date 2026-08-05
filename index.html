@@ -329,6 +329,12 @@
   .qbars i{width:34px;height:9px;border-radius:5px;background:var(--tint);border:1px solid var(--line)}
   .qwin{position:relative;width:110px;height:9px;border-radius:5px;background:var(--tint);overflow:hidden}
   .qwin i{position:absolute;left:52%;top:0;width:34%;height:100%;background:var(--coral);border-radius:5px}
+  .qask{margin-top:12px;background:var(--tint);border:1px solid rgba(61,90,71,.18);border-radius:var(--radius-m);padding:13px 15px}
+  .qask b{display:block;font-size:13.5px;color:var(--forest);margin-bottom:4px}
+  .qask p{font-size:12.5px;color:var(--muted);line-height:1.45;margin:0}
+  .qask .qaskbar{display:flex;align-items:center;gap:8px;margin-top:10px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:8px 12px}
+  .qask .qaskbar span{font-size:12.5px;color:rgba(62,39,23,.45);flex:1;text-align:left}
+  .qask .qaskbar .qasksend{flex:0 0 26px;width:26px;height:26px;border-radius:50%;background:var(--forest);display:grid;place-items:center}
   .qnote{display:block;margin-top:10px;font-size:12px;color:var(--muted);font-style:italic}
   @media(prefers-reduced-motion:no-preference){
     .qcard.play{animation:sw-cardin .4s ease}
@@ -364,7 +370,7 @@
   .jsprout{position:absolute;top:22px;left:40px;transform:translate(-50%,-50%);filter:drop-shadow(0 2px 4px rgba(62,39,23,.18))}
   .jsprout svg{display:block}
   @media(prefers-reduced-motion:no-preference){.jsprout.pop svg{animation:sw-fabpop .5s cubic-bezier(.34,1.56,.64,1)}}
-  .jnode{flex:0 0 130px;width:130px;min-height:206px;padding:0 10px;display:flex;flex-direction:column;align-items:center;text-align:center}
+  .jnode{flex:0 0 152px;width:152px;min-height:238px;padding:0 10px;display:flex;flex-direction:column;align-items:center;text-align:center}
   .jdot{width:12px;height:12px;border-radius:50%;background:var(--jc,var(--line));border:3px solid var(--card);margin-bottom:14px;flex-shrink:0}
   .jnode .jtxt{display:flex;flex-direction:column;align-items:center;flex:1;width:100%}
   .jnow{display:none;font-style:normal;font-size:9.5px;font-weight:800;letter-spacing:.05em;color:#fff;background:var(--coral);border-radius:5px;padding:2px 7px;margin:0 auto 6px;width:fit-content}
@@ -384,7 +390,7 @@
   @media(max-width:720px){
     .jchips{gap:6px}
     .jchip{font-size:12px;padding:6px 10px}
-    .jnode{flex:0 0 118px;width:118px;min-height:200px;padding:0 8px}
+    .jnode{flex:0 0 140px;width:140px;min-height:232px;padding:0 8px}
     .jnode .jtxt b{font-size:12.5px}
     .jpanel{padding:22px 0 18px}
     .jrail{padding:0 24px}
@@ -401,7 +407,7 @@
   }
   @media(prefers-reduced-motion:no-preference){#fab.grow .fabc{animation:sw-fabpop .55s cubic-bezier(.34,1.56,.64,1)}}
   @keyframes sw-fabpop{0%{transform:scale(1)}35%{transform:scale(1.22) translateY(-7px)}65%{transform:scale(.94) translateY(2px)}100%{transform:scale(1)}}
-  .jmerak{margin-top:auto;width:100%;background:var(--coral-soft);border-radius:10px;padding:7px 8px;font-size:10.5px;line-height:1.32;color:var(--ink)}
+  .jmerak{margin-top:auto;width:100%;background:var(--coral-soft);border-radius:10px;padding:7px 8px;font-size:10.5px;line-height:1.32;color:var(--ink);display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
   .jmerak b{display:block;font-size:8.5px;font-weight:800;letter-spacing:.06em;color:var(--coral);text-transform:uppercase;margin-bottom:2px}
 
   /* 5 · Sayılar bandı */
@@ -583,69 +589,90 @@
     <div class="journey">
       <div class="jchips" role="group" aria-label="Bebeğin şu an ne yapıyor?">
         <button class="jchip" type="button" aria-pressed="true" data-idx="0">Yeni doğdu</button>
-        <button class="jchip" type="button" aria-pressed="false" data-idx="11">Emekliyor</button>
-        <button class="jchip" type="button" aria-pressed="false" data-idx="15">İlk kelimeler</button>
-        <button class="jchip" type="button" aria-pressed="false" data-idx="21">Kule yapıyor</button>
-        <button class="jchip" type="button" aria-pressed="false" data-idx="23">Kelimeler patlıyor</button>
-        <button class="jchip" type="button" aria-pressed="false" data-idx="28">Hayali oyun</button>
-        <button class="jchip" type="button" aria-pressed="false" data-idx="37">Hikaye anlatıyor</button>
-        <button class="jchip" type="button" aria-pressed="false" data-idx="47">Okula hazırlanıyor</button>
+        <button class="jchip" type="button" aria-pressed="false" data-idx="19">Yürüyor</button>
+        <button class="jchip" type="button" aria-pressed="false" data-idx="21">İlk kelimeler</button>
+        <button class="jchip" type="button" aria-pressed="false" data-idx="46">Hayali oyun</button>
+        <button class="jchip" type="button" aria-pressed="false" data-idx="69">Hikaye anlatıyor</button>
+        <button class="jchip" type="button" aria-pressed="false" data-idx="71">Okula hazırlanıyor</button>
       </div>
           <div class="jpanel" id="jpanel">
             <div class="jrail" id="jrail">
               <div class="jline" aria-hidden="true"></div>
               <div class="jfill" id="jfill" aria-hidden="true"></div>
               <div class="jsprout" id="jsprout" aria-hidden="true"><svg width="23" height="23" viewBox="0 0 24 24" fill="none"><path d="M12 21 V11" stroke="#3D5A47" stroke-width="2.2" stroke-linecap="round"/><path d="M12 12 C12 8.5 9.5 6.5 6 6.5 C6 10 8.5 12 12 12 Z" fill="#3D5A47"/><path d="M12 10 C12 7 14.2 5 17.5 5 C17.5 8.2 15.2 10.2 12 10 Z" fill="#E8836B"/></svg></div>
-              <div class="jnode" data-idx="0" style="--jc:#F97316"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Baş Kontrolü</b><span>Kaba Motor · 1/24</span><div class="jmerak"><b>Merak</b>Başını ne zaman kendi tutar?</div></div></div>
-              <div class="jnode" data-idx="1" style="--jc:#8B5CF6"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Kavrama Refleksi</b><span>İnce Motor · 1/24</span><div class="jmerak"><b>Merak</b>Parmağımı neden bu kadar sıkı tutuyor?</div></div></div>
-              <div class="jnode" data-idx="2" style="--jc:#0EA5E9"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>İlk Sesler</b><span>Dil · 1/24</span><div class="jmerak"><b>Merak</b>Bu ilk sesler ne anlama geliyor?</div></div></div>
-              <div class="jnode" data-idx="3" style="--jc:#16A34A"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Yüz Tanıma</b><span>Bilişsel · 1/24</span><div class="jmerak"><b>Merak</b>Beni ne zaman tanır?</div></div></div>
-              <div class="jnode" data-idx="4" style="--jc:#F59E0B"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Duyusal Tepkiler</b><span>Duyusal · 1/24</span><div class="jmerak"><b>Merak</b>Seslerden neden irkiliyor?</div></div></div>
-              <div class="jnode" data-idx="5" style="--jc:#EC4899"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Sosyal Gülümseme</b><span>Sosyal-Duygusal · 1/24</span><div class="jmerak"><b>Merak</b>İlk gerçek gülümseme ne zaman?</div></div></div>
-              <div class="jnode" data-idx="6" style="--jc:#F59E0B"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Dokunma Keşfi</b><span>Duyusal · 11/24</span><div class="jmerak"><b>Merak</b>Neden her şeyi elliyor?</div></div></div>
-              <div class="jnode" data-idx="7" style="--jc:#EC4899"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Karşılıklı Oyunlar</b><span>Sosyal-Duygusal · 11/24</span><div class="jmerak"><b>Merak</b>Ne zaman benimle oynamaya başlar?</div></div></div>
-              <div class="jnode" data-idx="8" style="--jc:#F59E0B"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Vestibüler Zevk</b><span>Duyusal · 4/24</span><div class="jmerak"><b>Merak</b>Sallanmayı neden bu kadar seviyor?</div></div></div>
-              <div class="jnode" data-idx="9" style="--jc:#0EA5E9"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Tekrar Heceler</b><span>Dil · 4/24</span><div class="jmerak"><b>Merak</b>'Ba-ba' ne zaman anlamlı olur?</div></div></div>
-              <div class="jnode" data-idx="10" style="--jc:#8B5CF6"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Tarak Kavrama</b><span>İnce Motor · 11/24</span><div class="jmerak"><b>Merak</b>Oyuncağı ne zaman kendi alır?</div></div></div>
-              <div class="jnode" data-idx="11" style="--jc:#F97316"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Emekleme</b><span>Kaba Motor · 4/24</span><div class="jmerak"><b>Merak</b>Ne zaman emeklemeye başlar?</div></div></div>
-              <div class="jnode" data-idx="12" style="--jc:#8B5CF6"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Pens Tutuşu</b><span>İnce Motor · 4/24</span><div class="jmerak"><b>Merak</b>Ufak şeyleri ne zaman toplar?</div></div></div>
-              <div class="jnode" data-idx="13" style="--jc:#16A34A"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Nesne Kalıcılığı</b><span>Bilişsel · 4/24</span><div class="jmerak"><b>Merak</b>Sakladığım oyuncağı arar mı?</div></div></div>
-              <div class="jnode" data-idx="14" style="--jc:#EC4899"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Sosyal Referans</b><span>Sosyal-Duygusal · 4/24</span><div class="jmerak"><b>Merak</b>Neden önce benim yüzüme bakıyor?</div></div></div>
-              <div class="jnode" data-idx="15" style="--jc:#0EA5E9"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>İlk Kelimeler</b><span>Dil · 6/24</span><div class="jmerak"><b>Merak</b>İlk kelimesini ne zaman söyler?</div></div></div>
-              <div class="jnode" data-idx="16" style="--jc:#F97316"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Geri Geri Yürüme</b><span>Kaba Motor · 11/24</span><div class="jmerak"><b>Merak</b>Geri geri yürümesi normal mi?</div></div></div>
-              <div class="jnode" data-idx="17" style="--jc:#F59E0B"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Duyusal Öz-Düzenleme</b><span>Duyusal · 8/24</span><div class="jmerak"><b>Merak</b>Kendini nasıl sakinleştirir?</div></div></div>
-              <div class="jnode" data-idx="18" style="--jc:#F97316"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Merdiven Çıkma</b><span>Kaba Motor · 8/24</span><div class="jmerak"><b>Merak</b>Merdiveni ne zaman çıkar?</div></div></div>
-              <div class="jnode" data-idx="19" style="--jc:#F59E0B"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Elle Yemek Keşfi</b><span>Duyusal · 14/24</span><div class="jmerak"><b>Merak</b>Yemekle oynaması sorun mu?</div></div></div>
-              <div class="jnode" data-idx="20" style="--jc:#16A34A"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Kategori Anlama</b><span>Bilişsel · 7/24</span><div class="jmerak"><b>Merak</b>Nesneleri ne zaman gruplar?</div></div></div>
-              <div class="jnode" data-idx="21" style="--jc:#8B5CF6"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Blok Yığma</b><span>İnce Motor · 8/24</span><div class="jmerak"><b>Merak</b>Kaç küpü üst üste koyabilir?</div></div></div>
-              <div class="jnode" data-idx="22" style="--jc:#EC4899"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Paralel Oyun</b><span>Sosyal-Duygusal · 7/24</span><div class="jmerak"><b>Merak</b>Neden yan yana ama ayrı oynuyor?</div></div></div>
-              <div class="jnode" data-idx="23" style="--jc:#0EA5E9"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Kelime Patlaması</b><span>Dil · 8/24</span><div class="jmerak"><b>Merak</b>Kelimeler ne zaman patlar?</div></div></div>
-              <div class="jnode" data-idx="24" style="--jc:#8B5CF6"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Şekil Yerleştirme</b><span>İnce Motor · 14/24</span><div class="jmerak"><b>Merak</b>Şekilleri ne zaman eşleştirir?</div></div></div>
-              <div class="jnode" data-idx="25" style="--jc:#16A34A"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>İlk Yapbozlar</b><span>Bilişsel · 14/24</span><div class="jmerak"><b>Merak</b>Yapbozu ne zaman tek yapar?</div></div></div>
-              <div class="jnode" data-idx="26" style="--jc:#F97316"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Çizgide Yürüme</b><span>Kaba Motor · 14/24</span><div class="jmerak"><b>Merak</b>Dengesi ne zaman oturur?</div></div></div>
-              <div class="jnode" data-idx="27" style="--jc:#0EA5E9"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>İsmiyle Çağırır</b><span>Dil · 11/24</span><div class="jmerak"><b>Merak</b>Ne zaman adımla seslenir?</div></div></div>
-              <div class="jnode" data-idx="28" style="--jc:#EC4899"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Hayali Oyun</b><span>Sosyal-Duygusal · 15/24</span><div class="jmerak"><b>Merak</b>Hayali oyun ne zaman başlar?</div></div></div>
-              <div class="jnode" data-idx="29" style="--jc:#16A34A"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Sınıflama / Gruplama</b><span>Bilişsel · 10/24</span><div class="jmerak"><b>Merak</b>Renklere göre ne zaman ayırır?</div></div></div>
-              <div class="jnode" data-idx="30" style="--jc:#F97316"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Tek Ayak Üstünde Durma</b><span>Kaba Motor · 17/24</span><div class="jmerak"><b>Merak</b>Tek ayak üstünde ne zaman durur?</div></div></div>
-              <div class="jnode" data-idx="31" style="--jc:#8B5CF6"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Makasla Kesme</b><span>İnce Motor · 17/24</span><div class="jmerak"><b>Merak</b>Makası ne zaman güvenle tutar?</div></div></div>
-              <div class="jnode" data-idx="32" style="--jc:#0EA5E9"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Çoğul Ekleri</b><span>Dil · 14/24</span><div class="jmerak"><b>Merak</b>Dilbilgisi ne zaman düzelir?</div></div></div>
-              <div class="jnode" data-idx="33" style="--jc:#F59E0B"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>İnce Motor-Duyusal Uyum</b><span>Duyusal · 17/24</span><div class="jmerak"><b>Merak</b>El-göz uyumu nasıl keskinleşir?</div></div></div>
-              <div class="jnode" data-idx="34" style="--jc:#0EA5E9"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Geçmiş Zaman</b><span>Dil · 17/24</span><div class="jmerak"><b>Merak</b>Dünü ne zaman anlatabilir?</div></div></div>
-              <div class="jnode" data-idx="35" style="--jc:#16A34A"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>1'den 10'a Sayma</b><span>Bilişsel · 18/24</span><div class="jmerak"><b>Merak</b>Sayıları ne zaman gerçekten sayar?</div></div></div>
-              <div class="jnode" data-idx="36" style="--jc:#EC4899"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Arkadaşlık Kurma</b><span>Sosyal-Duygusal · 18/24</span><div class="jmerak"><b>Merak</b>İlk arkadaşını ne zaman edinir?</div></div></div>
-              <div class="jnode" data-idx="37" style="--jc:#0EA5E9"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Akıcı Anlatıcı</b><span>Dil · 21/24</span><div class="jmerak"><b>Merak</b>Hikayeyi baştan sona anlatır mı?</div></div></div>
-              <div class="jnode" data-idx="38" style="--jc:#F97316"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Sekerek ve Dörtnala Koşma</b><span>Kaba Motor · 21/24</span><div class="jmerak"><b>Merak</b>Sekmeyi ne zaman öğrenir?</div></div></div>
-              <div class="jnode" data-idx="39" style="--jc:#8B5CF6"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Adını Yazma</b><span>İnce Motor · 21/24</span><div class="jmerak"><b>Merak</b>Adını ne zaman yazar?</div></div></div>
-              <div class="jnode" data-idx="40" style="--jc:#16A34A"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Ondan Öteye Sayma</b><span>Bilişsel · 21/24</span><div class="jmerak"><b>Merak</b>Okula sayılarla hazır mı?</div></div></div>
-              <div class="jnode" data-idx="41" style="--jc:#EC4899"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Adil Oyun ve Kurallar</b><span>Sosyal-Duygusal · 21/24</span><div class="jmerak"><b>Merak</b>Kaybetmeyi ne zaman kaldırır?</div></div></div>
-              <div class="jnode" data-idx="42" style="--jc:#F59E0B"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Rafine Denge ve Vücut Kontrolü</b><span>Duyusal · 21/24</span><div class="jmerak"><b>Merak</b>Beden kontrolü ne zaman oturur?</div></div></div>
-              <div class="jnode" data-idx="43" style="--jc:#0EA5E9"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Kendini Tanıtır</b><span>Dil · 24/24</span><div class="jmerak"><b>Merak</b>Kendini tanıtabilir mi?</div></div></div>
-              <div class="jnode" data-idx="44" style="--jc:#F97316"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>İki Tekerlekli Bisiklet ve Çeviklik</b><span>Kaba Motor · 24/24</span><div class="jmerak"><b>Merak</b>Bisiklete ne zaman biner?</div></div></div>
-              <div class="jnode" data-idx="45" style="--jc:#8B5CF6"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Olgun Kalem & Yazı</b><span>İnce Motor · 24/24</span><div class="jmerak"><b>Merak</b>Kalemi doğru nasıl tutar?</div></div></div>
-              <div class="jnode" data-idx="46" style="--jc:#16A34A"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Kurallı Oyun ve Akıl Yürütme</b><span>Bilişsel · 24/24</span><div class="jmerak"><b>Merak</b>Kurallı oyunu ne zaman anlar?</div></div></div>
-              <div class="jnode" data-idx="47" style="--jc:#EC4899"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Kısa Ayrılığa Dayanmak</b><span>Sosyal-Duygusal · 24/24</span><div class="jmerak"><b>Merak</b>Okulda ayrılığa hazır mı?</div></div></div>
-              <div class="jnode" data-idx="48" style="--jc:#F59E0B"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Dikkat için Duyusal Ayar</b><span>Duyusal · 24/24</span><div class="jmerak"><b>Merak</b>Dikkatini nasıl toplar?</div></div></div>
-              <div class="jnode jcap" data-idx="49"><span class="jdot"></span><div class="jtxt"><b>Anaokuluna Hazır</b><span>Yolculuğun bu noktasına kadar geldiniz</span></div></div>
+              <div class="jnode" data-idx="0" style="--jc:#0EA5E9"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Ağulama Sohbetleri</b><span>Dil · 2/24</span><div class="jmerak"><b>Merak</b>Bebeğim ilk kelimesini ne zaman söyleyecek?</div></div></div>
+              <div class="jnode" data-idx="1" style="--jc:#16A34A"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Görsel Takip</b><span>Bilişsel · 2/24</span><div class="jmerak"><b>Merak</b>Saklanan bir oyuncağı ne zaman arayıp bulacak?</div></div></div>
+              <div class="jnode" data-idx="2" style="--jc:#EC4899"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Sosyal Karşılıklılık</b><span>Sosyal-Duygusal · 2/24</span><div class="jmerak"><b>Merak</b>Sırasını beklemeyi ne zaman öğrenecek?</div></div></div>
+              <div class="jnode" data-idx="3" style="--jc:#8B5CF6"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Gönüllü Uzanma</b><span>İnce Motor · 2/24</span><div class="jmerak"><b>Merak</b>Çocuğum topu ne zaman atıp yakalayacak?</div></div></div>
+              <div class="jnode" data-idx="4" style="--jc:#F59E0B"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Oral Duyusal Keşif</b><span>Duyusal · 3/24</span><div class="jmerak"><b>Merak</b>Biberondan ne zaman ayrılacak?</div></div></div>
+              <div class="jnode" data-idx="5" style="--jc:#EC4899"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Karşılıklı Oyunlar</b><span>Sosyal-Duygusal · 11/24</span><div class="jmerak"><b>Merak</b>Sırasını beklemeyi ne zaman öğrenecek?</div></div></div>
+              <div class="jnode" data-idx="6" style="--jc:#16A34A"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Neden-Sonuç</b><span>Bilişsel · 3/24</span><div class="jmerak"><b>Merak</b>Neden her şeyi yere fırlatıyor?</div></div></div>
+              <div class="jnode" data-idx="7" style="--jc:#F97316"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Desteksiz Oturma</b><span>Kaba Motor · 3/24</span><div class="jmerak"><b>Merak</b>Bebeğim ne zaman yürüyecek?</div></div></div>
+              <div class="jnode" data-idx="8" style="--jc:#8B5CF6"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>El Transferi</b><span>İnce Motor · 3/24</span><div class="jmerak"><b>Merak</b>Bebeğim parmaklarıyla ne zaman kendi başına yiyecek?</div></div></div>
+              <div class="jnode" data-idx="9" style="--jc:#F59E0B"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>El-Ağız Keşfi</b><span>Duyusal · 12/24</span><div class="jmerak"><b>Merak</b>Neden her şeyi ağzına götürüyor?</div></div></div>
+              <div class="jnode" data-idx="10" style="--jc:#0EA5E9"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Tekrar Heceler</b><span>Dil · 4/24</span><div class="jmerak"><b>Merak</b>Bebeğim ilk kelimesini ne zaman söyleyecek?</div></div></div>
+              <div class="jnode" data-idx="11" style="--jc:#F59E0B"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Proprioseptif Keşif</b><span>Duyusal · 5/24</span><div class="jmerak"><b>Merak</b>Ne zaman koşup zıplayacak?</div></div></div>
+              <div class="jnode" data-idx="12" style="--jc:#F97316"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Tutunarak Ayakta</b><span>Kaba Motor · 5/24</span><div class="jmerak"><b>Merak</b>Bebeğim ne zaman yürüyecek?</div></div></div>
+              <div class="jnode" data-idx="13" style="--jc:#EC4899"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Sosyal Referans</b><span>Sosyal-Duygusal · 4/24</span><div class="jmerak"><b>Merak</b>Bebek arabası olmadan yürüyüşe ne zaman çıkabileceğiz?</div></div></div>
+              <div class="jnode" data-idx="14" style="--jc:#EC4899"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Bağlanma Davranışları</b><span>Sosyal-Duygusal · 5/24</span><div class="jmerak"><b>Merak</b>Neden odadan çıkınca ağlıyor?</div></div></div>
+              <div class="jnode" data-idx="15" style="--jc:#F59E0B"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Doku Toleransı</b><span>Duyusal · 6/24</span><div class="jmerak"><b>Merak</b>Diş fırçalamaya ne zaman izin verecek?</div></div></div>
+              <div class="jnode" data-idx="16" style="--jc:#8B5CF6"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>İşaret Etme</b><span>İnce Motor · 5/24</span><div class="jmerak"><b>Merak</b>İstediğini kelimelerle ne zaman anlatacak?</div></div></div>
+              <div class="jnode" data-idx="17" style="--jc:#EC4899"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Ortak Dikkat</b><span>Sosyal-Duygusal · 12/24</span><div class="jmerak"><b>Merak</b>Neden parmağıyla işaret edip sana bakıyor?</div></div></div>
+              <div class="jnode" data-idx="18" style="--jc:#16A34A"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Araç-Amaç İlişkisi</b><span>Bilişsel · 5/24</span><div class="jmerak"><b>Merak</b>Bir sorunla karşılaşınca çözüm yolunu ne zaman kendi kendine bulacak?</div></div></div>
+              <div class="jnode" data-idx="19" style="--jc:#F97316"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Bağımsız Yürüme</b><span>Kaba Motor · 7/24</span><div class="jmerak"><b>Merak</b>Tuvaletini ne zaman söyleyecek?</div></div></div>
+              <div class="jnode" data-idx="20" style="--jc:#F59E0B"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Su ve Köpük Keşfi</b><span>Duyusal · 13/24</span><div class="jmerak"><b>Merak</b>Ellerini ne zaman kendi başına yıkayacak?</div></div></div>
+              <div class="jnode" data-idx="21" style="--jc:#0EA5E9"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>İlk Kelimeler</b><span>Dil · 6/24</span><div class="jmerak"><b>Merak</b>Kendi ismini ne zaman söyleyecek?</div></div></div>
+              <div class="jnode" data-idx="22" style="--jc:#8B5CF6"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Parmakla Yeme</b><span>İnce Motor · 13/24</span><div class="jmerak"><b>Merak</b>Bebeğim ne zaman kendi başına kaşık kullanacak?</div></div></div>
+              <div class="jnode" data-idx="23" style="--jc:#8B5CF6"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Koyma / Çıkarma</b><span>İnce Motor · 6/24</span><div class="jmerak"><b>Merak</b>Kendi başına ne zaman giyinecek?</div></div></div>
+              <div class="jnode" data-idx="24" style="--jc:#16A34A"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Sembolik Oyun Tohumları</b><span>Bilişsel · 6/24</span><div class="jmerak"><b>Merak</b>Neden her yaptığımı taklit ediyor?</div></div></div>
+              <div class="jnode" data-idx="25" style="--jc:#F59E0B"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Duyusal Öz-Düzenleme</b><span>Duyusal · 8/24</span><div class="jmerak"><b>Merak</b>Bebeğim ne zaman gece boyu uyuyacak?</div></div></div>
+              <div class="jnode" data-idx="26" style="--jc:#0EA5E9"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Kelime Büyümesi</b><span>Dil · 7/24</span><div class="jmerak"><b>Merak</b>İki kelimeyi birleştirip ne zaman konuşacak? ("anne su" gibi)</div></div></div>
+              <div class="jnode" data-idx="27" style="--jc:#F97316"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Merdiven Çıkma</b><span>Kaba Motor · 8/24</span><div class="jmerak"><b>Merak</b>Merdivenleri ne zaman tek başına çıkacak?</div></div></div>
+              <div class="jnode" data-idx="28" style="--jc:#F59E0B"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Elle Yemek Keşfi</b><span>Duyusal · 14/24</span><div class="jmerak"><b>Merak</b>Bir öğünü baştan sona kendi başına ne zaman yiyecek?</div></div></div>
+              <div class="jnode" data-idx="29" style="--jc:#8B5CF6"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Kalemle Çizme</b><span>İnce Motor · 7/24</span><div class="jmerak"><b>Merak</b>Kalemi doğru tutup makası ne zaman kullanacak?</div></div></div>
+              <div class="jnode" data-idx="30" style="--jc:#16A34A"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Kategori Anlama</b><span>Bilişsel · 7/24</span><div class="jmerak"><b>Merak</b>1'den 10'a kadar ne zaman sayacak?</div></div></div>
+              <div class="jnode" data-idx="31" style="--jc:#F97316"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Koşma</b><span>Kaba Motor · 9/24</span><div class="jmerak"><b>Merak</b>Çocuğum bisiklete (denge/üç teker) ne zaman binecek?</div></div></div>
+              <div class="jnode" data-idx="32" style="--jc:#EC4899"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Duyguları Gösterme</b><span>Sosyal-Duygusal · 14/24</span><div class="jmerak"><b>Merak</b>Uykusunun geldiğini ne zaman sözle anlatacak?</div></div></div>
+              <div class="jnode" data-idx="33" style="--jc:#EC4899"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Paralel Oyun</b><span>Sosyal-Duygusal · 7/24</span><div class="jmerak"><b>Merak</b>Arkadaşlarıyla birlikte ne zaman oynayacak?</div></div></div>
+              <div class="jnode" data-idx="34" style="--jc:#0EA5E9"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>2 Kelimeli Kombinasyon</b><span>Dil · 9/24</span><div class="jmerak"><b>Merak</b>Ne zaman tam bir cümle kuracak?</div></div></div>
+              <div class="jnode" data-idx="35" style="--jc:#8B5CF6"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Kaşık Kullanımı</b><span>İnce Motor · 10/24</span><div class="jmerak"><b>Merak</b>Çatalı ne zaman kullanmaya başlayacak?</div></div></div>
+              <div class="jnode" data-idx="36" style="--jc:#8B5CF6"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Şekil Yerleştirme</b><span>İnce Motor · 14/24</span><div class="jmerak"><b>Merak</b>Ayakkabılarını ne zaman kendisi giyecek?</div></div></div>
+              <div class="jnode" data-idx="37" style="--jc:#F97316"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Topu Tekmeleme</b><span>Kaba Motor · 13/24</span><div class="jmerak"><b>Merak</b>Çocuğum topu ne zaman atıp yakalayacak?</div></div></div>
+              <div class="jnode" data-idx="38" style="--jc:#F59E0B"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Duyusal Tercih Farkındalığı</b><span>Duyusal · 9/24</span><div class="jmerak"><b>Merak</b>Gece bezinden ne zaman çıkacak?</div></div></div>
+              <div class="jnode" data-idx="39" style="--jc:#F97316"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Zıplama</b><span>Kaba Motor · 10/24</span><div class="jmerak"><b>Merak</b>Çocuğum tek ayak üstünde ne zaman durabilecek?</div></div></div>
+              <div class="jnode" data-idx="40" style="--jc:#F59E0B"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Hareket Planlama</b><span>Duyusal · 15/24</span><div class="jmerak"><b>Merak</b>Sofra kurmaya ne zaman yardım edecek?</div></div></div>
+              <div class="jnode" data-idx="41" style="--jc:#16A34A"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>İlk Yapbozlar</b><span>Bilişsel · 14/24</span><div class="jmerak"><b>Merak</b>Bebeğim ne zaman yapboz yapmaya başlayacak?</div></div></div>
+              <div class="jnode" data-idx="42" style="--jc:#F97316"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Çizgide Yürüme</b><span>Kaba Motor · 14/24</span><div class="jmerak"><b>Merak</b>Çocuğum tek ayak üstünde ne zaman durabilecek?</div></div></div>
+              <div class="jnode" data-idx="43" style="--jc:#EC4899"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Ortak Oyun Girişimleri</b><span>Sosyal-Duygusal · 8/24</span><div class="jmerak"><b>Merak</b>Neden sürekli "hayır" diyor?</div></div></div>
+              <div class="jnode" data-idx="44" style="--jc:#0EA5E9"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>3-4 Kelimeli Cümle</b><span>Dil · 10/24</span><div class="jmerak"><b>Merak</b>Gününü bana ne zaman anlatacak?</div></div></div>
+              <div class="jnode" data-idx="45" style="--jc:#8B5CF6"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Çizgi Taklidi</b><span>İnce Motor · 15/24</span><div class="jmerak"><b>Merak</b>Kalemi doğru tutup makası ne zaman kullanacak?</div></div></div>
+              <div class="jnode" data-idx="46" style="--jc:#EC4899"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Hayali Oyun</b><span>Sosyal-Duygusal · 15/24</span><div class="jmerak"><b>Merak</b>Diğer çocuklarla ne zaman rol yapıp hayali oyun kuracak (evcilik, doktorculuk)?</div></div></div>
+              <div class="jnode" data-idx="47" style="--jc:#F97316"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>İleri Zıplama</b><span>Kaba Motor · 15/24</span><div class="jmerak"><b>Merak</b>Ne zaman koşup zıplayacak?</div></div></div>
+              <div class="jnode" data-idx="48" style="--jc:#F59E0B"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Çoklu Duyusal Entegrasyon</b><span>Duyusal · 10/24</span><div class="jmerak"><b>Merak</b>Ellerini ne zaman kendi başına yıkayacak?</div></div></div>
+              <div class="jnode" data-idx="49" style="--jc:#0EA5E9"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Vücut Bölümleri</b><span>Dil · 12/24</span><div class="jmerak"><b>Merak</b>Gece bezinden ne zaman çıkacak?</div></div></div>
+              <div class="jnode" data-idx="50" style="--jc:#16A34A"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Çözüm Arayışı</b><span>Bilişsel · 9/24</span><div class="jmerak"><b>Merak</b>Ne zaman "neden?" diye sormaya başlayacak?</div></div></div>
+              <div class="jnode" data-idx="51" style="--jc:#8B5CF6"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Boncuk Dizme</b><span>İnce Motor · 16/24</span><div class="jmerak"><b>Merak</b>Çocuğum boncuk ya da makarna ne zaman dizecek?</div></div></div>
+              <div class="jnode" data-idx="52" style="--jc:#16A34A"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Sınıflama / Gruplama</b><span>Bilişsel · 10/24</span><div class="jmerak"><b>Merak</b>Neden oyuncaklarını sıraya diziyor?</div></div></div>
+              <div class="jnode" data-idx="53" style="--jc:#0EA5E9"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Sahiplik Eki</b><span>Dil · 13/24</span><div class="jmerak"><b>Merak</b>Ne zaman tam bir cümle kuracak?</div></div></div>
+              <div class="jnode" data-idx="54" style="--jc:#F97316"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Ayak Değiştirerek Çıkma</b><span>Kaba Motor · 16/24</span><div class="jmerak"><b>Merak</b>Merdivenleri ne zaman tek başına çıkacak?</div></div></div>
+              <div class="jnode" data-idx="55" style="--jc:#F59E0B"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Sakinleşme Stratejileri</b><span>Duyusal · 16/24</span><div class="jmerak"><b>Merak</b>Ne zaman kendi kendine uykuya dalacak?</div></div></div>
+              <div class="jnode" data-idx="56" style="--jc:#F59E0B"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>İnce Motor-Duyusal Uyum</b><span>Duyusal · 17/24</span><div class="jmerak"><b>Merak</b>Düğme ve fermuarlarını ne zaman kendisi ilikleyecek?</div></div></div>
+              <div class="jnode" data-idx="57" style="--jc:#16A34A"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Eşleştirme Oyunları</b><span>Bilişsel · 16/24</span><div class="jmerak"><b>Merak</b>Renkleri ne zaman tanıyıp doğru söyleyecek?</div></div></div>
+              <div class="jnode" data-idx="58" style="--jc:#0EA5E9"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Soru Sorar</b><span>Dil · 15/24</span><div class="jmerak"><b>Merak</b>Benimle ne zaman gerçek bir sohbet edebilecek?</div></div></div>
+              <div class="jnode" data-idx="59" style="--jc:#0EA5E9"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Renk ve Sayı</b><span>Dil · 16/24</span><div class="jmerak"><b>Merak</b>1'den 10'a kadar ne zaman sayacak?</div></div></div>
+              <div class="jnode" data-idx="60" style="--jc:#EC4899"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Duyguları Adlandırma</b><span>Sosyal-Duygusal · 17/24</span><div class="jmerak"><b>Merak</b>Rüyalarını bana ne zaman anlatacak?</div></div></div>
+              <div class="jnode" data-idx="61" style="--jc:#F97316"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Üç Tekerlekli Bisiklet</b><span>Kaba Motor · 18/24</span><div class="jmerak"><b>Merak</b>Çocuğum bisiklete (denge/üç teker) ne zaman binecek?</div></div></div>
+              <div class="jnode" data-idx="62" style="--jc:#8B5CF6"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Üç Parmak Tutuş</b><span>İnce Motor · 18/24</span><div class="jmerak"><b>Merak</b>Çatalı ne zaman kullanmaya başlayacak?</div></div></div>
+              <div class="jnode" data-idx="63" style="--jc:#16A34A"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Boyut Sıralama</b><span>Bilişsel · 17/24</span><div class="jmerak"><b>Merak</b>Nesneleri ne zaman renk, tür veya boyuta göre gruplayacak?</div></div></div>
+              <div class="jnode" data-idx="64" style="--jc:#0EA5E9"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Çünkü Cümleleri</b><span>Dil · 18/24</span><div class="jmerak"><b>Merak</b>Ne zaman "neden?" diye sormaya başlayacak?</div></div></div>
+              <div class="jnode" data-idx="65" style="--jc:#EC4899"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Arkadaşlık Kurma</b><span>Sosyal-Duygusal · 18/24</span><div class="jmerak"><b>Merak</b>Bir gruba (oyun grubu, kreş) ne zaman rahatça katılıp ortak yönergeleri izleyecek?</div></div></div>
+              <div class="jnode" data-idx="66" style="--jc:#8B5CF6"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Çizgide Kesme &amp; Düğme</b><span>İnce Motor · 19/24</span><div class="jmerak"><b>Merak</b>Kendi başına ne zaman giyinecek?</div></div></div>
+              <div class="jnode" data-idx="67" style="--jc:#16A34A"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Renk ve Şekil Ustası</b><span>Bilişsel · 19/24</span><div class="jmerak"><b>Merak</b>Renkleri ne zaman tanıyıp doğru söyleyecek?</div></div></div>
+              <div class="jnode" data-idx="68" style="--jc:#F97316"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Top Yakalama</b><span>Kaba Motor · 20/24</span><div class="jmerak"><b>Merak</b>Çocuğum topu ne zaman atıp yakalayacak?</div></div></div>
+              <div class="jnode" data-idx="69" style="--jc:#0EA5E9"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Hikaye Anlatır</b><span>Dil · 20/24</span><div class="jmerak"><b>Merak</b>Gününü bana ne zaman anlatacak?</div></div></div>
+              <div class="jnode" data-idx="70" style="--jc:#16A34A"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>Olayları Sıralama</b><span>Bilişsel · 20/24</span><div class="jmerak"><b>Merak</b>Günlük olayları doğru sırayla ne zaman anlatacak (önce–sonra)?</div></div></div>
+              <div class="jnode" data-idx="71" style="--jc:#EC4899"><span class="jdot"></span><div class="jtxt"><i class="jnow">ŞU AN</i><b>İşbirlikçi Rol Oyunu</b><span>Sosyal-Duygusal · 20/24</span><div class="jmerak"><b>Merak</b>Ortak bir şeyi (kule kurmak, bir oyun) başka bir çocukla birlikte ne zaman yapabilecek?</div></div></div>
+              <div class="jnode jcap" data-idx="72"><span class="jdot"></span><div class="jtxt"><b>Anaokuluna Hazır</b><span>Yolculuğun bu noktasına kadar geldiniz</span></div></div>
             </div>
           </div>
           <p class="jhint" id="jhint">Kaydırdıkça filiz büyür</p>
@@ -722,7 +749,7 @@
         <span class="kicker">Hayat Soruları</span>
         <h3>"Ne zaman kaşığı kendi tutar?"</h3>
         <p>Sen de bunu merak ediyorsun, değil mi? Ebeveynlerin gerçekten sorduğu 78 soru burada — her cevap genel bir tablodan değil, doğrudan senin bebeğinin kendi yolculuğundan geliyor.</p>
-        <div class="featchips"><span>78 soru</span><span>Gerekçeli kişisel cevap</span></div>
+        <div class="featchips"><span>78 soru</span><span>Gerekçeli kişisel cevap</span><span>Kendi sorunu gönder</span></div>
       </div>
       <div class="art demo">
         <div class="qdemo">
@@ -738,6 +765,14 @@
             <div class="qrow"><span class="ql">Yaklaşan pencere</span><span class="qwin" aria-hidden="true"><i></i></span></div>
             <span class="qnote">Gerçek cevap, bebeğinin kendi haritasından hesaplanır.</span>
           </div>
+            <div class="qask">
+              <b>Aradığın soru listede yok mu?</b>
+              <p>Kendi merakını uygulamadan bize gönder. Gelen soruları çocuk gelişim uzmanımız değerlendirir; eklendiğinde sana haber veririz — ve herkesin haritasına açılır.</p>
+              <div class="qaskbar" aria-hidden="true">
+                <span>Merak ettiğin şeyi yaz…</span>
+                <span class="qasksend"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M4 12h14M12 5l7 7-7 7" stroke="#FFF7EF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              </div>
+            </div>
         </div>
       </div>
     </div>
@@ -1287,7 +1322,7 @@ qchips.forEach(function(c){
 var jchips=$$(".jchip"),jscroller=$("#jscroller"),jsticky=$("#jsticky"),jpanel=$("#jpanel"),
     jrail=$("#jrail"),jfill=$("#jfill"),jsprout=$("#jsprout"),jhint=$("#jhint");
 var jnodes=jrail?$$(".jnode",jrail):[];
-var jTravel=0,jPinned=false,jPinTop=64;
+var jTravel=0,jSpan=0,jPinned=false,jPinTop=64,JSPD=0.55;
 /* ray filizi: yolculuk ilerledikçe filiz→fidan→ağaç→geniş taçlı ağaç */
 var JSPROUT_STAGES=[
   {size:23,svg:'<path d="M12 21 V11" stroke="#3D5A47" stroke-width="2.2" stroke-linecap="round"/><path d="M12 12 C12 8.5 9.5 6.5 6 6.5 C6 10 8.5 12 12 12 Z" fill="#3D5A47"/><path d="M12 10 C12 7 14.2 5 17.5 5 C17.5 8.2 15.2 10.2 12 10 Z" fill="#E8836B"/>'},
@@ -1331,18 +1366,19 @@ function journeyLayout(){
   var last=jnodes.length?jnodes[jnodes.length-1]:null;
   var end=last?(last.offsetLeft+last.offsetWidth+16):jrail.scrollWidth;
   jTravel=Math.max(0,Math.min(end,jrail.scrollWidth)-jpanel.clientWidth);
+  jSpan=jTravel*JSPD;
   if(jPinned&&jscroller&&jsticky){
     var h=jsticky.getBoundingClientRect().height;
     /* pin sırasında bölümü viewport'ta dikey ortala — üst/alt ölü alan yok */
     jPinTop=Math.max(64,Math.round(64+(window.innerHeight-64-h)/2));
     jsticky.style.top=jPinTop+"px";
-    jscroller.style.height=(h+jTravel)+"px";
+    jscroller.style.height=(h+jSpan)+"px";
   }
 }
 function journeyOnScroll(){
-  if(!jPinned||!jscroller||!jrail||jTravel<=0)return;
+  if(!jPinned||!jscroller||!jrail||jSpan<=0)return;
   var rect=jscroller.getBoundingClientRect();
-  var p=(jPinTop-rect.top)/jTravel;
+  var p=(jPinTop-rect.top)/jSpan;
   p=p<0?0:(p>1?1:p);
   jrail.style.transform="translateX("+(-p*jTravel).toFixed(1)+"px)";
   journeyPaint(Math.round(p*(jnodes.length-1)));
@@ -1353,7 +1389,7 @@ function journeyGoTo(idx){
   if(jPinned&&jscroller){
     var rect=jscroller.getBoundingClientRect();
     var targetP=idx/(jnodes.length-1);
-    var top=window.pageYOffset+rect.top-jPinTop+targetP*jTravel;
+    var top=window.pageYOffset+rect.top-jPinTop+targetP*jSpan;
     window.scrollTo({top:top,behavior:RM?"auto":"smooth"});
   } else {
     var cur=jnodes[idx];
