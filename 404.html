@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Sprout Way — Davet</title>
+<!-- GitHub Pages 404 yakalayıcı (#349 FAZ B4): /r/SPR-XXXXX davet linklerini
+     istemci tarafında yakalar ve davet sayfasını çizer; diğer tüm bilinmeyen
+     yollar sade 404 görür. Palet + tipografi site kanonuyla aynı. -->
+<style>
+  :root{
+    --bg:#FFF7EF; --card:#FFFCF8; --ink:#3E2717; --muted:#8D684E;
+    --line:rgba(62,39,23,.12); --forest:#3D5A47; --coral:#E8836B; --coral-soft:#FBEDE8;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    background:var(--bg); color:var(--ink); min-height:100vh;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    display:flex; align-items:center; justify-content:center; padding:24px;
+  }
+  .card{
+    background:var(--card); border:1px solid var(--line); border-radius:20px;
+    max-width:480px; width:100%; padding:32px 28px; text-align:center;
+    box-shadow:0 8px 32px rgba(62,39,23,.08);
+  }
+  .brand{color:var(--forest); font-weight:800; letter-spacing:.4px; font-size:14px; text-transform:uppercase}
+  h1{font-size:24px; line-height:1.25; margin:10px 0 6px; letter-spacing:-.4px}
+  p{color:var(--muted); font-size:14.5px; line-height:1.55}
+  .code{
+    margin:20px auto 6px; display:inline-block; background:var(--coral-soft);
+    border:1.5px dashed var(--coral); color:var(--ink); border-radius:14px;
+    font-weight:800; font-size:26px; letter-spacing:2px; padding:12px 22px;
+    font-variant-numeric:tabular-nums;
+  }
+  .copy{
+    display:inline-block; margin:6px 0 18px; background:none; border:none;
+    color:var(--forest); font-weight:700; font-size:13px; cursor:pointer;
+    text-decoration:underline; font-family:inherit;
+  }
+  ol{
+    text-align:left; margin:14px 0 20px; padding-left:22px;
+    color:var(--ink); font-size:14.5px; line-height:1.7;
+  }
+  ol b{color:var(--forest)}
+  .btns{display:flex; flex-direction:column; gap:10px; margin-top:8px}
+  .btn{
+    display:block; border-radius:999px; padding:13px 18px; font-weight:800;
+    font-size:15px; text-decoration:none; text-align:center;
+  }
+  .btn-primary{background:var(--coral); color:#fff}
+  .btn-ghost{background:none; border:1.5px solid var(--line); color:var(--ink)}
+  .note{font-size:12px; margin-top:14px}
+  .en{font-size:12.5px; color:var(--muted); margin-top:18px; border-top:1px solid var(--line); padding-top:12px}
+  a{color:var(--forest)}
+</style>
+</head>
+<body>
+<div class="card" id="card">
+  <!-- JS path'e göre doldurur -->
+</div>
+<script>
+(function(){
+  var m = location.pathname.match(/^\/r\/([A-Za-z0-9-]{4,20})\/?$/);
+  var card = document.getElementById('card');
+  if (m) {
+    var code = m[1].toUpperCase();
+    document.title = 'Sprout Way — Davet ' + code;
+    card.innerHTML =
+      '<div class="brand">Sprout Way</div>' +
+      '<h1>Bir arkadaşın seni davet etti</h1>' +
+      '<p>Bebeğinin kendi gelişim yolculuğunu izleyen uygulamaya davetlisin. Premium’a katılırsan <b>ikiniz de 1 ay hediye</b> kazanıyorsunuz.</p>' +
+      '<div class="code" id="code">' + code + '</div><br>' +
+      '<button class="copy" id="copyBtn">Kodu kopyala</button>' +
+      '<ol>' +
+      '<li><b>Uygulamayı indir</b> ve bebeğini tanıt.</li>' +
+      '<li><b>Premium’a katıl</b> (yıllıkta 7 gün ücretsiz deneme var).</li>' +
+      '<li>Ayarlar → Abonelik → <b>Davet et, ay kazan</b> → “Davet kodun var mı?” alanına bu kodu yapıştır.</li>' +
+      '</ol>' +
+      '<div class="btns">' +
+      // TODO(lansman): App Store linki uygulama yayınlanınca gerçek id ile güncellenecek.
+      '<a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.omerfarukballi.sprout">Google Play’den indir</a>' +
+      '<a class="btn btn-ghost" href="/">App Store — çok yakında</a>' +
+      '</div>' +
+      '<p class="note">Kod tek kullanımlık. Ayrıntılar: <a href="/kullanim-kosullari.html">Davet Programı koşulları</a></p>' +
+      '<p class="en">Invited to Sprout Way — download the app, join Premium, then paste this code under Settings → Subscription → “Have an invite code?”. You both get a free month.</p>';
+    var btn = document.getElementById('copyBtn');
+    btn.addEventListener('click', function(){
+      (navigator.clipboard ? navigator.clipboard.writeText(code) : Promise.reject()).then(function(){
+        btn.textContent = 'Kopyalandı';
+      }).catch(function(){
+        btn.textContent = code; // kopyalama yoksa en azından seçilebilir dursun
+      });
+    });
+  } else {
+    document.title = 'Sprout Way — Sayfa bulunamadı';
+    card.innerHTML =
+      '<div class="brand">Sprout Way</div>' +
+      '<h1>Sayfa bulunamadı</h1>' +
+      '<p>Aradığın sayfa taşınmış ya da hiç var olmamış olabilir.</p>' +
+      '<div class="btns" style="margin-top:18px">' +
+      '<a class="btn btn-primary" href="/">Ana sayfaya dön</a>' +
+      '</div>' +
+      '<p class="en">Page not found — <a href="/index-en.html">go to the English homepage</a>.</p>';
+  }
+})();
+</script>
+</body>
+</html>
