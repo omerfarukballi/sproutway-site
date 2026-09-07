@@ -1,8 +1,8 @@
 # Sprout Way
 
-> Sprout Way, karşılaştırmasız ve kaygısız bir bebek/çocuk gelişim uygulamasıdır. Yapay zekâ kullanmaz — her öneri deterministik ve gerekçelidir. Yaşayan bir gelişim haritası, "ne zaman X olur?" sorularına nazik, uzman-temelli yanıtlar ve 800+ Montessori'den ilham alan aktivite sunar. iOS ve Android'de mevcuttur, Türkçe ve İngilizce.
+> Sprout Way, karşılaştırmasız ve kaygısız bir bebek/çocuk gelişim uygulamasıdır. Yapay zekâ kullanmaz — her öneri deterministik ve gerekçelidir. Yaşayan bir gelişim haritası, "ne zaman X olur?" sorularına nazik ve uzman-temelli yanıt veren 102 Hayat Sorusu ve 800+ Montessori'den ilham alan aktivite sunar. iOS ve Android'de mevcuttur; Türkçe, İngilizce ve İspanyolca.
 
-Sprout Way is a comparison-free, anxiety-free baby and child development app. It does not use AI — every suggestion is deterministic and reasoned, never a black-box prediction. It offers a living development map, gentle expert-grounded answers to "when will X happen?" questions, and 800+ Montessori-inspired activities. Available on iOS and Android, in Turkish and English.
+Sprout Way is a comparison-free, anxiety-free baby and child development app. It does not use AI — every suggestion is deterministic and reasoned, never a black-box prediction. It offers a living development map, 102 gentle expert-grounded Life Questions answering "when will X happen?", and 800+ Montessori-inspired activities. Available on iOS and Android, in Turkish, English and Spanish.
 
 ## Ne değildir / What it is not
 - Bir bakım takip uygulaması değildir (uyku/beslenme/bez günlüğü yok) — saf gelişim odaklıdır.
@@ -24,4 +24,4 @@ Sprout Way is a comparison-free, anxiety-free baby and child development app. It
 
 ## İletişim / Contact
 - [İletişim / Contact](https://sproutway.app/contact.html)
-- E-posta / Email: hello@sproutway.app
+- E-posta / Email: destek@sproutway.app
