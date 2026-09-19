@@ -1477,9 +1477,12 @@ function ctaPulse(){
 }
 function goStore(){
   var ua=navigator.userAgent||"";
-  /* herkes kendi mağazasına: iOS App Store'a (canlıysa), diğer herkes Play'e.
-     Hiçbir durumda sayfa başına kaydırma yok. */
-  if(/iPhone|iPad|iPod/i.test(ua)&&APP_STORE_URL){location.href=APP_STORE_URL;return}
+  /* herkes kendi mağazasına: Apple donanımı (iPhone/iPad/Mac) App Store'a
+     (canlıysa), diğer herkes Play'e. "Macintosh" de dahil çünkü iPadOS 13+
+     Safari kendini iPad değil Macintosh diye tanıtıyor — bu satır olmadan
+     gerçek iPad ziyaretçileri de Play'e düşüyordu. Hiçbir durumda sayfa
+     başına kaydırma yok. */
+  if(/iPhone|iPad|iPod|Macintosh/i.test(ua)&&APP_STORE_URL){location.href=APP_STORE_URL;return}
   location.href=PLAY_URL;
 }
 /* nav + footer İndir linkleri: href fallback kalır, davranış üstlenilir */
